@@ -7415,7 +7415,7 @@ class lt {
    */
   constructor(c) {
     this.runtime = c, this.server = new pa();
-    const h = new URLSearchParams(window.location.search), p = h.get("id") ?? "AH05B23F11", b = h.get("block") ?? "trial", C = h.get("keyword");
+    const h = new URLSearchParams(window.location.search), p = h.get("id") ?? "AH05B23F11", b = "basic", C = h.get("keyword");
     console.log("ID:", p), console.log("Block Type:", b), console.log("Initial Keyword:", C), this.block = b, this.keyword = C || null, this.license = null, p && this.fetchLicense(p), this.isEnabledPacketCapture = !1, this.lastSentMessage = null, this.numOfSentMessages = 0, this.server.on("sent", (O) => {
       this.lastSentMessage = O, this.numOfSentMessages += 1, this.runtime.startHats(ot + "_whenSentMessage");
     }), this.lastReceivedMessage = null, this.server.on("received", (O) => {
