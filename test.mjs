@@ -3,7 +3,7 @@ class Test {
   getInfo() { // 拡張機能の各種情報
     return {
       id: 'test',
-      name: 'Test', // 拡張機能の名前
+      name: 'est', // 拡張機能の名前
       blocks: [ // 各ブロックの定義
         {
           opcode: 'hello', // このブロックが実行されると、クラス内のhelloというメソッドが呼ばれることを意味しています
