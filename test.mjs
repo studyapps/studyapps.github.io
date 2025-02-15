@@ -3,7 +3,7 @@ class Test {
   getInfo() { // 拡張機能の各種情報
     return {
       id: 'test',
-      name: 'Test2', // 拡張機能の名前
+      name: 'Test', // 拡張機能の名前
       blocks: [ // 各ブロックの定義
         {
           opcode: 'hello', // このブロックが実行されると、クラス内のhelloというメソッドが呼ばれることを意味しています
@@ -17,4 +17,4 @@ class Test {
     console.log('hello'); // console log に hello と出力
   }
 }
-Scratch.extensions.register(new Test2());
+Scratch.extensions.register(new Test());
