@@ -2,7 +2,7 @@ class music-sheet {
   constructor() {}
   getInfo() { // 拡張機能の各種情報
     return {
-      id: 'music-sheet',
+      id: 'test',
       name: 'music-sheet', // 拡張機能の名前
       blocks: [ // 各ブロックの定義
         {
