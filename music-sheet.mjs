@@ -49,6 +49,18 @@ class MusicSheet {
                         }
                     },
                     isMonitor: true // チェックボックスを追加
+                },
+                {
+                    opcode: 'c',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[R]',
+                    arguments: {
+                        REST: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: 100 // 初期値
+                        }
+                    },
+                    isMonitor: true // チェックボックスを追加
                 }
             ],
             menus: {
@@ -84,6 +96,10 @@ class MusicSheet {
 
     chooseNote(args) {
         return args.NOTE;
+    }
+
+    c(args) {
+        return 100;
     }
 
     chooseAnimal(args) {
