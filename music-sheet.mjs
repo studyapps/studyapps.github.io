@@ -15,11 +15,13 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note'
+                            menu: 'note',
+                            defaultValue: '𝅘𝅥' // 初期値
                         }
                         TEMPO: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'tempo'
+                            menu: 'tempo',
+                            defaultValue: 80 // 初期値
                         }
                     }
                 }
