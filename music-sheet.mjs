@@ -8,50 +8,74 @@ class MusicSheet {
             color1: '#FFFFFF', // ブロックのメインカラー（白）
             color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
             color3: '#E0E0E0', // ブロックの文字色（黒）
-blocks: [
+            blocks: [
                 {
-                    opcode: 'selectColor',
+                    opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '色を選択: [COLOR]',
+                    text: '好きな果物: [FRUIT]',
                     arguments: {
-                        COLOR: {
+                        FRUIT: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'colorMenu'
+                            menu: 'fruitMenu'
                         }
                     }
                 },
                 {
-                    opcode: 'setVolumeLevel',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: '音量を [LEVEL] に設定',
+                    opcode: 'chooseAnimal',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '好きな動物: [ANIMAL]',
                     arguments: {
-                        LEVEL: {
-                            type: Scratch.ArgumentType.NUMBER,
-                            menu: 'volumeMenu'
+                        ANIMAL: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'animalMenu'
+                        }
+                    }
+                },
+                {
+                    opcode: 'setSpeed',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '速度を [SPEED] に設定',
+                    arguments: {
+                        SPEED: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'speedMenu'
                         }
                     }
                 }
             ],
             menus: {
-                colorMenu: {
+                fruitMenu: {
                     acceptReporters: true,
-                    items: ['赤', '青', '緑', '黄色', '黒']
+                    items: ['🍎 りんご', '🍌 バナナ', '🍇 ぶどう', '🍊 オレンジ', '🍓 いちご']
                 },
-                volumeMenu: {
+                animalMenu: {
                     acceptReporters: true,
-                    items: ['0', '25', '50', '75', '100']
+                    items: ['🐶 犬', '🐱 猫', '🐰 うさぎ', '🦁 ライオン', '🐘 ゾウ']
+                },
+                speedMenu: {
+                    acceptReporters: true,
+                    items: [
+                        { text: '🐢 低速', value: 'low' },
+                        { text: '🏃 中速', value: 'medium' },
+                        { text: '🚀 高速', value: 'high' }
+                    ]
                 }
             }
         };
     }
 
-    selectColor(args) {
-        return `選択された色: ${args.COLOR}`;
+    chooseFruit(args) {
+        return `選択した果物: ${args.FRUIT}`;
     }
 
-    setVolumeLevel(args) {
-        console.log(`音量を ${args.LEVEL} に設定しました`);
+    chooseAnimal(args) {
+        return `選択した動物: ${args.ANIMAL}`;
+    }
+
+    setSpeed(args) {
+        console.log(`速度を ${args.SPEED} に設定しました`);
     }
 }
 
+// 拡張機能を登録
 Scratch.extensions.register(new MusicSheet());
