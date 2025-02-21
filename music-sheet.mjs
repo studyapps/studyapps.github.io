@@ -82,8 +82,8 @@ class MusicSheet {
         };
     }
 
-    chooseFruit(args) {
-        return `選択した果物: ${args.FRUIT}`;
+    chooseNote(args) {
+        return ${args.NOTE};
     }
 
     chooseAnimal(args) {
