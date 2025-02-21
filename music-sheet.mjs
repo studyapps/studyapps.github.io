@@ -11,11 +11,15 @@ class MusicSheet {
                 {
                     opcode: 'setSpeed',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '速度を [SPEED] に設定',
+                    text: 'テンポ　[NOTE] = [TEMPO] に設定',
                     arguments: {
-                        SPEED: {
+                        NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'speedMenu'
+                            menu: 'note'
+                        }
+                        NOTE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'tempo'
                         }
                     }
                 },
@@ -53,7 +57,7 @@ class MusicSheet {
                     acceptReporters: true,
                     items: ['𝄻', '𝄼', '𝄽', '𝄾', '𝄿', '𝅀', '𝅁', '𝅂']
                 },
-                speedMenu: {
+                tempo: {
                     acceptReporters: true,
                     items: [
                         { text: '🐢 低速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
