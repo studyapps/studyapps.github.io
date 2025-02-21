@@ -34,7 +34,8 @@ class MusicSheet {
                             menu: 'note',
                             defaultValue: '𝅘𝅥' // 初期値    
                         }
-                    }
+                    },
+                    isMonitor: true // チェックボックスを追加
                 },
                 {
                     opcode: 'chooseRest',
@@ -46,7 +47,8 @@ class MusicSheet {
                             menu: 'rest',
                             defaultValue: '𝄽' // 初期値
                         }
-                    }
+                    },
+                    isMonitor: true // チェックボックスを追加
                 }
             ],
             menus: {
