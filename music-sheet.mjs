@@ -5,13 +5,16 @@ class MusicSheet {
       id: 'test',
       name: "楽譜", 
 
-            color1: '#000000', // ブロックのメインカラー（白）
-            color2: '#000000', // ブロックの枠線や影の色（薄いグレー）
+            color1: '#E0E0E0', // ブロックのメインカラー（白）
+            color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
+color4: '#FFFFFF',
+color0: '#FFFFFF',
+color: '#FFFFFF',
             blocks: [
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[FRUIT]',
+                    text: '好きな果物: [FRUIT]',
                     arguments: {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
@@ -45,10 +48,7 @@ class MusicSheet {
             menus: {
                 fruitMenu: {
                     acceptReporters: true,
-                    items: [
-                    { text: '𝅝', value: '' },
-                    { text: '𝅘𝅥𝅲.', value: '' }
-                    ]
+                    items: ['🍎 りんご', '🍌 バナナ', '🍇 ぶどう', '🍊 オレンジ', '🍓 いちご']
                 },
                 animalMenu: {
                     acceptReporters: true,
@@ -57,19 +57,6 @@ class MusicSheet {
                 speedMenu: {
                     acceptReporters: true,
                     items: [
-                        { text: '𝅗𝅥', value: '' },
-                        { text: '𝅗𝅥.', value: '' },
-                        { text: '𝅘𝅥', value: '' },
-                        { text: '𝅘𝅥.', value: '' },
-                        { text: '𝅘𝅥𝅮', value: '' },
-                        { text: '𝅘𝅥𝅮.', value: '' },
-                        { text: '𝅘𝅥𝅯', value: '' },
-                        { text: '𝅘𝅥𝅯.', value: '' },
-                        { text: '𝅘𝅥𝅰', value: '' },
-                        { text: '𝅘𝅥𝅰.', value: '' },
-                        { text: '𝅘𝅥𝅱', value: '' },
-                        { text: '𝅘𝅥𝅱.', value: '' },
-                        { text: '𝅘𝅥𝅲', value: '' },
                         { text: '🐢 低速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
                         { text: '🏃 中速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
                         { text: '🚀 高速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' }
