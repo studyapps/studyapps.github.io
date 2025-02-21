@@ -4,6 +4,9 @@ class MusicSheet {
     return {
       id: 'test',
       name: "楽譜", // 拡張機能の名前
+      color1: '#FFFFFF', // ブロックのメインカラー（白）
+      color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
+      color3: '#B0B0B0', // ブロックのテキストの色（濃いグレー）
       blocks: [
           {
               opcode: 'helloWorld',
