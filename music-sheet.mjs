@@ -45,7 +45,7 @@ class MusicSheet {
             menus: {
                 note: {
                     acceptReporters: true,
-                    items: ['🍎 りんご', '🍌 バナナ', '🍇 ぶどう', '🍊 オレンジ', '🍓 いちご']
+                    items: ['𝅝', '𝅗𝅥', '𝅘𝅥', '𝅘𝅥𝅮', '🍓 いちご']
                 },
                 animalMenu: {
                     acceptReporters: true,
