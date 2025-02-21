@@ -6,7 +6,7 @@ class MusicSheet {
       name: "楽譜", // 拡張機能の名前
       color1: '#FFFFFF', // ブロックのメインカラー（白）
       color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
-      color3: '#000000', // ブロックのテキストの色（濃いグレー）
+      color3: '#000000', // ブロックのテキストの色（黒）
       blocks: [
           {
               opcode: 'helloWorld',
