@@ -8,7 +8,7 @@ class MusicSheet {
             color1: '#FFFFFF', // ブロックのメインカラー（白）
             color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
             color3: '#E0E0E0', // ブロックの文字色（黒）
-            blocks: [
+blocks: [
                 {
                     opcode: 'selectColor',
                     blockType: Scratch.BlockType.REPORTER,
@@ -21,44 +21,37 @@ class MusicSheet {
                     }
                 },
                 {
-                    opcode: 'doubleNumber',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[NUM] を2倍にする',
+                    opcode: 'setVolumeLevel',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '音量を [LEVEL] に設定',
                     arguments: {
-                        NUM: {
+                        LEVEL: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: 10
+                            menu: 'volumeMenu'
                         }
                     }
-                },
-                {
-                    opcode: 'playBeep',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'ビープ音を鳴らす'
                 }
-            ]
+            ],
+            menus: {
+                colorMenu: {
+                    acceptReporters: true,
+                    items: ['赤', '青', '緑', '黄色', '黒']
+                },
+                volumeMenu: {
+                    acceptReporters: true,
+                    items: ['0', '25', '50', '75', '100']
+                }
+            }
         };
     }
 
-    // 「Hello World」を返す
-    helloWorld() {
-        return 'Hello, Scratch!';
+    selectColor(args) {
+        return `選択された色: ${args.COLOR}`;
     }
 
-    // 数値を2倍にする
-    doubleNumber(args) {
-        return args.NUM * 2;
+    setVolumeLevel(args) {
+        console.log(`音量を ${args.LEVEL} に設定しました`);
     }
-
-    // ビープ音を鳴らす
-    playBeep() {
-        const synth = new AudioContext();
-        const osc = synth.createOscillator();
-        osc.frequency.value = 440; // 440Hz（Aの音）
-        osc.connect(synth.destination);
-        osc.start();
-        setTimeout(() => osc.stop(), 500); // 0.5秒後に停止
-    }
-
 }
+
 Scratch.extensions.register(new MusicSheet());
