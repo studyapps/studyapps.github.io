@@ -9,6 +9,21 @@ class MusicSheet {
             color2: '#000000', // ブロックの枠線や影の色（薄いグレー）
             blocks: [
                 {
+                    opcode: 'tempo',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'テンポ [NOTE] =[TEMPO]に設定',
+                    arguments: {
+                        NOTE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'note'
+                        }
+                        TEMPO: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'tempo'
+                        }
+                    }
+                }
+                {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[FRUIT]',
@@ -53,7 +68,7 @@ class MusicSheet {
                     acceptReporters: true,
                     items: ['𝄻', '𝄼', '𝄽', '𝄾', '𝄿', '𝅀', '𝅁', '𝅂']
                 },
-                speedMenu: {
+                tempo: {
                     acceptReporters: true,
                     items: [
                         { text: '🐢 低速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
