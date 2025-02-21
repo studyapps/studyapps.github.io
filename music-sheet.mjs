@@ -11,7 +11,7 @@ class MusicSheet {
                 {
                     opcode: 'setSpeed',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'テンポ　[NOTE] = [TEMPO] に設定',
+                    text: 'テンポ [NOTE] = [TEMPO] に設定',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
@@ -99,7 +99,7 @@ class MusicSheet {
     }
 
     c(args) {
-        return 100;
+        return args.R;
     }
 
     chooseAnimal(args) {
