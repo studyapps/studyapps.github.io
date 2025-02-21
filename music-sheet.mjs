@@ -16,8 +16,8 @@ class MusicSheet {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'note'
-                        }
-                        NOTE: {
+                        },
+                        TEMPO: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'tempo'
                         }
