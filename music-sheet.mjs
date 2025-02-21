@@ -95,7 +95,7 @@ class MusicSheet {
     }
 
     chooseNote(args) {
-        return args;
+        return NOTE.value;
     }
 
     c(args) {
