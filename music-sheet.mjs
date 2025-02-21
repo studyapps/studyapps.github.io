@@ -4,17 +4,50 @@ class MusicSheet {
     return {
       id: 'test',
       name: "楽譜", // 拡張機能の名前
-      blocks: [ // 各ブロックの定義
-        {
-          opcode: 'hello', // このブロックが実行されると、クラス内のhelloというメソッドが呼ばれることを意味しています
-          blockType: Scratch.BlockType.COMMAND,　// 「10歩動かす」のような通常の命令ブロック
-          text: 'hello' // ブロックに表示されるテキスト
-        }
-      ]
+      blocks: [
+          {
+              opcode: 'helloWorld',
+              blockType: Scratch.BlockType.REPORTER,
+              text: 'Hello World を表示'
+           },
+           {
+              opcode: 'doubleNumber',
+              blockType: Scratch.BlockType.REPORTER,
+              text: '[NUM] を2倍にする',
+              arguments: {
+                  NUM: {
+                      type: Scratch.ArgumentType.NUMBER,
+                      defaultValue: 10
+                   }
+               }
+           },
+           {
+               opcode: 'playBeep',
+               blockType: Scratch.BlockType.COMMAND,
+              text: 'ビープ音を鳴らす'
+           }
+            ]
+        };
     }
-  }
-  hello() {
-    console.log('hello'); // console log に hello と出力
-  }
+
+    // 「Hello World」を返す
+    helloWorld() {
+        return 'Hello, Scratch!';
+    }
+
+    // 数値を2倍にする
+    doubleNumber(args) {
+        return args.NUM * 2;
+    }
+
+    // ビープ音を鳴らす
+    playBeep() {
+        const synth = new AudioContext();
+        const osc = synth.createOscillator();
+        osc.frequency.value = 440; // 440Hz（Aの音）
+        osc.connect(synth.destination);
+        osc.start();
+        setTimeout(() => osc.stop(), 500); // 0.5秒後に停止
+    }
 }
 Scratch.extensions.register(new MusicSheet());
