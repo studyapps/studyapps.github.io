@@ -5,16 +5,13 @@ class MusicSheet {
       id: 'test',
       name: "楽譜", 
 
-            color1: '#E0E0E0', // ブロックのメインカラー（白）
-            color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
-color4: '#FFFFFF',
-color0: '#FFFFFF',
-color: '#FFFFFF',
+            color1: '#FFFFFF', // ブロックのメインカラー（白）
+            color2: '#FFFFFF', // ブロックの枠線や影の色（薄いグレー）
             blocks: [
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '好きな果物: [FRUIT]',
+                    text: '[FRUIT]',
                     arguments: {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
