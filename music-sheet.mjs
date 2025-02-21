@@ -25,7 +25,7 @@ class MusicSheet {
                     }
                 },
                 {
-                    opcode: 'chooseFruit',
+                    opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[NOTE]',
                     arguments: {
@@ -37,7 +37,7 @@ class MusicSheet {
                     }
                 },
                 {
-                    opcode: 'chooseAnimal',
+                    opcode: 'chooseRest',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[REST]',
                     arguments: {
