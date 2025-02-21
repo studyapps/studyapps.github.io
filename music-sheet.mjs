@@ -58,9 +58,9 @@ blockIconURI: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/9
                 speedMenu: {
                     acceptReporters: true,
                     items: [
-                        { text: '🐢 低速', value: 'low' },
-                        { text: '🏃 中速', value: 'medium' },
-                        { text: '🚀 高速', value: 'high' }
+                        { text: '🐢 低速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
+                        { text: '🏃 中速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
+                        { text: '🚀 高速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' }
                     ]
                 }
             }
