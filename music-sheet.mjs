@@ -95,11 +95,11 @@ class MusicSheet {
     }
 
     chooseNote(args) {
-        return args.NOTE;
+        return args;
     }
 
     c(args) {
-        return R;
+        return args;
     }
 
     chooseAnimal(args) {
