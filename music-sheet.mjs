@@ -16,6 +16,7 @@ class MusicSheet {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'note'
+                            defaultValue: '𝅘𝅥𝅮' // 初期値
                         }
                     }
                 },
