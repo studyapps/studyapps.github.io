@@ -83,7 +83,7 @@ class MusicSheet {
     }
 
     chooseNote(args) {
-        return ${args.NOTE};
+        return `${args.NOTE}`;
     }
 
     chooseAnimal(args) {
