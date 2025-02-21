@@ -53,7 +53,7 @@ class MusicSheet {
                 {
                     opcode: 'c',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[R]',
+                    text: '[RR]',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
@@ -99,7 +99,7 @@ class MusicSheet {
     }
 
     c(args) {
-        return args;
+        return R.value;
     }
 
     chooseAnimal(args) {
