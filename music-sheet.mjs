@@ -53,14 +53,14 @@ class MusicSheet {
                 note: {
                     acceptReporters: true,
                     items: [
-                        { text: '𝅝'},
-                        { text: '𝅗𝅥'},
-                        { text: '𝅘𝅥'},
-                        { text: '𝅘𝅥𝅮'},
-                        { text: '𝅘𝅥𝅯'},
-                        { text: '𝅘𝅥𝅰'},
-                        { text: '𝅘𝅥𝅱'},
-                        { text: '𝅘𝅥𝅲'}
+                        { text: '𝅝', value: ''},
+                        { text: '𝅗𝅥', value: ''},
+                        { text: '𝅘𝅥', value: ''},
+                        { text: '𝅘𝅥𝅮', value: ''},
+                        { text: '𝅘𝅥𝅯', value: ''},
+                        { text: '𝅘𝅥𝅰', value: ''},
+                        { text: '𝅘𝅥𝅱', value: ''},
+                        { text: '𝅘𝅥𝅲', value: ''}
                     ]
                 },
                 rest: {
