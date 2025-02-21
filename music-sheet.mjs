@@ -8,8 +8,8 @@ class MusicSheet {
             color1: '#E0E0E0', // ブロックのメインカラー（白）
             color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
 color4: '#FFFFFF',
-color5: '#FFFFFF',
-color6: '#FFFFFF',
+color0: '#FFFFFF',
+color: '#FFFFFF',
             blocks: [
                 {
                     opcode: 'chooseFruit',
