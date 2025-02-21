@@ -77,14 +77,6 @@ class MusicSheet {
                         { text: '𝅁', value: 1/64},
                         { text: '𝅂', value: 1/128}                   
                     ]
-                },
-                tempo: {
-                    acceptReporters: true,
-                    items: [
-                        { text: '🐢 低速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
-                        { text: '🏃 中速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' },
-                        { text: '🚀 高速', value: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg' }
-                    ]
                 }
             }
         };
