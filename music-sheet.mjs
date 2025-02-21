@@ -5,9 +5,8 @@ class MusicSheet {
       id: 'test',
       name: "楽譜", 
 
-            color1: '#FFFFFF', // ブロックのメインカラー（白）
+            color1: '#000000', // ブロックのメインカラー（白）
             color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
-            color3: '#E0E0E0', // ブロックの文字色（黒）
             blocks: [
                 {
                     opcode: 'chooseFruit',
