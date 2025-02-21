@@ -3,32 +3,33 @@ class MusicSheet {
   getInfo() { // 拡張機能の各種情報
     return {
       id: 'test',
-      name: "楽譜", // 拡張機能の名前
-      color1: '#FFFFFF', // ブロックのメインカラー（白）
-      color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
-      color3: '#000000', // ブロックのテキストの色（黒）
-      blocks: [
-          {
-              opcode: 'helloWorld',
-              blockType: Scratch.BlockType.REPORTER,
-              text: 'Hello World を表示'
-           },
-           {
-              opcode: 'doubleNumber',
-              blockType: Scratch.BlockType.REPORTER,
-              text: '[NUM] を2倍にする',
-              arguments: {
-                  NUM: {
-                      type: Scratch.ArgumentType.NUMBER,
-                      defaultValue: 10
-                   }
-               }
-           },
-           {
-               opcode: 'playBeep',
-               blockType: Scratch.BlockType.COMMAND,
-              text: 'ビープ音を鳴らす'
-           }
+      name: "楽譜", 
+
+            color1: '#FFFFFF', // ブロックのメインカラー（白）
+            color2: '#E0E0E0', // ブロックの枠線や影の色（薄いグレー）
+            color3: '#000000', // ブロックの文字色（黒）
+            blocks: [
+                {
+                    opcode: 'helloWorld',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Hello World を表示'
+                },
+                {
+                    opcode: 'doubleNumber',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[NUM] を2倍にする',
+                    arguments: {
+                        NUM: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: 10
+                        }
+                    }
+                },
+                {
+                    opcode: 'playBeep',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'ビープ音を鳴らす'
+                }
             ]
         };
     }
@@ -52,5 +53,6 @@ class MusicSheet {
         osc.start();
         setTimeout(() => osc.stop(), 500); // 0.5秒後に停止
     }
+
 }
 Scratch.extensions.register(new MusicSheet());
