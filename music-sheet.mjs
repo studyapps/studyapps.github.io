@@ -52,7 +52,16 @@ class MusicSheet {
             menus: {
                 note: {
                     acceptReporters: true,
-                    items: ['𝅝', '𝅗𝅥', '𝅘𝅥', '𝅘𝅥𝅮', '𝅘𝅥𝅯', '𝅘𝅥𝅰', '𝅘𝅥𝅱', '𝅘𝅥𝅲']
+                    items: [
+                        { '𝅝'},
+                        { '𝅗𝅥'},
+                        { '𝅘𝅥'},
+                        { '𝅘𝅥𝅮'},
+                        { '𝅘𝅥𝅯'},
+                        { '𝅘𝅥𝅰'},
+                        { '𝅘𝅥𝅱'},
+                        { '𝅘𝅥𝅲'}
+                    ]
                 },
                 rest: {
                     acceptReporters: true,
