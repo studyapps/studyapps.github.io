@@ -19,7 +19,7 @@ class MusicSheet {
                             defaultValue: '𝅘𝅥' // 初期値
                         },
                         TEMPO: {
-                            type: Scratch.ArgumentType.STRING,
+                            type: Scratch.ArgumentType.NUMBER,
                             menu: 'tempo',
                             defaultValue: 80 // 初期値
                         }
