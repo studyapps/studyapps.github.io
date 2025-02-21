@@ -16,7 +16,7 @@ class MusicSheet {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'note',
-                            defaultValue: '𝅘𝅥𝅮' // 初期値    
+                            defaultValue: '𝅘𝅥' // 初期値    
                         }
                     }
                 },
@@ -27,7 +27,8 @@ class MusicSheet {
                     arguments: {
                         ANIMAL: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'animalMenu'
+                            menu: 'rest',
+                            defaultValue: '𝄽' // 初期値
                         }
                     }
                 },
@@ -48,9 +49,9 @@ class MusicSheet {
                     acceptReporters: true,
                     items: ['𝅝', '𝅗𝅥', '𝅘𝅥', '𝅘𝅥𝅮', '𝅘𝅥𝅯', '𝅘𝅥𝅰', '𝅘𝅥𝅱', '𝅘𝅥𝅲']
                 },
-                animalMenu: {
+                rest: {
                     acceptReporters: true,
-                    items: ['🐶 犬', '🐱 猫', '🐰 うさぎ', '🦁 ライオン', '🐘 ゾウ']
+                    items: ['𝄻', '𝄼', '𝄽', '𝄾', '𝄿', '𝅀', '𝅁', '𝅂']
                 },
                 speedMenu: {
                     acceptReporters: true,
