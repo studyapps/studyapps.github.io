@@ -14,7 +14,6 @@ color: '#FFFFFF',
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-blockIconURI: 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/983be70407df48304bbbf60a9489135151c3b8fb/svg/note_1.svg',
                     text: '好きな果物: [FRUIT]',
                     arguments: {
                         FRUIT: {
