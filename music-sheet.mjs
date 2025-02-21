@@ -15,20 +15,22 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note'
+                            menu: 'note',
+                            defaultValue: '𝅘𝅥' // 初期値
                         },
                         TEMPO: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'tempo'
+                            menu: 'tempo',
+                            defaultValue: 80 // 初期値
                         }
                     }
                 },
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[FRUIT]',
+                    text: '[NOTE]',
                     arguments: {
-                        FRUIT: {
+                        NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'note',
                             defaultValue: '𝅘𝅥' // 初期値    
@@ -38,9 +40,9 @@ class MusicSheet {
                 {
                     opcode: 'chooseAnimal',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[ANIMAL]',
+                    text: '[REST]',
                     arguments: {
-                        ANIMAL: {
+                        REST: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'rest',
                             defaultValue: '𝄽' // 初期値
