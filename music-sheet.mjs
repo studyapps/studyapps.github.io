@@ -49,17 +49,6 @@ class MusicSheet {
                         }
                     }
                 },
-                {
-                    opcode: 'setSpeed',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: '速度を [SPEED] に設定',
-                    arguments: {
-                        SPEED: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'speedMenu'
-                        }
-                    }
-                }
             ],
             menus: {
                 note: {
