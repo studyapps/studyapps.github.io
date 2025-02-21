@@ -15,7 +15,14 @@ class MusicSheet {
                     arguments: {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note'
+                            menu: 'fruitMenu',
+                            defaultValue: 'りんご' // ここで初期値を設定
+                        }
+                    arguments: {
+                        FRUIT: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'note',
+                            defaultValue: '𝅘𝅥𝅮' // 初期値    
                         }
                     }
                 },
