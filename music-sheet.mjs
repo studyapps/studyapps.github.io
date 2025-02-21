@@ -25,7 +25,7 @@ color: '#FFFFFF',
                 {
                     opcode: 'chooseAnimal',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '好きな動物: [ANIMAL]',
+                    text: '[ANIMAL]',
                     arguments: {
                         ANIMAL: {
                             type: Scratch.ArgumentType.STRING,
