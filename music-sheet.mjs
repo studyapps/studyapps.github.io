@@ -99,7 +99,7 @@ class MusicSheet {
     }
 
     c(args) {
-        return args.R;
+        return R;
     }
 
     chooseAnimal(args) {
