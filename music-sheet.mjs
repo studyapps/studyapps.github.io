@@ -14,11 +14,11 @@ color: '#FFFFFF',
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '好きな果物: [FRUIT]',
+                    text: '[FRUIT]',
                     arguments: {
                         FRUIT: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'fruitMenu'
+                            menu: 'note'
                         }
                     }
                 },
@@ -46,7 +46,7 @@ color: '#FFFFFF',
                 }
             ],
             menus: {
-                fruitMenu: {
+                note: {
                     acceptReporters: true,
                     items: ['🍎 りんご', '🍌 バナナ', '🍇 ぶどう', '🍊 オレンジ', '🍓 いちご']
                 },
