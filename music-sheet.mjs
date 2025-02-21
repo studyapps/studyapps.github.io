@@ -9,6 +9,17 @@ class MusicSheet {
             color2: '#000000', // ブロックの枠線や影の色（薄いグレー）
             blocks: [
                 {
+                    opcode: 'setSpeed',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '速度を [SPEED] に設定',
+                    arguments: {
+                        SPEED: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'speedMenu'
+                        }
+                    }
+                },
+                {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[FRUIT]',
@@ -29,17 +40,6 @@ class MusicSheet {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'rest',
                             defaultValue: '𝄽' // 初期値
-                        }
-                    }
-                },
-                {
-                    opcode: 'setSpeed',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: '速度を [SPEED] に設定',
-                    arguments: {
-                        SPEED: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'speedMenu'
                         }
                     }
                 }
