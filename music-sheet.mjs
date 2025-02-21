@@ -10,9 +10,15 @@ class MusicSheet {
             color3: '#E0E0E0', // ブロックの文字色（黒）
             blocks: [
                 {
-                    opcode: 'helloWorld',
+                    opcode: 'selectColor',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Hello World を表示'
+                    text: '色を選択: [COLOR]',
+                    arguments: {
+                        COLOR: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'colorMenu'
+                        }
+                    }
                 },
                 {
                     opcode: 'doubleNumber',
