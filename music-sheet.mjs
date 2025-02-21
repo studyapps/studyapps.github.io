@@ -14,11 +14,11 @@ color: '#FFFFFF',
                 {
                     opcode: 'chooseFruit',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '音符: [NOTE]',
+                    text: '好きな果物: [FRUIT]',
                     arguments: {
-                        NOTE: {
+                        FRUIT: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note'
+                            menu: 'fruitMenu'
                         }
                     }
                 },
@@ -46,23 +46,23 @@ color: '#FFFFFF',
                 }
             ],
             menus: {
-                note: {
+                fruitMenu: {
                     acceptReporters: true,
                     items: [
-                    { text: '𝅝', value: 1 },
-                    { text: '𝅗𝅥', value: 1/2 },
+                    { text: '𝅝', value: '' },
+                    { text: '𝅗𝅥', value: '' },
                     { text: '𝅗𝅥.', value: '' },
-                    { text: '𝅘𝅥', value: 1/4 },
+                    { text: '𝅘𝅥', value: '' },
                     { text: '𝅘𝅥.', value: '' },
-                    { text: '𝅘𝅥𝅮', value: 1/8 },
+                    { text: '𝅘𝅥𝅮', value: '' },
                     { text: '𝅘𝅥𝅮.', value: '' },
-                    { text: '𝅘𝅥𝅯', value: 1/16 },
+                    { text: '𝅘𝅥𝅯', value: '' },
                     { text: '𝅘𝅥𝅯.', value: '' },
-                    { text: '𝅘𝅥𝅰', value: 1/32 },
+                    { text: '𝅘𝅥𝅰', value: '' },
                     { text: '𝅘𝅥𝅰.', value: '' },
-                    { text: '𝅘𝅥𝅱', value: 1/64 },
+                    { text: '𝅘𝅥𝅱', value: '' },
                     { text: '𝅘𝅥𝅱.', value: '' },
-                    { text: '𝅘𝅥𝅲', value: 1/128 },
+                    { text: '𝅘𝅥𝅲', value: '' },
                     { text: '𝅘𝅥𝅲.', value: '' }
                     ]
                 },
