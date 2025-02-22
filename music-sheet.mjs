@@ -11,9 +11,9 @@ class CustomExtension {
             name: 'カスタム拡張',
             blocks: [
                 {
-                    opcode: 'getAValue',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'Aブロック [VALUE]',
+                    opcode: 'setAValue',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'Aブロック [VALUE] を設定',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
@@ -22,15 +22,25 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'getBValue',
+                    opcode: 'getAValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Bブロック [VALUE]',
+                    text: 'Aブロックの値'
+                },
+                {
+                    opcode: 'setBValue',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'Bブロック [VALUE] を設定',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'bMenu'
                         }
                     }
+                },
+                {
+                    opcode: 'getBValue',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Bブロックの値'
                 },
                 {
                     opcode: 'getCValue',
@@ -53,13 +63,19 @@ class CustomExtension {
         };
     }
 
-    getAValue(args) {
+    setAValue(args) {
         this.aValue = parseInt(args.VALUE, 10);
+    }
+
+    getAValue() {
         return this.aValue;
     }
 
-    getBValue(args) {
+    setBValue(args) {
         this.bValue = parseInt(args.VALUE, 10);
+    }
+
+    getBValue() {
         return this.bValue;
     }
 
