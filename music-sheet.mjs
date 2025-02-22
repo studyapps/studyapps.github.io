@@ -11,9 +11,9 @@ class CustomExtension {
             name: 'カスタム拡張',
             blocks: [
                 {
-                    opcode: 'setAValue',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'Aブロック [VALUE] を設定',
+                    opcode: 'getAValue',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Aブロック [VALUE]',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
@@ -22,14 +22,9 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'getAValue',
+                    opcode: 'getBValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Aブロックの値'
-                },
-                {
-                    opcode: 'setBValue',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'Bブロック [VALUE] を設定',
+                    text: 'Bブロック [VALUE]',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
@@ -38,14 +33,19 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'getBValue',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'Bブロックの値'
-                },
-                {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'あCブロック (A × B)'
+                    text: 'Cブロック (A × B)',
+                    arguments: {
+                        A_VALUE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'aMenu'
+                        },
+                        B_VALUE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'bMenu'
+                        }
+                    }
                 }
             ],
             menus: {
@@ -63,24 +63,18 @@ class CustomExtension {
         };
     }
 
-    setAValue(args) {
-        this.aValue = parseInt(args.VALUE, 10);
+    getAValue(args) {
+        return parseInt(args.VALUE, 10);
     }
 
-    getAValue() {
-        return this.aValue;
+    getBValue(args) {
+        return parseInt(args.VALUE, 10);
     }
 
-    setBValue(args) {
-        this.bValue = parseInt(args.VALUE, 10);
-    }
-
-    getBValue() {
-        return this.bValue;
-    }
-
-    getCValue() {
-        return this.aValue * this.bValue;
+    getCValue(args) {
+        const a = parseInt(args.A_VALUE, 10);
+        const b = parseInt(args.B_VALUE, 10);
+        return a * b;
     }
 }
 
