@@ -6,6 +6,17 @@ class MusicExtension {
         this.tempoValue = 80; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue;
+        this.scaleValues = {
+            'ド': 60,
+            'レ': 62,
+            'ミ': 64,
+            'ファ': 65,
+            'ソ': 67,
+            'ラ': 69,
+            'シ': 71,
+            'ド(高)': 72
+        };
+        this.currentNote = 60; // 初期値: ド;
     }
 
     getInfo() {
@@ -23,7 +34,7 @@ class MusicExtension {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.temponoteValue, // 初期値
-                            menu: 'Note'
+                            menu: 'NoteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
@@ -39,7 +50,7 @@ class MusicExtension {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.noteValue,
-                            menu: 'note'
+                            menu: 'noteMenu'
                         }
                     }
                 },
@@ -51,7 +62,18 @@ class MusicExtension {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.restValue,
-                            menu: 'rest'
+                            menu: 'restMenu'
+                        }
+                    }
+                },
+                {
+                    opcode: 'getScale',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[Scale]',
+                    arguments: {
+                        NOTE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'scaleMenu'
                         }
                     }
                 },
@@ -62,7 +84,7 @@ class MusicExtension {
                 }
             ],
             menus: {
-                note: [
+                noteMenu: [
                     { text: '𝅝', value: 1},
                     { text: '𝅗𝅥', value: 2},
                     { text: '𝅘𝅥', value: 4},
@@ -72,7 +94,7 @@ class MusicExtension {
                     { text: '𝅘𝅥𝅱', value: 64},
                     { text: '𝅘𝅥𝅲', value: 128}
                 ],
-                rest: [
+                restMenu: [
                     { text: '𝄻', value: 1},
                     { text: '𝄼', value: 2},
                     { text: '𝄽', value: 4},
@@ -81,7 +103,11 @@ class MusicExtension {
                     { text: '𝅀', value: 32},
                     { text: '𝅁', value: 64},
                     { text: '𝅂', value: 128} 
-                ]
+                ],
+                noteMenu: {
+                    acceptReporters: false,
+                    items: Object.keys(this.scaleValues)
+                }
             }
         };
     }
@@ -101,6 +127,10 @@ class MusicExtension {
 
     setSpeed(args) {
         
+    }
+    getNoteValue(args) {
+        this.currentNote = this.scaleValues[args.NOTE] || 60;
+        return this.currentNote;
     }
 
 
