@@ -1,17 +1,14 @@
-class MusicSheet {
+class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.aValue; // 初期値 2
-        this.bValue; // 初期値 5
+        this.aValue = 2; // 初期値 2
+        this.bValue = 5; // 初期値 5
     }
 
-  getInfo() { // 拡張機能の各種情報
-    return {
-      id: 'test',
-      name: "楽譜", 
-
-            color1: '#000000', // ブロックのメインカラー（白）
-            color2: '#000000', // ブロックの枠線や影の色（薄いグレー）
+    getInfo() {
+        return {
+            id: 'customExtension',
+            name: 'カスタム拡張',
             blocks: [
                 {
                     opcode: 'getAValue',
@@ -38,7 +35,7 @@ class MusicSheet {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Cブロック (かA × B)'
+                    text: 'Cブロック (A × B)'
                 }
             ],
             menus: {
@@ -57,13 +54,13 @@ class MusicSheet {
     }
 
     getAValue(args) {
-        this.aValue = parseInt(args.VALUE,10);
-        return args.VALUE;
+        this.aValue = parseInt(args.VALUE, 10);
+        return this.aValue;
     }
 
     getBValue(args) {
-        this.bValue = parseInt(args.VALUE,10);
-        return args.VALUE;
+        this.bValue = parseInt(args.VALUE, 10);
+        return this.bValue;
     }
 
     getCValue() {
@@ -71,5 +68,4 @@ class MusicSheet {
     }
 }
 
-// 拡張機能を登録
-Scratch.extensions.register(new MusicSheet());
+Scratch.extensions.register(new CustomExtension());
