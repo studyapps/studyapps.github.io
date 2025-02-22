@@ -15,12 +15,16 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note',
-                            defaultValue: '𝅘𝅥' // 初期値
+                            Value: {
+                                menu: 'note',
+                                defaultValue: '𝅘𝅥' // 初期値
+                            }
                         },
                         TEMPO: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: 80 // 初期値
+                            Valure: {
+                                defaultValue: 80 // 初期値
+                            }
                         }
                     }
                 },
@@ -31,8 +35,10 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'note',
-                            defaultValue: '𝅘𝅥' // 初期値    
+                            Valure: {
+                                menu: 'note',
+                                defaultValue: '𝅘𝅥' // 初期値   
+                            } 
                         }
                     },
                     isMonitor: true // チェックボックスを追加
@@ -44,8 +50,10 @@ class MusicSheet {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'rest',
-                            defaultValue: '𝄽' // 初期値
+                            Valure: {
+                                menu: 'rest',
+                                defaultValue: '𝄽' // 初期値
+                            }
                         }
                     },
                     isMonitor: true // チェックボックスを追加
@@ -57,7 +65,9 @@ class MusicSheet {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 100 // 初期値
+                            Valure: {
+                                defaultValue: 100 // 初期値
+                            }
                         }
                     },
                     isMonitor: true // チェックボックスを追加
@@ -95,11 +105,11 @@ class MusicSheet {
     }
 
     chooseNote(args) {
-        return args.NOTE;
+        return args.value;
     }
 
     c(args) {
-        return args.R;
+        return args.value;
     }
 
     chooseAnimal(args) {
