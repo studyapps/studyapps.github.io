@@ -17,11 +17,11 @@ class CustomExtension {
             blocks: [
                 {
                     opcode: 'setSpeed',
-                    blockType: Scratch.BlockType.REPORTER,
+                    blockType: Scratch.BlockType.COMMAND,
                     text: 'テンポ [NOTE] = [TEMPO] に設定',
                     arguments: {
                         NOTE:{
-                            blockType: Scratch.BlockType.COMMAND,
+                            type: Scratch.ArgumentType.STRING,
                             defaultValue: this.temponoteValue, // 初期値
                             menu: 'Note'
                         },
@@ -58,7 +58,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'えブロック (A × B)'
+                    text: 'おブロック (A × B)'
                 }
             ],
             menus: {
