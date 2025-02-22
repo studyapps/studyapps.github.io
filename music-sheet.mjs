@@ -1,7 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.noteValue = 4; // 初期値
+        this.noteValue = '𝅘𝅥'; // 初期値
         this.restValue = 4; // 初期値
         this.tempoValue = 80; // 初期値
         this.temponoteValue = 4; // 初期値
@@ -58,7 +58,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'かブロック (A × B)'
+                    text: 'きブロック (A × B)'
                 }
             ],
             menus: {
@@ -100,7 +100,7 @@ class CustomExtension {
     }
 
     setSpeed(args) {
-        console.log(`速度を ${args.SPEED} に設定しました`);
+        return this.noteValue;
     }
 
 
