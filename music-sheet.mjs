@@ -45,7 +45,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Cブロック (A × B)'
+                    text: 'あCブロック (A × B)'
                 }
             ],
             menus: {
