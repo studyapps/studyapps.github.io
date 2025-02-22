@@ -26,7 +26,7 @@ class CustomExtension {
                             menu: 'Note'
                         },
                         TEMPO:{
-                            type: Scratch.ArgumentType.NUMBER,
+                            blockType: Scratch.BlockType.NUMBER,
                             defaultValue: this.tempoValue // 初期値
                         }  
                     }
@@ -58,7 +58,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'こブロック (A × B)'
+                    text: 'きブロック (A × B)'
                 }
             ],
             menus: {
@@ -87,15 +87,15 @@ class CustomExtension {
     }
 
     getCValue() {
-        return this.noteValue;
+        return this.aValue * this.bValue;
     }
 
     chooseNote(args) {
-        this.noteValue = args.NOTE;
+        this.noteValue = args.VALUE;
         return this.noteValue;
     }
     chooseRest(args) {
-        this.restValue = args.REST;
+        this.restValue = args.VALUE;
         return this.restValue;
     }
 
