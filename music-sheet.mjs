@@ -61,13 +61,11 @@ class MusicSheet {
                 {
                     opcode: 'c',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'う[R]',
+                    text: 'え[R]',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            Value: {
-                                defaultValue: 100 // 初期値
-                            }
+                            defaultValue: 100 // 初期値
                         }
                     },
                     isMonitor: true // チェックボックスを追加
