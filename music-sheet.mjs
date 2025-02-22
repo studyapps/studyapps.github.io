@@ -67,17 +67,6 @@ class MusicExtension {
                     }
                 },
                 {
-                    opcode: 'getScale',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[Scale]',
-                    arguments: {
-                        NOTE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'scaleMenu'
-                        }
-                    }
-                },
-                {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'けブロック (A × B)'
