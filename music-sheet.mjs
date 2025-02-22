@@ -38,7 +38,7 @@ class MusicSheet {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Cブロック (おA × B)'
+                    text: 'Cブロック (かA × B)'
                 }
             ],
             menus: {
@@ -63,7 +63,7 @@ class MusicSheet {
 
     getBValue(args) {
         this.bValue = parseInt(args.VALUE,10);
-        return this.bValue;
+        return args.VALUE;
     }
 
     getCValue() {
