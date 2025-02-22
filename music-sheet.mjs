@@ -35,17 +35,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Cブロック (A × B)',
-                    arguments: {
-                        A_VALUE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'aMenu'
-                        },
-                        B_VALUE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'bMenu'
-                        }
-                    }
+                    text: 'あCブロック (A × B)'
                 }
             ],
             menus: {
@@ -64,17 +54,17 @@ class CustomExtension {
     }
 
     getAValue(args) {
-        return parseInt(args.VALUE, 10);
+        this.aValue = parseInt(args.VALUE, 10);
+        return this.aValue;
     }
 
     getBValue(args) {
-        return parseInt(args.VALUE, 10);
+        this.bValue = parseInt(args.VALUE, 10);
+        return this.bValue;
     }
 
-    getCValue(args) {
-        const a = parseInt(args.A_VALUE, 10);
-        const b = parseInt(args.B_VALUE, 10);
-        return a * b;
+    getCValue() {
+        return this.aValue * this.bValue;
     }
 }
 
