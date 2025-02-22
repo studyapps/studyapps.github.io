@@ -22,7 +22,7 @@ class MusicSheet {
                         },
                         TEMPO: {
                             type: Scratch.ArgumentType.NUMBER,
-                            Valure: {
+                            Value: {
                                 defaultValue: 80 // 初期値
                             }
                         }
@@ -35,7 +35,7 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            Valure: {
+                            Value: {
                                 menu: 'note',
                                 defaultValue: ' 𝅘𝅥 ' // 初期値   
                             } 
@@ -50,7 +50,7 @@ class MusicSheet {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            Valure: {
+                            Value: {
                                 menu: 'rest',
                                 defaultValue: ' 𝄽 ' // 初期値
                             }
@@ -65,7 +65,7 @@ class MusicSheet {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            Valure: {
+                            Value: {
                                 defaultValue: 100 // 初期値
                             }
                         }
