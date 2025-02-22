@@ -58,7 +58,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'くブロック (A × B)'
+                    text: 'けブロック (A × B)'
                 }
             ],
             menus: {
@@ -87,7 +87,7 @@ class CustomExtension {
     }
 
     getCValue() {
-        return this.aValue * this.bValue;
+        return this.noteValue;
     }
 
     chooseNote(args) {
