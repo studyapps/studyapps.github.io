@@ -1,4 +1,4 @@
-class CustomExtension {
+class MusicExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this.noteValue = 4; // 初期値
@@ -10,8 +10,8 @@ class CustomExtension {
 
     getInfo() {
         return {
-            id: 'customExtension',
-            name: '楽譜',
+            id: 'musicExtension',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -58,7 +58,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'くブロック (A × B)'
+                    text: 'けブロック (A × B)'
                 }
             ],
             menus: {
@@ -100,7 +100,7 @@ class CustomExtension {
     }
 
     setSpeed(args) {
-        return this.noteValue;
+        
     }
 
 
