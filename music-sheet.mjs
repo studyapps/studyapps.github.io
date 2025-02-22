@@ -21,17 +21,13 @@ class CustomExtension {
                     text: 'テンポ [NOTE] = [TEMPO] に設定',
                     arguments: {
                         NOTE:{
-                            VALUE: {
-                                blockType: Scratch.BlockType.COMMAND,
-                                defaultValue: this.temponoteValue, // 初期値
-                                menu: 'Note'
-                            }
+                            blockType: Scratch.BlockType.COMMAND,
+                            defaultValue: this.temponoteValue, // 初期値
+                            menu: 'Note'
                         },
                         TEMPO:{
-                            VALUE: {
-                                blockType: Scratch.BlockType.NUMBER,
-                                defaultValue: this.tempoValue // 初期値
-                            }
+                            blockType: Scratch.BlockType.NUMBER,
+                            defaultValue: this.tempoValue // 初期値
                         },   
                     }
                 },
@@ -40,7 +36,7 @@ class CustomExtension {
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[NOTE]',
                     arguments: {
-                        VALUE: {
+                        NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.noteValue,
                             menu: 'note'
@@ -52,7 +48,7 @@ class CustomExtension {
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[REST]',
                     arguments: {
-                        VALUE: {
+                        REST: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.restValue,
                             menu: 'rest'
