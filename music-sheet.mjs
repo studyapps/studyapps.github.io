@@ -1,5 +1,10 @@
 class MusicSheet {
-  constructor() {}
+    constructor(runtime) {
+        this.runtime = runtime;
+        this.aValue = 2; // 初期値 2
+        this.bValue = 5; // 初期値 5
+    }
+
   getInfo() { // 拡張機能の各種情報
     return {
       id: 'test',
@@ -9,113 +14,60 @@ class MusicSheet {
             color2: '#000000', // ブロックの枠線や影の色（薄いグレー）
             blocks: [
                 {
-                    opcode: 'setSpeed',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'テンポ [NOTE] = [TEMPO] に設定',
+                    opcode: 'getAValue',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Aブロック [VALUE]',
                     arguments: {
-                        NOTE: {
+                        VALUE: {
                             type: Scratch.ArgumentType.STRING,
-                            
-                                menu: 'note',
-                                defaultValue: '𝅘𝅥' // 初期値
-                            
-                        },
-                        TEMPO: {
-                            type: Scratch.ArgumentType.NUMBER,
-                            
-                                defaultValue: 80 // 初期値
-                            
+                            menu: 'aMenu'
                         }
                     }
                 },
                 {
-                    opcode: 'chooseNote',
+                    opcode: 'getBValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[NOTE]',
+                    text: 'Bブロック [VALUE]',
                     arguments: {
-                        NOTE: {
+                        VALUE: {
                             type: Scratch.ArgumentType.STRING,
-                            
-                                menu: 'note',
-                                defaultValue: ' 𝅘𝅥 ' // 初期値   
-                             
+                            menu: 'bMenu'
                         }
-                    },
-                    isMonitor: true // チェックボックスを追加
+                    }
                 },
                 {
-                    opcode: 'chooseRest',
+                    opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[REST]',
-                    arguments: {
-                        REST: {
-                            type: Scratch.ArgumentType.STRING,
-                            Value: {
-                                menu: 'rest',
-                                defaultValue: ' 𝄽 ' // 初期値
-                            }
-                        }
-                    },
-                    isMonitor: true // チェックボックスを追加
-                },
-                {
-                    opcode: 'c',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'え[R]',
-                    arguments: {
-                        REST: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: 100 // 初期値
-                        }
-                    },
-                    isMonitor: true // チェックボックスを追加
+                    text: 'Cブロック (A × B)'
                 }
             ],
             menus: {
-                note: {
-                    acceptReporters: true,
-                    items: [
-                        { text: ' 𝅝 ', value: 1},
-                        { text: ' 𝅗𝅥 ', value: 1/2},
-                        { text: ' 𝅘𝅥 ', value: 1/4},
-                        { text: ' 𝅘𝅥𝅮 ', value: 1/8},
-                        { text: ' 𝅘𝅥𝅯 ', value: 1/16},
-                        { text: ' 𝅘𝅥𝅰 ', value: 1/32},
-                        { text: ' 𝅘𝅥𝅱 ', value: 1/64},
-                        { text: ' 𝅘𝅥𝅲 ', value: 1/128}
-                    ]
-                },
-                rest: {
-                    acceptReporters: true,
-                    items: [
-                        { text: ' 𝄻 ', value: 1},
-                        { text: ' 𝄼 ', value: 1/2},
-                        { text: ' 𝄽 ', value: 1/4},
-                        { text: ' 𝄾 ', value: 1/8},
-                        { text: ' 𝄿 ', value: 1/16},
-                        { text: ' 𝅀 ', value: 1/32},
-                        { text: ' 𝅁 ', value: 1/64},
-                        { text: ' 𝅂 ', value: 1/128}                   
-                    ]
-                }
+                aMenu: [
+                    { text: '1', value: '1' },
+                    { text: '2', value: '2' },
+                    { text: '3', value: '3' }
+                ],
+                bMenu: [
+                    { text: '4', value: '4' },
+                    { text: '5', value: '5' },
+                    { text: '6', value: '6' }
+                ]
             }
         };
     }
 
-    chooseNote(args) {
-        return args.value;
+    getAValue(args) {
+        this.aValue = parseInt(args.VALUE, 10);
+        return this.aValue;
     }
 
-    c(args) {
-        return args.value;
+    getBValue(args) {
+        this.bValue = parseInt(args.VALUE, 10);
+        return this.bValue;
     }
 
-    chooseAnimal(args) {
-        return `選択した動物: ${args.ANIMAL}`;
-    }
-
-    setSpeed(args) {
-        console.log(`速度を ${args.SPEED} に設定しました`);
+    getCValue() {
+        return this.aValue * this.bValue;
     }
 }
 
