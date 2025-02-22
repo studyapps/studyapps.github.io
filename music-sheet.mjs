@@ -15,16 +15,16 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            Value: {
+                            
                                 menu: 'note',
                                 defaultValue: '𝅘𝅥' // 初期値
-                            }
+                            
                         },
                         TEMPO: {
                             type: Scratch.ArgumentType.NUMBER,
-                            Value: {
+                            
                                 defaultValue: 80 // 初期値
-                            }
+                            
                         }
                     }
                 },
@@ -35,10 +35,10 @@ class MusicSheet {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            Value: {
+                            
                                 menu: 'note',
                                 defaultValue: ' 𝅘𝅥 ' // 初期値   
-                            } 
+                             
                         }
                     },
                     isMonitor: true // チェックボックスを追加
@@ -61,7 +61,7 @@ class MusicSheet {
                 {
                     opcode: 'c',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'い[R]',
+                    text: 'う[R]',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
