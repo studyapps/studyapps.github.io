@@ -26,7 +26,7 @@ class CustomExtension {
                             menu: 'Note'
                         },
                         TEMPO:{
-                            blockType: Scratch.BlockType.NUMBER,
+                            type: Scratch.ArgumentType.NUMBER,
                             defaultValue: this.tempoValue // 初期値
                         }  
                     }
