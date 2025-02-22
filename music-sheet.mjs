@@ -17,6 +17,7 @@ class CustomExtension {
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
+                            defaultValue: this.aValue,
                             menu: 'aMenu'
                         }
                     }
@@ -28,6 +29,7 @@ class CustomExtension {
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
+                            defaultValue: this.bValue,
                             menu: 'bMenu'
                         }
                     }
@@ -35,7 +37,7 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'あCブロック (A × B)'
+                    text: 'うCブロック (A × B)'
                 }
             ],
             menus: {
