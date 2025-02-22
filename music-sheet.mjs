@@ -37,7 +37,7 @@ class MusicSheet {
                             type: Scratch.ArgumentType.STRING,
                             Valure: {
                                 menu: 'note',
-                                defaultValue: '𝅘𝅥' // 初期値   
+                                defaultValue: ' 𝅘𝅥 ' // 初期値   
                             } 
                         }
                     },
@@ -52,7 +52,7 @@ class MusicSheet {
                             type: Scratch.ArgumentType.STRING,
                             Valure: {
                                 menu: 'rest',
-                                defaultValue: '𝄽' // 初期値
+                                defaultValue: ' 𝄽 ' // 初期値
                             }
                         }
                     },
@@ -61,7 +61,7 @@ class MusicSheet {
                 {
                     opcode: 'c',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'あ[R]',
+                    text: 'い[R]',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
@@ -77,27 +77,27 @@ class MusicSheet {
                 note: {
                     acceptReporters: true,
                     items: [
-                        { text: '𝅝', value: 1},
-                        { text: '𝅗𝅥', value: 1/2},
-                        { text: '𝅘𝅥', value: 1/4},
-                        { text: '𝅘𝅥𝅮', value: 1/8},
-                        { text: '𝅘𝅥𝅯', value: 1/16},
-                        { text: '𝅘𝅥𝅰', value: 1/32},
-                        { text: '𝅘𝅥𝅱', value: 1/64},
-                        { text: '𝅘𝅥𝅲', value: 1/128}
+                        { text: ' 𝅝 ', value: 1},
+                        { text: ' 𝅗𝅥 ', value: 1/2},
+                        { text: ' 𝅘𝅥 ', value: 1/4},
+                        { text: ' 𝅘𝅥𝅮 ', value: 1/8},
+                        { text: ' 𝅘𝅥𝅯 ', value: 1/16},
+                        { text: ' 𝅘𝅥𝅰 ', value: 1/32},
+                        { text: ' 𝅘𝅥𝅱 ', value: 1/64},
+                        { text: ' 𝅘𝅥𝅲 ', value: 1/128}
                     ]
                 },
                 rest: {
                     acceptReporters: true,
                     items: [
-                        { text: '𝄻', value: 1},
-                        { text: '𝄼', value: 1/2},
-                        { text: '𝄽', value: 1/4},
-                        { text: '𝄾', value: 1/8},
-                        { text: '𝄿', value: 1/16},
-                        { text: '𝅀', value: 1/32},
-                        { text: '𝅁', value: 1/64},
-                        { text: '𝅂', value: 1/128}                   
+                        { text: ' 𝄻 ', value: 1},
+                        { text: ' 𝄼 ', value: 1/2},
+                        { text: ' 𝄽 ', value: 1/4},
+                        { text: ' 𝄾 ', value: 1/8},
+                        { text: ' 𝄿 ', value: 1/16},
+                        { text: ' 𝅀 ', value: 1/32},
+                        { text: ' 𝅁 ', value: 1/64},
+                        { text: ' 𝅂 ', value: 1/128}                   
                     ]
                 }
             }
