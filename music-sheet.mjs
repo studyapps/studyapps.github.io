@@ -1,10 +1,10 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.noteValue = 1/4; // 初期値
-        this.restValue = 1/4; // 初期値
+        this.noteValue = 4; // 初期値
+        this.restValue = 4; // 初期値
         this.tempoValue = 80; // 初期値
-        this.temponoteValue = 1/4; // 初期値
+        this.temponoteValue = 4; // 初期値
         this.speedValue;
     }
 
@@ -28,7 +28,7 @@ class CustomExtension {
                         TEMPO:{
                             blockType: Scratch.BlockType.NUMBER,
                             defaultValue: this.tempoValue // 初期値
-                        },   
+                        }  
                     }
                 },
                 {
@@ -58,29 +58,29 @@ class CustomExtension {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'おブロック (A × B)'
+                    text: 'かブロック (A × B)'
                 }
             ],
             menus: {
                 note: [
                     { text: '𝅝', value: 1},
-                    { text: '𝅗𝅥', value: 1/2},
-                    { text: '𝅘𝅥', value: 1/4},
-                    { text: '𝅘𝅥𝅮', value: 1/8},
-                    { text: '𝅘𝅥𝅯', value: 1/16},
-                    { text: '𝅘𝅥𝅰', value: 1/32},
-                    { text: '𝅘𝅥𝅱', value: 1/64},
-                    { text: '𝅘𝅥𝅲', value: 1/128}
+                    { text: '𝅗𝅥', value: 2},
+                    { text: '𝅘𝅥', value: 4},
+                    { text: '𝅘𝅥𝅮', value: 8},
+                    { text: '𝅘𝅥𝅯', value: 16},
+                    { text: '𝅘𝅥𝅰', value: 32},
+                    { text: '𝅘𝅥𝅱', value: 64},
+                    { text: '𝅘𝅥𝅲', value: 128}
                 ],
                 rest: [
                     { text: '𝄻', value: 1},
-                    { text: '𝄼', value: 1/2},
-                    { text: '𝄽', value: 1/4},
-                    { text: '𝄾', value: 1/8},
-                    { text: '𝄿', value: 1/16},
-                    { text: '𝅀', value: 1/32},
-                    { text: '𝅁', value: 1/64},
-                    { text: '𝅂', value: 1/128} 
+                    { text: '𝄼', value: 2},
+                    { text: '𝄽', value: 4},
+                    { text: '𝄾', value: 8},
+                    { text: '𝄿', value: 16},
+                    { text: '𝅀', value: 32},
+                    { text: '𝅁', value: 64},
+                    { text: '𝅂', value: 128} 
                 ]
             }
         };
