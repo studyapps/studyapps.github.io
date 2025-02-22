@@ -1,36 +1,61 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.aValue = 2; // 初期値 2
-        this.bValue = 5; // 初期値 5
+        this.noteValue = 1/4; // 初期値
+        this.restValue = 1/4; // 初期値
+        this.tempoValue = 80; // 初期値
+        this.temponoteValue = 1/4; // 初期値
+        this.speedValue;
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'カスタム拡張',
+            name: '楽譜',
+            color1: '#000000', // ブロックのメインカラー
+            color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
-                    opcode: 'getAValue',
+                    opcode: 'setSpeed',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Aブロック [VALUE]',
+                    text: 'テンポ [NOTE] = [TEMPO] に設定',
+                    arguments: {
+                        NOTE:{
+                            VALUE: {
+                                blockType: Scratch.BlockType.COMMAND,
+                                defaultValue: this.temponoteValue, // 初期値
+                                menu: 'Note'
+                            }
+                        },
+                        TEMPO:{
+                            VALUE: {
+                                blockType: Scratch.BlockType.NUMBER,
+                                defaultValue: this.tempoValue // 初期値
+                            }
+                        },   
+                    }
+                },
+                {
+                    opcode: 'chooseNote',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[NOTE]',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.aValue,
-                            menu: 'aMenu'
+                            defaultValue: this.noteValue,
+                            menu: 'note'
                         }
                     }
                 },
                 {
-                    opcode: 'getBValue',
+                    opcode: 'chooseRest',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Bブロック [VALUE]',
+                    text: '[REST]',
                     arguments: {
                         VALUE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.bValue,
-                            menu: 'bMenu'
+                            defaultValue: this.restValue,
+                            menu: 'rest'
                         }
                     }
                 },
@@ -41,33 +66,48 @@ class CustomExtension {
                 }
             ],
             menus: {
-                aMenu: [
-                    { text: '1', value: '1' },
-                    { text: '2', value: '2' },
-                    { text: '3', value: '3' }
+                note: [
+                    { text: '𝅝', value: 1},
+                    { text: '𝅗𝅥', value: 1/2},
+                    { text: '𝅘𝅥', value: 1/4},
+                    { text: '𝅘𝅥𝅮', value: 1/8},
+                    { text: '𝅘𝅥𝅯', value: 1/16},
+                    { text: '𝅘𝅥𝅰', value: 1/32},
+                    { text: '𝅘𝅥𝅱', value: 1/64},
+                    { text: '𝅘𝅥𝅲', value: 1/128}
                 ],
-                bMenu: [
-                    { text: '4', value: '4' },
-                    { text: '5', value: '5' },
-                    { text: '6', value: '6' }
+                rest: [
+                    { text: '𝄻', value: 1},
+                    { text: '𝄼', value: 1/2},
+                    { text: '𝄽', value: 1/4},
+                    { text: '𝄾', value: 1/8},
+                    { text: '𝄿', value: 1/16},
+                    { text: '𝅀', value: 1/32},
+                    { text: '𝅁', value: 1/64},
+                    { text: '𝅂', value: 1/128} 
                 ]
             }
         };
     }
 
-    getAValue(args) {
-        this.aValue = parseInt(args.VALUE, 10);
-        return this.aValue;
-    }
-
-    getBValue(args) {
-        this.bValue = parseInt(args.VALUE, 10);
-        return this.bValue;
-    }
-
     getCValue() {
         return this.aValue * this.bValue;
     }
+
+    chooseNote(args) {
+        this.noteValue = args.VALUE;
+        return this.noteValue;
+    }
+    chooseRest(args) {
+        this.restValue = args.VALUE;
+        return this.restValue;
+    }
+
+    setSpeed(args) {
+        console.log(`速度を ${args.SPEED} に設定しました`);
+    }
+
+
 }
 
 Scratch.extensions.register(new CustomExtension());
