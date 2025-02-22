@@ -1,8 +1,8 @@
 class MusicSheet {
     constructor(runtime) {
         this.runtime = runtime;
-        this.aValue = 2; // 初期値 2
-        this.bValue = 5; // 初期値 5
+        this.aValue; // 初期値 2
+        this.bValue; // 初期値 5
     }
 
   getInfo() { // 拡張機能の各種情報
@@ -38,7 +38,7 @@ class MusicSheet {
                 {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Cブロック (A × B)'
+                    text: 'Cブロック (あA × B)'
                 }
             ],
             menus: {
