@@ -59,7 +59,7 @@ class CustomExtension {
                 {
                     opcode: 'getNoteValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '音階 [NOTE] の数値',
+                    text: '音階2 [NOTE] の数値',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
@@ -103,7 +103,7 @@ class CustomExtension {
                     {text: 'ラ', value: 69},
                     {text: 'シ', value: 71},
                     {text: 'ド\'', value: 72}
-                ],
+                ]
             }
         };
     }
