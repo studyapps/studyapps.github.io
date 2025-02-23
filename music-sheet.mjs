@@ -6,17 +6,7 @@ class CustomExtension {
         this.tempoValue = 80; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue;
-        this.noteValues = {
-            'ド': 60,
-            'レ': 62,
-            'ミ': 64,
-            'ファ': 65,
-            'ソ': 67,
-            'ラ': 69,
-            'シ': 71,
-            'ド(高)': 72
-        };
-        this.currentNote = 60; // 初期値: ド
+        this.scaleValues = 60;
     }
 
     getInfo() {
@@ -34,7 +24,7 @@ class CustomExtension {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.temponoteValue, // 初期値
-                            menu: 'Note'
+                            menu: 'noteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
@@ -50,7 +40,7 @@ class CustomExtension {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.noteValue,
-                            menu: 'note'
+                            menu: 'noteMenu'
                         }
                     }
                 },
@@ -62,7 +52,7 @@ class CustomExtension {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: this.restValue,
-                            menu: 'rest'
+                            menu: 'restMenu'
                         }
                     }
                 },
@@ -84,7 +74,7 @@ class CustomExtension {
                 }
             ],
             menus: {
-                note: [
+                noteMenu: [
                     { text: '𝅝', value: 1},
                     { text: '𝅗𝅥', value: 2},
                     { text: '𝅘𝅥', value: 4},
@@ -94,7 +84,7 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅱', value: 64},
                     { text: '𝅘𝅥𝅲', value: 128}
                 ],
-                rest: [
+                restMenu: [
                     { text: '𝄻', value: 1},
                     { text: '𝄼', value: 2},
                     { text: '𝄽', value: 4},
@@ -104,10 +94,16 @@ class CustomExtension {
                     { text: '𝅁', value: 64},
                     { text: '𝅂', value: 128} 
                 ],
-                noteMenu: {
-                    acceptReporters: false,
-                    items: Object.keys(this.noteValues)
-                }
+                scaleMenu: [
+                    {text: 'ド', value: 60},
+                    {text: 'レ', valuevalue: 62},
+                    {text: 'ミ', value: 64},
+                    {text: 'ファ', value: 65},
+                    {text: 'ソ', value: 67},
+                    {text: 'ラ', value: 69},
+                    {text: 'シ', value: 71},
+                    {text: 'ド\'', value: 72}
+                ],
             }
         };
     }
