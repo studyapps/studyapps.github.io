@@ -32,6 +32,11 @@ class CustomExtension {
                     }
                 },
                 {
+                    opcode: 'setTempo',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'テンポ'
+                },
+                {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[NOTE]',
@@ -66,11 +71,6 @@ class CustomExtension {
                             menu: 'scaleMenu'
                         }
                     }
-                },
-                {
-                    opcode: 'setTempo',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'しテンポ'
                 }
             ],
             menus: {
@@ -109,7 +109,7 @@ class CustomExtension {
     }
 
     setTempo() {
-        return this.tempoValue;
+        return this.tempoValue * 60 * this.temponoteValue;
     }
 
     chooseNote(args) {
