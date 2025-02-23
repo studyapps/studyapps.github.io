@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC',
+            name: 'toio MUSIC2',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -23,12 +23,12 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.temponoteValue, // 初期値
+                            //defaultValue: this.temponoteValue, // 初期値
                             menu: 'noteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.tempoValue, // 初期値
+                            //defaultValue: this.tempoValue, // 初期値
                         }  
                     }
                 },
@@ -44,7 +44,7 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.noteValue, // 初期値
+                            //defaultValue: this.noteValue, // 初期値
                             menu: 'noteMenu'
                         }
                     }
@@ -56,7 +56,7 @@ class CustomExtension {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.restValue, // 初期値
+                            //defaultValue: this.restValue, // 初期値
                             menu: 'restMenu'
                         }
                     }
@@ -68,7 +68,7 @@ class CustomExtension {
                     arguments: {
                         SCALE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.scaleValue, // 初期値
+                            //defaultValue: this.scaleValue, // 初期値
                             menu: 'scaleMenu'
                         }
                     }
