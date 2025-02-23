@@ -6,12 +6,23 @@ class CustomExtension {
         this.tempoValue = 80; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue;
+        this.noteValues = {
+            'ド': 60,
+            'レ': 62,
+            'ミ': 64,
+            'ファ': 65,
+            'ソ': 67,
+            'ラ': 69,
+            'シ': 71,
+            'ド(高)': 72
+        };
+        this.currentNote = 60; // 初期値: ド
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: '楽譜',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -56,6 +67,17 @@ class CustomExtension {
                     }
                 },
                 {
+                    opcode: 'getNoteValue',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '音階 [NOTE] の数値',
+                    arguments: {
+                        NOTE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'noteMenu'
+                        }
+                    }
+                },
+                {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'けブロック (A × B)'
@@ -81,7 +103,11 @@ class CustomExtension {
                     { text: '𝅀', value: 32},
                     { text: '𝅁', value: 64},
                     { text: '𝅂', value: 128} 
-                ]
+                ],
+                noteMenu: {
+                    acceptReporters: false,
+                    items: Object.keys(this.noteValues)
+                }
             }
         };
     }
@@ -102,7 +128,11 @@ class CustomExtension {
     setSpeed(args) {
         return this.noteValue;
     }
-
+    
+    getNoteValue(args) {
+        this.currentNote = this.noteValues[args.NOTE] || 60;
+        return this.currentNote;
+    }
 
 }
 
