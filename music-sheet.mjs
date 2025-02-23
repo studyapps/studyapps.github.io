@@ -29,7 +29,7 @@ class CustomExtension {
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.temponoteValue, // 初期値
+                            defaultValue: this.speedValue, // 初期値
                         }  
                     }
                 },
