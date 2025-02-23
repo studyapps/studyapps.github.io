@@ -57,17 +57,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'getNoteValue',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '音階2 [NOTE] の数値',
-                    arguments: {
-                        NOTE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'noteMenu'
-                        }
-                    }
-                },
-                {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'けブロック (A × B)'
