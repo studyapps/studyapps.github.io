@@ -23,7 +23,7 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1/4', //this.temponoteValue, // 初期値
+                            defaultValue: 1/4, //this.temponoteValue, // 初期値
                             menu: 'noteMenu'
                         },
                         TEMPO:{
