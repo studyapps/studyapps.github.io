@@ -113,19 +113,19 @@ class CustomExtension {
         return this.tempoValue;
     }
     chooseNote(args) {
-        this.noteValue = args.NOTE;
+        this.noteValue = parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
     chooseRest(args) {
-        this.restValue = args.REST;
+        this.restValue = parseFloat(args.REST);
         return this.restValue * this.periodValue;
     }
     chooseScale(args) {
-        this.restValue = args.SCALE;
+        this.restValue = parseInt(args.SCALE,10);
         return this.scaleValue;
     }
     setPeriod(args) {
-        this.periodValue = 60 / args.TEMPO / args.NOTE;
+        this.periodValue = 60 / parseFloat(args.TEMPO) / parseFloat(args.NOTE);
     }
     
 }
