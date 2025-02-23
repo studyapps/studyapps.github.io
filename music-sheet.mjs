@@ -1,18 +1,18 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.tempoValue = '120'; // 初期値
-        this.temponoteValue = '1/4'; // 初期値
-        this.noteValue = '1/4'; // 初期値
-        this.restValue = '1/4'; // 初期値
+        this.tempoValue = 120; // 初期値
+        this.temponoteValue = 1/4; // 初期値
+        this.noteValue = 1/4; // 初期値
+        this.restValue = 1/4; // 初期値
         this.periodValue = 60 / this.tempoValue / this.temponoteValue;
-        this.scaleValue = '60';
+        this.scaleValue = 60;
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC7',
+            name: 'toio MUSIC5',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -23,12 +23,12 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1/4', // 初期値
+                            defaultValue: 1/4, // 初期値
                             menu: 'noteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '120', // 初期値
+                            defaultValue: 120, // 初期値
                         }  
                     }
                 },
@@ -44,7 +44,7 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1/4', // 初期値
+                            defaultValue: 1/4, // 初期値
                             menu: 'noteMenu'
                         }
                     }
@@ -56,7 +56,7 @@ class CustomExtension {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1/4', // 初期値
+                            defaultValue: 1/4, // 初期値
                             menu: 'restMenu'
                         }
                     }
@@ -76,34 +76,34 @@ class CustomExtension {
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: '1'},
-                    { text: '𝅗𝅥', value: '1/2'},
-                    { text: '𝅘𝅥', value: '1/4'},
-                    { text: '𝅘𝅥𝅮', value: '1/8'},
-                    { text: '𝅘𝅥𝅯', value: '1/16'},
-                    { text: '𝅘𝅥𝅰', value: '1/32'},
-                    { text: '𝅘𝅥𝅱', value: '1/64'},
-                    { text: '𝅘𝅥𝅲', value: '1/128'}
+                    { text: '𝅝', value: 1},
+                    { text: '𝅗𝅥', value: 1/2},
+                    { text: '𝅘𝅥', value: 1/4},
+                    { text: '𝅘𝅥𝅮', value: 1/8},
+                    { text: '𝅘𝅥𝅯', value: 1/16},
+                    { text: '𝅘𝅥𝅰', value: 1/32},
+                    { text: '𝅘𝅥𝅱', value: 1/64},
+                    { text: '𝅘𝅥𝅲', value: 1/128}
                 ],
                 restMenu: [
-                    { text: '𝄻', value: '1'},
-                    { text: '𝄼', value: '1/2'},
-                    { text: '𝄽', value: '1/4'},
-                    { text: '𝄾', value: '1/8'},
-                    { text: '𝄿', value: '1/16'},
-                    { text: '𝅀', value: '1/32'},
-                    { text: '𝅁', value: '1/64'},
-                    { text: '𝅂', value: '1/128'} 
+                    { text: '𝄻', value: 1},
+                    { text: '𝄼', value: 1/2},
+                    { text: '𝄽', value: 1/4},
+                    { text: '𝄾', value: 1/8},
+                    { text: '𝄿', value: 1/16},
+                    { text: '𝅀', value: 1/32},
+                    { text: '𝅁', value: 1/64},
+                    { text: '𝅂', value: 1/128} 
                 ],
                 scaleMenu: [
-                    {text: 'ド', value: '60'},
-                    {text: 'レ', value: '62'},
-                    {text: 'ミ', value: '64'},
-                    {text: 'ファ', value: '65'},
-                    {text: 'ソ', value: '67'},
-                    {text: 'ラ', value: '69'},
-                    {text: 'シ', value: '71'},
-                    {text: 'ド\'', value: '72'}
+                    {text: 'ド', value: 60},
+                    {text: 'レ', value: 62},
+                    {text: 'ミ', value: 64},
+                    {text: 'ファ', value: 65},
+                    {text: 'ソ', value: 67},
+                    {text: 'ラ', value: 69},
+                    {text: 'シ', value: 71},
+                    {text: 'ド\'', value: 72}
                 ]
             }
         };
