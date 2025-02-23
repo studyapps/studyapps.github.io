@@ -5,7 +5,7 @@ class CustomExtension {
         this.temponoteValue = 1/4; // 初期値
         this.noteValue = 1/4; // 初期値
         this.restValue = 1/4; // 初期値
-        this.speedValue = this.tempoValue / this.temponoteValue / 60;
+        this.periodValue = 60 / this.tempoValue / this.temponoteValue;
         this.scaleValue = 60;
     }
 
@@ -17,7 +17,7 @@ class CustomExtension {
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
-                    opcode: 'setSpeed',
+                    opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'テンポ [NOTE] = [TEMPO] に設定',
                     arguments: {
@@ -97,7 +97,7 @@ class CustomExtension {
                 ],
                 scaleMenu: [
                     {text: 'ド', value: 60},
-                    {text: 'レ', valuevalue: 62},
+                    {text: 'レ', value: 62},
                     {text: 'ミ', value: 64},
                     {text: 'ファ', value: 65},
                     {text: 'ソ', value: 67},
@@ -112,21 +112,20 @@ class CustomExtension {
     setTempo() {
         return this.tempoValue;
     }
-
     chooseNote(args) {
         this.noteValue = args.NOTE;
-        return this.noteValue * this.speedValue;
+        return this.noteValue * this.periodValue;
     }
     chooseRest(args) {
         this.restValue = args.REST;
-        return this.restValue * this.speedValue;
+        return this.restValue * this.periodValue;
     }
     chooseScale(args) {
         this.restValue = args.SCALE;
         return this.scaleValue;
     }
-    setSpeed(args) {
-        this.speedValue = args.TEMPO / args.NOTE / 60;
+    setPeriod(args) {
+        this.periodValue = 60 / args.TEMPO / args.NOTE;
     }
     
 }
