@@ -1,13 +1,12 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.speedValue = 8;
-        this.scaleValue = 60;
         this.tempoValue = 120; // 初期値
-        this.temponoteValue = 1/4 * this.speedValue; // 初期値
-        this.noteValue = 1/4 * this.speedValue; // 初期値
-        this.restValue = 1/4 * this.speedValue; // 初期値
-
+        this.temponoteValue = 1/4; // 初期値
+        this.noteValue = 1/4; // 初期値
+        this.restValue = 1/4; // 初期値
+        this.speedValue = this.tempoValue / this.temponoteValue / 60;
+        this.scaleValue = 60;
     }
 
     getInfo() {
@@ -29,7 +28,7 @@ class CustomExtension {
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.speedValue, // 初期値
+                            defaultValue: this.tempoValue, // 初期値
                         }  
                     }
                 },
@@ -77,24 +76,24 @@ class CustomExtension {
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: 1 * this.speedValue},
-                    { text: '𝅗𝅥', value: 1/2 * this.speedValue},
-                    { text: '𝅘𝅥', value: 1/4 * this.speedValue},
-                    { text: '𝅘𝅥𝅮', value: 1/8 * this.speedValue},
-                    { text: '𝅘𝅥𝅯', value: 1/16 * this.speedValue},
-                    { text: '𝅘𝅥𝅰', value: 1/32 * this.speedValue},
-                    { text: '𝅘𝅥𝅱', value: 1/64 * this.speedValue},
-                    { text: '𝅘𝅥𝅲', value: 1/128 * this.speedValue}
+                    { text: '𝅝', value: 1},
+                    { text: '𝅗𝅥', value: 1/2},
+                    { text: '𝅘𝅥', value: 1/4},
+                    { text: '𝅘𝅥𝅮', value: 1/8},
+                    { text: '𝅘𝅥𝅯', value: 1/16},
+                    { text: '𝅘𝅥𝅰', value: 1/32},
+                    { text: '𝅘𝅥𝅱', value: 1/64},
+                    { text: '𝅘𝅥𝅲', value: 1/128}
                 ],
                 restMenu: [
-                    { text: '𝄻', value: 1 * this.speedValue},
-                    { text: '𝄼', value: 1/2 * this.speedValue},
-                    { text: '𝄽', value: 1/4 * this.speedValue},
-                    { text: '𝄾', value: 1/8 * this.speedValue},
-                    { text: '𝄿', value: 1/16 * this.speedValue},
-                    { text: '𝅀', value: 1/32 * this.speedValue},
-                    { text: '𝅁', value: 1/64 * this.speedValue},
-                    { text: '𝅂', value: 1/128 * this.speedValue} 
+                    { text: '𝄻', value: 1},
+                    { text: '𝄼', value: 1/2},
+                    { text: '𝄽', value: 1/4},
+                    { text: '𝄾', value: 1/8},
+                    { text: '𝄿', value: 1/16},
+                    { text: '𝅀', value: 1/32},
+                    { text: '𝅁', value: 1/64},
+                    { text: '𝅂', value: 1/128} 
                 ],
                 scaleMenu: [
                     {text: 'ド', value: 60},
@@ -116,11 +115,11 @@ class CustomExtension {
 
     chooseNote(args) {
         this.noteValue = args.NOTE;
-        return this.noteValue;
+        return this.noteValue * this.speedValue;
     }
     chooseRest(args) {
         this.restValue = args.REST;
-        return this.restValue;
+        return this.restValue * this.speedValue;
     }
     chooseScale(args) {
         this.restValue = args.SCALE;
