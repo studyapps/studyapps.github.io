@@ -23,12 +23,12 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.temponoteValue, // 初期値
+                            defaultValue: '1/4', // 文字列として設定
                             menu: 'noteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.tempoValue, // 初期値
+                            defaultValue: 120 // 初期値
                         }  
                     }
                 },
@@ -44,7 +44,7 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.noteValue,
+                            defaultValue: '1/4',
                             menu: 'noteMenu'
                         }
                     }
@@ -56,7 +56,7 @@ class CustomExtension {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.restValue,
+                            defaultValue: '1/4',
                             menu: 'restMenu'
                         }
                     }
@@ -68,7 +68,7 @@ class CustomExtension {
                     arguments: {
                         SCALE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.scaleValue,
+                            defaultValue: 'ド',
                             menu: 'scaleMenu'
                         }
                     }
@@ -76,34 +76,34 @@ class CustomExtension {
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: 1},
-                    { text: '𝅗𝅥', value: 1/2},
-                    { text: '𝅘𝅥', value: 1/4},
-                    { text: '𝅘𝅥𝅮', value: 1/8},
-                    { text: '𝅘𝅥𝅯', value: 1/16},
-                    { text: '𝅘𝅥𝅰', value: 1/32},
-                    { text: '𝅘𝅥𝅱', value: 1/64},
-                    { text: '𝅘𝅥𝅲', value: 1/128}
+                    { text: '𝅝', value: '1'},
+                    { text: '𝅗𝅥', value: '1/2'},
+                    { text: '𝅘𝅥', value: '1/4'},
+                    { text: '𝅘𝅥𝅮', value: '1/8'},
+                    { text: '𝅘𝅥𝅯', value: '1/16'},
+                    { text: '𝅘𝅥𝅰', value: '1/32'},
+                    { text: '𝅘𝅥𝅱', value: '1/64'},
+                    { text: '𝅘𝅥𝅲', value: '1/128'}
                 ],
                 restMenu: [
-                    { text: '𝄻', value: 1},
-                    { text: '𝄼', value: 1/2},
-                    { text: '𝄽', value: 1/4},
-                    { text: '𝄾', value: 1/8},
-                    { text: '𝄿', value: 1/16},
-                    { text: '𝅀', value: 1/32},
-                    { text: '𝅁', value: 1/64},
-                    { text: '𝅂', value: 1/128} 
+                    { text: '𝄻', value: '1'},
+                    { text: '𝄼', value: '1/2'},
+                    { text: '𝄽', value: '1/4'},
+                    { text: '𝄾', value: '1/8'},
+                    { text: '𝄿', value: '1/16'},
+                    { text: '𝅀', value: '1/32'},
+                    { text: '𝅁', value: '1/64'},
+                    { text: '𝅂', value: '1/128'} 
                 ],
                 scaleMenu: [
-                    {text: 'ド', value: 60},
-                    {text: 'レ', value: 62},
-                    {text: 'ミ', value: 64},
-                    {text: 'ファ', value: 65},
-                    {text: 'ソ', value: 67},
-                    {text: 'ラ', value: 69},
-                    {text: 'シ', value: 71},
-                    {text: 'ド\'', value: 72}
+                    {text: 'ド', value: '60'},
+                    {text: 'レ', value: '62'},
+                    {text: 'ミ', value: '64'},
+                    {text: 'ファ', value: '65'},
+                    {text: 'ソ', value: '67'},
+                    {text: 'ラ', value: '69'},
+                    {text: 'シ', value: '71'},
+                    {text: 'ド'', value: '72'}
                 ]
             }
         };
@@ -113,21 +113,20 @@ class CustomExtension {
         return this.tempoValue;
     }
     chooseNote(args) {
-        this.noteValue = args.NOTE;
+        this.noteValue = parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
     chooseRest(args) {
-        this.restValue = args.REST;
+        this.restValue = parseFloat(args.REST);
         return this.restValue * this.periodValue;
     }
     chooseScale(args) {
-        this.restValue = args.SCALE;
+        this.scaleValue = parseInt(args.SCALE, 10);
         return this.scaleValue;
     }
     setPeriod(args) {
-        this.periodValue = 60 / args.TEMPO / args.NOTE;
+        this.periodValue = 60 / parseFloat(args.TEMPO) / parseFloat(args.NOTE);
     }
-    
 }
 
 Scratch.extensions.register(new CustomExtension());
