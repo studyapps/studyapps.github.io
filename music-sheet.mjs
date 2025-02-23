@@ -3,7 +3,7 @@ class CustomExtension {
         this.runtime = runtime;
         this.tempoValue = 120; // 初期値
         this.temponoteValue = 1/4; // 初期値
-        this.noteValue = 1/4; // 初期値
+        this.noteValue = '1/4'; // 初期値
         this.restValue = 1/4; // 初期値
         this.periodValue = 60 / this.tempoValue / this.temponoteValue;
         this.scaleValue = 60;
@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC5',
+            name: 'toio MUSIC6',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -44,7 +44,7 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 1/4, // 初期値
+                            defaultValue: '1/4', // 初期値
                             menu: 'noteMenu'
                         }
                     }
@@ -76,14 +76,14 @@ class CustomExtension {
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: 1},
-                    { text: '𝅗𝅥', value: 1/2},
-                    { text: '𝅘𝅥', value: 1/4},
-                    { text: '𝅘𝅥𝅮', value: 1/8},
-                    { text: '𝅘𝅥𝅯', value: 1/16},
-                    { text: '𝅘𝅥𝅰', value: 1/32},
-                    { text: '𝅘𝅥𝅱', value: 1/64},
-                    { text: '𝅘𝅥𝅲', value: 1/128}
+                    { text: '𝅝', value: '1'},
+                    { text: '𝅗𝅥', value: '1/2'},
+                    { text: '𝅘𝅥', value: '1/4'},
+                    { text: '𝅘𝅥𝅮', value: '1/8'},
+                    { text: '𝅘𝅥𝅯', value: '1/16'},
+                    { text: '𝅘𝅥𝅰', value: '1/32'},
+                    { text: '𝅘𝅥𝅱', value: '1/64'},
+                    { text: '𝅘𝅥𝅲', value: '1/128'}
                 ],
                 restMenu: [
                     { text: '𝄻', value: 1},
