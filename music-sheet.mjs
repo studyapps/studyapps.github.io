@@ -1,9 +1,9 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.noteValue = 4; // 初期値
+        this.noteValue = '𝅘𝅥'; // 初期値
         this.restValue = 4; // 初期値
-        this.tempoValue = 240; // 初期値
+        this.tempoValue = 4; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue = 80;
         this.scaleValue = 60;
@@ -68,31 +68,31 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'getCValue',
+                    opcode: 'setTempo',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'さブロック (A × B)'
+                    text: 'しテンポ'
                 }
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: 1},
-                    { text: '𝅗𝅥', value: 1/2},
-                    { text: '𝅘𝅥', value: 1/4},
-                    { text: '𝅘𝅥𝅮', value: 1/8},
-                    { text: '𝅘𝅥𝅯', value: 1/16},
-                    { text: '𝅘𝅥𝅰', value: 1/32},
-                    { text: '𝅘𝅥𝅱', value: 1/64},
-                    { text: '𝅘𝅥𝅲', value: 1/128}
+                    { text: '𝅝', value: 1 * this.tempoValue},
+                    { text: '𝅗𝅥', value: 1/2 * this.tempoValue},
+                    { text: '𝅘𝅥', value: 1/4 * this.tempoValue},
+                    { text: '𝅘𝅥𝅮', value: 1/8 * this.tempoValue},
+                    { text: '𝅘𝅥𝅯', value: 1/16 * this.tempoValue},
+                    { text: '𝅘𝅥𝅰', value: 1/32 * this.tempoValue},
+                    { text: '𝅘𝅥𝅱', value: 1/64 * this.tempoValue},
+                    { text: '𝅘𝅥𝅲', value: 1/128 * this.tempoValue}
                 ],
                 restMenu: [
-                    { text: '𝄻', value: 1},
-                    { text: '𝄼', value: 1/2},
-                    { text: '𝄽', value: 1/4},
-                    { text: '𝄾', value: 1/8},
-                    { text: '𝄿', value: 1/16},
-                    { text: '𝅀', value: 1/32},
-                    { text: '𝅁', value: 1/64},
-                    { text: '𝅂', value: 1/128} 
+                    { text: '𝄻', value: 1 * this.tempoValue},
+                    { text: '𝄼', value: 1/2 * this.tempoValue},
+                    { text: '𝄽', value: 1/4 * this.tempoValue},
+                    { text: '𝄾', value: 1/8 * this.tempoValue},
+                    { text: '𝄿', value: 1/16 * this.tempoValue},
+                    { text: '𝅀', value: 1/32 * this.tempoValue},
+                    { text: '𝅁', value: 1/64 * this.tempoValue},
+                    { text: '𝅂', value: 1/128 * this.tempoValue} 
                 ],
                 scaleMenu: [
                     {text: 'ド', value: 60},
@@ -108,7 +108,7 @@ class CustomExtension {
         };
     }
 
-    getCValue() {
+    setTempo() {
         return this.tempoValue;
     }
 
