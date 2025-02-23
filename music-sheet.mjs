@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC2',
+            name: 'toio MUSIC3',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -23,7 +23,7 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            //defaultValue: this.temponoteValue, // 初期値
+                            defaultValue: '1/4', //this.temponoteValue, // 初期値
                             menu: 'noteMenu'
                         },
                         TEMPO:{
