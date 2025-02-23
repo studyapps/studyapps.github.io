@@ -3,7 +3,7 @@ class CustomExtension {
         this.runtime = runtime;
         this.noteValue; // 初期値
         this.restValue; // 初期値
-        this.tempoValue = 80; // 初期値
+        this.tempoValue = 240; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue = 80;
         this.scaleValue = 60;
@@ -28,7 +28,6 @@ class CustomExtension {
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.tempoValue // 初期値
                         }  
                     }
                 },
@@ -110,7 +109,7 @@ class CustomExtension {
     }
 
     getCValue() {
-        return this.noteValue;
+        return this.tempoValue;
     }
 
     chooseNote(args) {
@@ -126,7 +125,7 @@ class CustomExtension {
         return this.scaleValue;
     }
     setSpeed(args) {
-        
+        this.tempoValue = args.TEMPO / args.NOTE / 60;
     }
     
 }
