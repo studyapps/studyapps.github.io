@@ -1,10 +1,10 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.noteValue = '𝅘𝅥'; // 初期値
-        this.restValue = 4; // 初期値
-        this.tempoValue = 4; // 初期値
-        this.temponoteValue = 4; // 初期値
+        this.noteValue = 1/4; // 初期値
+        this.restValue = 1/4; // 初期値
+        this.tempoValue = 8; // 初期値
+        this.temponoteValue = 1/4; // 初期値
         this.speedValue = 80;
         this.scaleValue = 60;
     }
@@ -28,6 +28,7 @@ class CustomExtension {
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: this.temponoteValue*this.temponoteValue*60, // 初期値
                         }  
                     }
                 },
