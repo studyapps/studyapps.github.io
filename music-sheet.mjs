@@ -6,7 +6,7 @@ class CustomExtension {
         this.tempoValue = 80; // 初期値
         this.temponoteValue = 4; // 初期値
         this.speedValue = 80;
-        this.scaleValues = 60;
+        this.scaleValue = 60;
     }
 
     getInfo() {
@@ -57,9 +57,21 @@ class CustomExtension {
                     }
                 },
                 {
+                    opcode: 'chooseScale',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[SCALE]',
+                    arguments: {
+                        SCALE: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: this.scaleValue,
+                            menu: 'scaleMenu'
+                        }
+                    }
+                },
+                {
                     opcode: 'getCValue',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'けブロック (A × B)'
+                    text: 'こブロック (A × B)'
                 }
             ],
             menus: {
@@ -109,7 +121,10 @@ class CustomExtension {
         this.restValue = args.REST;
         return this.restValue;
     }
-
+    chooseScale(args) {
+        this.restValue = args.SCALE;
+        return this.scaleValue;
+    }
     setSpeed(args) {
         
     }
