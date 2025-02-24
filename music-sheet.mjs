@@ -1,18 +1,18 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.tempoValue = 120; // 初期値
-        this.temponoteValue = 1; // 初期値
-        this.noteValue = 4; // 初期値
-        this.restValue = 4; // 初期値
+        this.tempoValue = '120'; // 初期値
+        this.temponoteValue = '1'; // 初期値
+        this.noteValue = '4'; // 初期値
+        this.restValue = '4'; // 初期値
         this.periodValue = 60 / this.tempoValue / this.temponoteValue;
-        this.scaleValue = 60;
+        this.scaleValue = '60';
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC8',
+            name: 'toio MUSIC9',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -23,12 +23,12 @@ class CustomExtension {
                     arguments: {
                         NOTE:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 4, // 初期値
+                            defaultValue: '4', // 初期値
                             menu: 'noteMenu'
                         },
                         TEMPO:{
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: 120, // 初期値
+                            defaultValue: '120', // 初期値
                         }  
                     }
                 },
@@ -44,7 +44,7 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 4, // 初期値
+                            defaultValue: '4', // 初期値
                             menu: 'noteMenu'
                         }
                     }
@@ -56,7 +56,7 @@ class CustomExtension {
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 4, // 初期値
+                            defaultValue: '4', // 初期値
                             menu: 'restMenu'
                         }
                     }
@@ -76,24 +76,24 @@ class CustomExtension {
             ],
             menus: {
                 noteMenu: [
-                    { text: '𝅝', value: 1},
-                    { text: '𝅗𝅥', value: 2},
-                    { text: '𝅘𝅥', value: 4},
-                    { text: '𝅘𝅥𝅮', value: 8},
-                    { text: '𝅘𝅥𝅯', value: 16},
-                    { text: '𝅘𝅥𝅰', value: 32},
-                    { text: '𝅘𝅥𝅱', value: 64},
-                    { text: '𝅘𝅥𝅲', value: 128}
+                    { text: '𝅝', value: '1'},
+                    { text: '𝅗𝅥', value: '2'},
+                    { text: '𝅘𝅥', value: '4'},
+                    { text: '𝅘𝅥𝅮', value: '8'},
+                    { text: '𝅘𝅥𝅯', value: '16'},
+                    { text: '𝅘𝅥𝅰', value: '32'},
+                    { text: '𝅘𝅥𝅱', value: '64'},
+                    { text: '𝅘𝅥𝅲', value: '128'}
                 ],
                 restMenu: [
-                    { text: '𝄻', value: 1},
-                    { text: '𝄼', value: 2},
-                    { text: '𝄽', value: 4},
-                    { text: '𝄾', value: 8},
-                    { text: '𝄿', value: 16},
-                    { text: '𝅀', value: 32},
-                    { text: '𝅁', value: 64},
-                    { text: '𝅂', value: 128} 
+                    { text: '𝄻', value: '1'},
+                    { text: '𝄼', value: '2'},
+                    { text: '𝄽', value: '4'},
+                    { text: '𝄾', value: '8'},
+                    { text: '𝄿', value: '16'},
+                    { text: '𝅀', value: '32'},
+                    { text: '𝅁', value: '64'},
+                    { text: '𝅂', value: '128'} 
                 ],
                 scaleMenu: [
                     {text: 'ド\,', value: '48'},
