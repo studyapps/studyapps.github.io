@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC5',
+            name: 'MUSIC6',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -194,8 +194,10 @@ class CustomExtension {
     sync(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
-    aitUntilFalse2() {
-        
+    async waitUntilFalse(args) {
+        while (this.chapterValue == parseInt(args.CHAPTER,10)) {
+            await new Promise(resolve => setTimeout(resolve, 100)); // 100ms待機
+        }
     }
     
 }
