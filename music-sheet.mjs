@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC9',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -150,7 +150,7 @@ class CustomExtension {
         return this.restValue * this.periodValue;
     }
     chooseScale(args) {
-        this.restValue = parseInt(args.SCALE,10);
+        this.scaleValue = parseInt(args.SCALE,10);
         return this.scaleValue;
     }
     setPeriod(args) {
