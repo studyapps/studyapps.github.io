@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC1',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -72,6 +72,30 @@ class CustomExtension {
                             menu: 'scaleMenu'
                         }
                     }
+                },
+                {
+                    opcode: 'waitUntilFalse1',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '[CHAPTER]小節を同期する',
+                    arguments: {
+                        CHAPTER:{
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '0', // 初期値
+                            menu: 'chapterMenu'
+                        }  
+                    }
+                },
+                {
+                    opcode: 'waitUntilFalse2',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '[CHAPTER]小節が同期するまで待つ',
+                    arguments: {
+                        CHAPTER:{
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '0', // 初期値
+                            menu: 'chapterMenu'
+                        }  
+                    }
                 }
             ],
             menus: {
@@ -96,18 +120,18 @@ class CustomExtension {
                     { text: '𝅂', value: '128'} 
                 ],
                 scaleMenu: [
-                    {text: 'ド\,', value: '48'},
-                    {text: '#ド\,', value: '49'},
-                    {text: 'レ\,', value: '50'},
-                    {text: '#レ\,', value: '51'},
-                    {text: 'ミ\,', value: '52'},
-                    {text: 'ファ\,', value: '53'},
-                    {text: '#ファ\,', value: '54'},
-                    {text: 'ソ\,', value: '55'},
-                    {text: '#ソ\,', value: '56'},
-                    {text: 'ラ\,', value: '57'},
-                    {text: '#ラ\,', value: '58'},
-                    {text: 'シ\,', value: '59'},
+                    {text: 'ド(低)', value: '48'},
+                    {text: '#ド(低)', value: '49'},
+                    {text: 'レ(低)', value: '50'},
+                    {text: '#レ(低)', value: '51'},
+                    {text: 'ミ(低)', value: '52'},
+                    {text: 'ファ(低)', value: '53'},
+                    {text: '#ファ(低)', value: '54'},
+                    {text: 'ソ(低)', value: '55'},
+                    {text: '#ソ(低)', value: '56'},
+                    {text: 'ラ(低)', value: '57'},
+                    {text: '#ラ(低)', value: '58'},
+                    {text: 'シ(低)', value: '59'},
                     {text: 'ド', value: '60'},
                     {text: '#ド', value: '61'},
                     {text: 'レ', value: '62'},
@@ -120,20 +144,22 @@ class CustomExtension {
                     {text: 'ラ', value: '69'},
                     {text: '#ラ', value: '70'},
                     {text: 'シ', value: '71'},
-                    {text: 'ド\'', value: '72'},
-                    {text: '#ド\'', value: '73'},
-                    {text: 'レ\'', value: '74'},
-                    {text: '#レ\'', value: '75'},
-                    {text: 'ミ\'', value: '76'},
-                    {text: 'ファ\'', value: '77'},
-                    {text: '#ファ\'', value: '78'},
-                    {text: 'ソ\'', value: '79'},
-                    {text: '#ソ\'', value: '90'},
-                    {text: 'ラ\'', value: '91'},
-                    {text: '#ラ\'', value: '92'},
-                    {text: 'シ\'', value: '93'},
-                    {text: 'ド\'\'', value: '94'}
-                ]
+                    {text: 'ド(高)', value: '72'},
+                    {text: '#ド(高)', value: '73'},
+                    {text: 'レ(高)', value: '74'},
+                    {text: '#レ(高)', value: '75'},
+                    {text: 'ミ(高)', value: '76'},
+                    {text: 'ファ(高)', value: '77'},
+                    {text: '#ファ(高)', value: '78'},
+                    {text: 'ソ(高)', value: '79'},
+                    {text: '#ソ(高)', value: '90'},
+                    {text: 'ラ(高)', value: '91'},
+                    {text: '#ラ(高)', value: '92'},
+                    {text: 'シ(高)', value: '93'}
+                ],
+                chapterMenu: {
+                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
+                }
             }
         };
     }
@@ -155,6 +181,12 @@ class CustomExtension {
     }
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
+    }
+    aitUntilFalse1() {
+        return this.tempoValue;
+    }
+    aitUntilFalse2() {
+        return this.tempoValue;
     }
     
 }
