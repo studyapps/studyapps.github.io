@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC5',
+            name: 'toio MUSIC6',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -96,14 +96,43 @@ class CustomExtension {
                     { text: '𝅂', value: 1/128} 
                 ],
                 scaleMenu: [
-                    {text: 'ド', value: 60},
-                    {text: 'レ', value: 62},
-                    {text: 'ミ', value: 64},
-                    {text: 'ファ', value: 65},
-                    {text: 'ソ', value: 67},
-                    {text: 'ラ', value: 69},
-                    {text: 'シ', value: 71},
-                    {text: 'ド\'', value: 72}
+                    {text: 'ド\,', value: '48'},
+                    {text: '#ド\,', value: '49'},
+                    {text: 'レ\,', value: '50'},
+                    {text: '#レ\,', value: '51'},
+                    {text: 'ミ\,', value: '52'},
+                    {text: 'ファ\,', value: '53'},
+                    {text: '#ファ\,', value: '54'},
+                    {text: 'ソ\,', value: '55'},
+                    {text: '#ソ\,', value: '56'},
+                    {text: 'ラ\,', value: '57'},
+                    {text: '#ラ\,', value: '58'},
+                    {text: 'シ\,', value: '59'},
+                    {text: 'ド', value: '60'},
+                    {text: '#ド', value: '61'},
+                    {text: 'レ', value: '62'},
+                    {text: '#レ', value: '63'},
+                    {text: 'ミ', value: '64'},
+                    {text: 'ファ', value: '65'},
+                    {text: '#ファ', value: '66'},
+                    {text: 'ソ', value: '67'},
+                    {text: '#ソ', value: '68'},
+                    {text: 'ラ', value: '69'},
+                    {text: '#ラ', value: '70'},
+                    {text: 'シ', value: '71'},
+                    {text: 'ド\'', value: '72'},
+                    {text: '#ド\'', value: '73'},
+                    {text: 'レ\'', value: '74'},
+                    {text: '#レ\'', value: '75'},
+                    {text: 'ミ\'', value: '76'},
+                    {text: 'ファ\'', value: '77'},
+                    {text: '#ファ\'', value: '78'},
+                    {text: 'ソ\'', value: '79'},
+                    {text: '#ソ\'', value: '90'},
+                    {text: 'ラ\'', value: '91'},
+                    {text: '#ラ\'', value: '92'},
+                    {text: 'シ\'', value: '93'},
+                    {text: 'ド\'\'', value: '94'}
                 ]
             }
         };
