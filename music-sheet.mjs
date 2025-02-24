@@ -187,7 +187,7 @@ class CustomExtension {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
     aitUntilFalse2() {
-        return this.tempoValue;
+        
     }
     
 }
