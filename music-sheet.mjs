@@ -2,7 +2,7 @@ class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this.tempoValue = 120; // 初期値
-        this.temponoteValue = 1/4; // 初期値
+        this.temponoteValue = 1; // 初期値
         this.noteValue = 4; // 初期値
         this.restValue = 4; // 初期値
         this.periodValue = 60 / this.tempoValue / this.temponoteValue;
@@ -12,7 +12,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'toio MUSIC7',
+            name: 'toio MUSIC8',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -154,7 +154,7 @@ class CustomExtension {
         return this.scaleValue;
     }
     setPeriod(args) {
-        this.periodValue = 60 / parseFloat(args.TEMPO) / parseFloat(args.NOTE);
+        this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
     }
     
 }
