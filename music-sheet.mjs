@@ -98,7 +98,7 @@ class CustomExtension {
                     arguments: {
                         CONDITION: {
                             type: Scratch.ArgumentType.BOOLEAN,
-                            defaultValue: 'false'
+                            defaultValue: 'true'
                         }
                     }
                 }
