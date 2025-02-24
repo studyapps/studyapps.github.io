@@ -1,18 +1,19 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.tempoValue = '120'; // 初期値
-        this.temponoteValue = '1'; // 初期値
-        this.noteValue = '4'; // 初期値
-        this.restValue = '4'; // 初期値
-        this.periodValue = 60 / this.tempoValue / this.temponoteValue;
-        this.scaleValue = '60';
+        this.tempoValue = '120'; // テンポの数値
+        this.temponoteValue = '1'; // テンポの基準となる音符
+        this.noteValue = '4'; // 音符
+        this.restValue = '4'; // 休符
+        this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
+        this.scaleValue = '60'; //ドレミ
+        this.chapterValue = '0'; //現在の小節番号
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC1',
+            name: 'MUSIC2',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -74,7 +75,7 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'waitUntilFalse1',
+                    opcode: 'sync',
                     blockType: Scratch.BlockType.COMMAND,
                     text: '[CHAPTER]小節を同期する',
                     arguments: {
@@ -182,8 +183,8 @@ class CustomExtension {
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
     }
-    aitUntilFalse1() {
-        return this.tempoValue;
+    sync(args) {
+        this.chapterValue = parseInt(args.CHAPTER,10);
     }
     aitUntilFalse2() {
         return this.tempoValue;
