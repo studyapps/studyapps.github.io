@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC2',
+            name: 'MUSIC3',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -85,6 +85,11 @@ class CustomExtension {
                             menu: 'chapterMenu'
                         }  
                     }
+                },
+                {
+                    opcode: 'setChapter',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '現在の小節'
                 },
                 {
                     opcode: 'waitUntilFalse2',
@@ -168,6 +173,9 @@ class CustomExtension {
     setTempo() {
         return this.tempoValue;
     }
+    setChapterChapter() {
+        return this.chapterValue;
+    } 
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
