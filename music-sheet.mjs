@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC6',
+            name: 'MUSIC7',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -92,15 +92,14 @@ class CustomExtension {
                     text: '現在の小節'
                 },
                 {
-                    opcode: 'waitUntilFalse2',
+                    opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '[CHAPTER]小節が同期するまで待つ',
+                    text: '[CONDITION] まで待つ',
                     arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '0', // 初期値
-                            menu: 'chapterMenu'
-                        }  
+                        CONDITION: {
+                            type: Scratch.ArgumentType.BOOLEAN,
+                            defaultValue: 'false'
+                        }
                     }
                 }
             ],
@@ -194,9 +193,9 @@ class CustomExtension {
     sync(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
-    async waitUntilFalse(args) {
-        while (this.chapterValue == parseInt(args.CHAPTER,10)) {
-            await new Promise(resolve => setTimeout(resolve, 100)); // 100ms待機
+    async waitUntil(args) {
+        while (!args.CONDITION) {
+            await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
     
