@@ -77,7 +77,7 @@ class CustomExtension {
                 {
                     opcode: 'sync',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '[CHAPTER]小節を同期する',
+                    text: '[CHAPTER]小節を開始',
                     arguments: {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
@@ -94,7 +94,7 @@ class CustomExtension {
                 {
                     opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '[CONDITION] まで待つ',
+                    text: '[CONDITION] 小節が開始されるまで待つ',
                     arguments: {
                         CONDITION: {
                             type: Scratch.ArgumentType.BOOLEAN,
