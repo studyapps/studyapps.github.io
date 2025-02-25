@@ -10,7 +10,7 @@ class CustomExtension {
         this.chapterValue = ''; //現在実行中のチャプター
         this.x = 0;
         // 旗ボタンが押されたときにXをリセット
-        this.runtime.on('PROJECT_STOP_ALL', this.x = '0')
+        this.runtime.on('PROJECT_RUN_STOP', this.stop.bind(this))
         //this.runtime.on('PROJECT_START', () => {
         //    this.chapterValue = '';
         //})
