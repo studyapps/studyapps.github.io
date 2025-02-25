@@ -79,9 +79,9 @@ class CustomExtension {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
                             color1: '#FFBF00', // ブロックのメインカラー
-                            color2: '#000000', // ブロックの枠線や影の色
+                            color2: '#DCA500', // ブロックの枠線や影の色
+                            menu: 'chapterMenu'
                         }  
                     }
                 },
