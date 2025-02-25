@@ -8,12 +8,15 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = '0'; //現在の小節番号
+        this.runtime.on('PROJECT_STOP_ALL', () => {
+            this.resetVariables();
+        }
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC2',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -171,15 +174,26 @@ class CustomExtension {
                     {text: 'シ(高)', value: '93'}
                 ],
                 chapterMenu: {
+                    acceptReporters: true, // 変数ブロックをドロップ可能にする
+                    items: '_getChapterMenu'
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
         };
     }
 
-    setChapter() {
-        return this.chapterValue;
-    } 
+    _getChapterMenu() {
+        const variables = Object.values(this.runtime.getTargetForStage().variables);
+        const variableItems = variables.map(variable => ({
+            text: variable.name,
+            value: variable.id
+        }));
+        const numberItems = Array.from({ length: 99 }, (_, i) => ({
+            text: (i + 1).toString(),
+            value: (i + 1).toString()
+        }));
+        return [...variableItems, ...numberItems];
+    }
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
@@ -195,6 +209,12 @@ class CustomExtension {
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
     }
+    setChapter() {
+        return this.chapterValue;
+    } 
+    resetVariables() {
+        this.chapterValue = '0';
+    }
     startChapter(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
@@ -206,7 +226,6 @@ class CustomExtension {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
-    
 }
 
 Scratch.extensions.register(new CustomExtension());
