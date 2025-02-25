@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC1',
+            name: 'MUSIC7',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -70,13 +70,13 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'startChapter',
+                    opcode: 'sync',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]を開始',
                     arguments: {
-                        CHAPTER: {
+                        CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
+                            defaultValue: '0', // 初期値
                             menu: 'chapterMenu'
                         }  
                     }
@@ -87,26 +87,14 @@ class CustomExtension {
                     text: 'チャプター'
                 },
                 {
-                    opcode: 'whenChapter',
-                    blockType: Scratch.BlockType.HAT,
-                    text: 'チャプター[CHAPTER]が開始されたとき',
-                    arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
-                },
-                {
                     opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'チャプター[CHPTER]が開始されるまで待つ',
+                    text: 'チャプター[CONDITION]が開始されるまで待つ',
                     arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
+                        CONDITION: {
+                            type: Scratch.ArgumentType.BOOLEAN,
+                            defaultValue: 'true'
+                        }
                     }
                 }
             ],
@@ -194,7 +182,7 @@ class CustomExtension {
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
     }
-    startChapter(args) {
+    sync(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
     async waitUntil(args) {
@@ -202,9 +190,7 @@ class CustomExtension {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
-    whenChapter(args) {
-        return this.chapterValue == parseInt(args.CHAPTER,10);
-    }
+    
 }
 
 Scratch.extensions.register(new CustomExtension());
