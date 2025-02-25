@@ -8,7 +8,7 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-        this.runtime.on('PROJECT_START', this.resetVariables.bind(this)); // 旗ボタンが押されたときに変数をリセット
+        this.runtime.on(); // 旗ボタンが押されたときに変数をリセット
     }
 
     getInfo() {
@@ -209,9 +209,6 @@ class CustomExtension {
         while (this.chapterValue !==  parseInt(args.CHAPTER,10)) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
-    }
-    resetVariables() {
-        this.chapterValue.Value = '';
     }
 }
 
