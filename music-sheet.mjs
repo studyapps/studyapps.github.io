@@ -7,7 +7,7 @@ class CustomExtension {
         this.restValue = '4'; // 休符
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
-        this.chapterValue = '0'; //現在の小節番号
+        this.chapterValue = ''; //現在実行中のチャプター
         this.runtime.on('PROJECT_STOP_ALL', () => {
             this.resetVariables();
         });
@@ -199,7 +199,7 @@ class CustomExtension {
         return this.chapterValue;
     } 
     resetVariables() {
-        this.chapterValue = '0';
+        this.chapterValue = '';
     }
     startChapter(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
@@ -212,7 +212,6 @@ class CustomExtension {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
-    
 }
 
 Scratch.extensions.register(new CustomExtension());
