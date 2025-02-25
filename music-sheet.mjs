@@ -14,11 +14,15 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC7',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
+                    {
+                        blockType: Scratch.BlockType.LABEL,
+                        text: 'テンポ、音符、休符'
+                    },
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'テンポ [NOTE] = [TEMPO] に設定',
@@ -71,6 +75,10 @@ class CustomExtension {
                     }
                 },
                 {
+                    blockType: Scratch.BlockType.LABEL,
+                    text: '同期ブロック'
+                },
+                {
                     opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]を開始',
@@ -86,6 +94,10 @@ class CustomExtension {
                     opcode: 'setChapter',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'チャプター'
+                },
+                {
+                    blockType: Scratch.BlockType.LABEL,
+                    text: ' '
                 },
                 {
                     opcode: 'whenXIsOne',
