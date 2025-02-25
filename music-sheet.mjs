@@ -8,12 +8,16 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
+        // 停止ボタンが押されたときにリセットする処理
+        this.runtime.on('PROJECT_STOP_ALL', () => {
+            this.resetVariables();
+        });
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC2',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -195,7 +199,6 @@ class CustomExtension {
     setChapter() {
         return this.chapterValue;
     } 
-
     startChapter(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
@@ -206,6 +209,9 @@ class CustomExtension {
         while (this.chapterValue !==  parseInt(args.CHAPTER,10)) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
+    }
+    resetVariables() {
+        this.chapterValue = '';
     }
 }
 
