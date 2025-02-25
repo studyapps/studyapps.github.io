@@ -16,7 +16,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC2',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -174,15 +174,11 @@ class CustomExtension {
                     {text: 'シ(高)', value: '93'}
                 ],
                 chapterMenu: {
-                    acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
         };
     }
-
-
-    
 
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
@@ -216,6 +212,7 @@ class CustomExtension {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
+    
 }
 
 Scratch.extensions.register(new CustomExtension());
