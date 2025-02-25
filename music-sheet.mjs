@@ -10,7 +10,7 @@ class CustomExtension {
         this.chapterValue = '0'; //現在の小節番号
         this.runtime.on('PROJECT_STOP_ALL', () => {
             this.resetVariables();
-        }
+        });
     }
 
     getInfo() {
