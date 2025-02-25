@@ -10,6 +10,7 @@ class CustomExtension {
         this.chapterValue = ''; //現在実行中のチャプター
         this.x = 0;
         // 旗ボタンが押されたときにXをリセット
+        this.runtime.on('PROJECT_STOP_ALL', this.x = '0')
         //this.runtime.on('PROJECT_START', () => {
         //    this.chapterValue = '';
         //})
@@ -18,7 +19,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC8',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
