@@ -16,7 +16,7 @@ class CustomExtension {
             id: 'customExtension',
             name: 'MUSIC',
             color1: '#A6A6A6', // ブロックのメインカラー
-            //color2: '#000000', // ブロックの枠線や影の色
+            color2: '#A6A6A6', // ブロックの枠線や影の色
             blocks: [
                 {
                     opcode: 'setPeriod',
