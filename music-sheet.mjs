@@ -9,13 +9,15 @@ class CustomExtension {
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
         // 停止ボタンが押されたら初期化
-
+        this.runtime.vm.runtime.on('PROJECT_STOP_ALL', () => {
+            this.chapterValue = '';
+        });
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC3',
+            name: 'MUSIC5',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
