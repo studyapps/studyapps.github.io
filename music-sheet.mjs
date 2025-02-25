@@ -175,24 +175,15 @@ class CustomExtension {
                 ],
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
-                    items: '_getChapterMenu'
+                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
         };
     }
 
-    _getChapterMenu() {
-        const variables = Object.values(this.runtime.getTargetForStage().variables);
-        const variableItems = variables.map(variable => ({
-            text: variable.name,
-            value: variable.id
-        }));
-        const numberItems = Array.from({ length: 99 }, (_, i) => ({
-            text: (i + 1).toString(),
-            value: (i + 1).toString()
-        }));
-        return [...variableItems, ...numberItems];
-    }
+
+    
+
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
