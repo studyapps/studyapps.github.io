@@ -79,8 +79,6 @@ class CustomExtension {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
-                            color1: '#FFBF00', // ブロックのメインカラー
-                            color2: '#DCA500', // ブロックの枠線や影の色
                             menu: 'chapterMenu'
                         }  
                     }
@@ -204,10 +202,10 @@ class CustomExtension {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
     whenXIsOne(args) {
-        return this.chapterValue ===  parseInt(args.CHAPTER,10);
+        return this.chapterValue ==  parseInt(args.CHAPTER,10);
     }
     async waitUntil(args) {
-        while (this.chapterValue !==  parseInt(args.CHAPTER,10)) {
+        while (this.chapterValue !=  parseInt(args.CHAPTER,10)) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
