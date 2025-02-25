@@ -14,10 +14,14 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC7',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
+                {
+                    blockType: Scratch.BlockType.LABEL, // 空のラベルでスペースを作る
+                    text: 'aaa'
+                },
                 {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
