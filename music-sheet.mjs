@@ -14,7 +14,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC8',
+            name: 'MUSIC',
             categories: [
                 {
                     id: 'MusicCategory',
@@ -33,6 +33,7 @@ class CustomExtension {
                 {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
+                    category: 'MusicCategory',
                     text: 'テンポ [NOTE] = [TEMPO] に設定',
                     arguments: {
                         NOTE:{
@@ -44,12 +45,12 @@ class CustomExtension {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '120', // 初期値
                         }  
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
+                    category: 'MusicCategory',
                     text: '[NOTE]',
                     arguments: {
                         NOTE: {
@@ -57,12 +58,12 @@ class CustomExtension {
                             defaultValue: '4', // 初期値
                             menu: 'noteMenu'
                         }
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.REPORTER,
+                    category: 'MusicCategory',
                     text: '[REST]',
                     arguments: {
                         REST: {
@@ -70,12 +71,12 @@ class CustomExtension {
                             defaultValue: '4', // 初期値
                             menu: 'restMenu'
                         }
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'chooseScale',
                     blockType: Scratch.BlockType.REPORTER,
+                    category: 'MusicCategory',
                     text: '[SCALE]',
                     arguments: {
                         SCALE: {
@@ -83,12 +84,12 @@ class CustomExtension {
                             defaultValue: '60', // 初期値
                             menu: 'scaleMenu'
                         }
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
+                    category: 'syncCategory',
                     text: 'チャプター[CHAPTER]を開始',
                     arguments: {
                         CHAPTER:{
@@ -96,40 +97,39 @@ class CustomExtension {
                             defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
                         }  
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'setChapter',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'チャプター',
-                    category: 'MusicCategory'
+                    category: 'syncCategory',
+                    text: 'チャプター'
                 },
                 {
                     opcode: 'whenXIsOne',
                     blockType: Scratch.BlockType.HAT,
+                    category: 'MusicCategory',
                     text: 'チャプター[CHAPTER]が開始されたとき',
                     arguments: {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
+                            menu: 'syncCategory'
                         }  
-                    },
-                    category: 'MusicCategory'
+                    }
                 },
                 {
                     opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
+                    category: 'MusicCategory',
                     text: 'チャプター[CHAPTER]が開始されるまで待つ',
                     arguments: {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
+                            menu: 'syncCategory'
                         }  
-                    },
-                    category: 'MusicCategory'
+                    }
                 }
             ],
             menus: {
