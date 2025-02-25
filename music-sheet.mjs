@@ -8,8 +8,7 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-        
-        this.runtime.on('PROJECT_STOP_ALL', () => { }); // 停止ボタン
+        // this.runtime.on('PROJECT_STOP_ALL', () => { }); // 停止ボタン
     }
 
     getInfo() {
