@@ -202,8 +202,8 @@ class CustomExtension {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
-    whenChapter() {
-        return this.chapterValue == 1;
+    whenChapter(args) {
+        return this.chapterValue == parseInt(args.CHAPTER,10);
     }
 }
 
