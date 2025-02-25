@@ -14,11 +14,22 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
-            color1: '#000000', // ブロックのメインカラー
-            color2: '#000000', // ブロックの枠線や影の色
+            name: 'MUSIC8',
+            categories: [
+                {
+                    id: 'MusicCategory',
+                    name: '音符・休符',
+                    color1: '#000000', // ブロックのメインカラー
+                    color2: '#000000' // ブロックの枠線や影の色
+                },
+                {
+                    id: 'syncCategory',
+                    name: '同期処理',
+                    color1: '#FFBF00', // ブロックのメインカラー
+                    color2: '#DCA500' // ブロックの枠線や影の色
+                }
+            ],
             blocks: [
-
                 {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
@@ -33,7 +44,8 @@ class CustomExtension {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '120', // 初期値
                         }  
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'chooseNote',
@@ -45,7 +57,8 @@ class CustomExtension {
                             defaultValue: '4', // 初期値
                             menu: 'noteMenu'
                         }
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'chooseRest',
@@ -57,7 +70,8 @@ class CustomExtension {
                             defaultValue: '4', // 初期値
                             menu: 'restMenu'
                         }
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'chooseScale',
@@ -69,7 +83,8 @@ class CustomExtension {
                             defaultValue: '60', // 初期値
                             menu: 'scaleMenu'
                         }
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'startChapter',
@@ -79,16 +94,16 @@ class CustomExtension {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
-                            color1: '#FFBF00', // ブロックのメインカラー
-                            color2: '#DCA500', // ブロックの枠線や影の色
                             menu: 'chapterMenu'
                         }  
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'setChapter',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'チャプター'
+                    text: 'チャプター',
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'whenXIsOne',
@@ -100,7 +115,8 @@ class CustomExtension {
                             defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
                         }  
-                    }
+                    },
+                    category: 'MusicCategory'
                 },
                 {
                     opcode: 'waitUntil',
@@ -112,7 +128,8 @@ class CustomExtension {
                             defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
                         }  
-                    }
+                    },
+                    category: 'MusicCategory'
                 }
             ],
             menus: {
