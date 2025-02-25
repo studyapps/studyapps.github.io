@@ -14,7 +14,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC6',
+            name: 'MUSIC7',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -172,6 +172,7 @@ class CustomExtension {
                     {text: 'シ(高)', value: '93'}
                 ],
                 chapterMenu: {
+                    acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
