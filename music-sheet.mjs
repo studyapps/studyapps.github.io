@@ -34,11 +34,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'setTempo',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'テンポ'
-                },
-                {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[NOTE]',
@@ -81,7 +76,7 @@ class CustomExtension {
                     arguments: {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '0', // 初期値
+                            defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
                         }  
                     }
@@ -94,12 +89,13 @@ class CustomExtension {
                 {
                     opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'チャプター[CONDITION]が開始されるまで待つ',
+                    text: 'チャプター[CHPTER]が開始されるまで待つ',
                     arguments: {
-                        CONDITION: {
-                            type: Scratch.ArgumentType.BOOLEAN,
-                            defaultValue: 'true'
-                        }
+                        CHAPTER:{
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '1', // 初期値
+                            menu: 'chapterMenu'
+                        }  
                     }
                 }
             ],
@@ -169,9 +165,6 @@ class CustomExtension {
         };
     }
 
-    setTempo() {
-        return this.tempoValue;
-    }
     setChapter() {
         return this.chapterValue;
     } 
