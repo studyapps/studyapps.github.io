@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC7',
+            name: 'MUSIC8',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -70,7 +70,7 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'sync',
+                    opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]を開始',
                     arguments: {
@@ -182,7 +182,7 @@ class CustomExtension {
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
     }
-    sync(args) {
+    startChapter(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
     }
     async waitUntil(args) {
