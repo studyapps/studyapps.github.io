@@ -13,7 +13,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC2',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -76,7 +76,7 @@ class CustomExtension {
                     arguments: {
                         CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '0', // 初期値
+                            defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
                         }  
                     }
