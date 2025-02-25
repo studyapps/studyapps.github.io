@@ -8,15 +8,13 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-        this.x = 0;
-        // 旗ボタンが押されたときにXをリセット
-        //this.runtime.on('PROJECT_START', () => { this.chapterValue = ''; });
+        this.chapterChange = '';
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC8',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -200,13 +198,16 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        this.chapterValue = parseInt(args.CHAPTER,10);
+        this.chapterChange = parseInt(args.CHAPTER,10);
+        setTimeout(() => {
+            this.chapterChange = '';
+        }, 100); // 0.1秒後に X を 0 に戻す
     }
     whenXIsOne(args) {
-        return this.chapterValue ===  parseInt(args.CHAPTER,10);
+        return this.chapterChange ===  parseInt(args.CHAPTER,10);
     }
     async waitUntil(args) {
-        while (this.chapterValue !==  parseInt(args.CHAPTER,10)) {
+        while (this.chapterChenge !==  parseInt(args.CHAPTER,10)) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
