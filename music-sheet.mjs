@@ -87,6 +87,11 @@ class CustomExtension {
                     text: 'チャプター'
                 },
                 {
+                    opcode: 'whenXIsOne',
+                    blockType: Scratch.BlockType.HAT,
+                    text: '変数Xが1になったとき'
+                },
+                {
                     opcode: 'waitUntil',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]が開始されるまで待つ',
@@ -185,6 +190,9 @@ class CustomExtension {
     }
     startChapter(args) {
         this.chapterValue = parseInt(args.CHAPTER,10);
+    }
+    whenXIsOne() {
+        return this.chapterValue === 1;
     }
     async waitUntil(args) {
         while (!args.CONDITION) {
