@@ -1,6 +1,6 @@
 class CustomExtension {
     constructor(runtime) {
-        this.runtime.on('PROJECT_STOP_ALL', chapterValue = '1');
+
         this.runtime = runtime;
         this.tempoValue = '120'; // テンポの数値
         this.temponoteValue = '1'; // テンポの基準となる音符
@@ -9,7 +9,7 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-
+        // this.runtime.on('PROJECT_STOP_ALL', chapterValue = '1');
         // this.runtime.on('PROJECT_START', ); // 旗ボタンが押されたときに変数をリセット
     }
 
