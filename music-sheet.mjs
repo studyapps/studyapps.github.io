@@ -176,7 +176,6 @@ class CustomExtension {
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: '_getChapterMenu'
-                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
         };
