@@ -8,13 +8,14 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
+        this.runtime.on('PROJECT_STOP_ALL', chapterValue = '');
         // this.runtime.on('PROJECT_START', ); // 旗ボタンが押されたときに変数をリセット
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC',
+            name: 'MUSIC8',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
