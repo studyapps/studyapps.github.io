@@ -9,9 +9,7 @@ class CustomExtension {
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
         // 停止ボタンが押されたら初期化
-        this.runtime.vm.runtime.on('PROJECT_STOP_ALL', () => {
-            this.chapterValue = '';
-        });
+
     }
 
     getInfo() {
