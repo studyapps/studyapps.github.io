@@ -14,7 +14,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC2',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -195,7 +195,6 @@ class CustomExtension {
     }
     setPeriod(args) {
         this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
-        this.chapterValue = '';
     }
     setChapter() {
         return this.chapterValue;
