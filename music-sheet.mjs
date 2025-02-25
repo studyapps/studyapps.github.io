@@ -19,7 +19,7 @@ class CustomExtension {
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
-                    blockType: Scratch.BlockType.LABEL, // 空のラベルでスペースを作る
+                    blockType: Scratch.BlockType.LABEL, 
                     text: 'aaa'
                 },
                 {
@@ -73,6 +73,10 @@ class CustomExtension {
                             menu: 'scaleMenu'
                         }
                     }
+                },
+                {
+                    blockType: Scratch.BlockType.LABEL, 
+                    text: 'aaa'
                 },
                 {
                     opcode: 'startChapter',
