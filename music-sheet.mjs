@@ -14,7 +14,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC8',
+            name: 'MUSIC7',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
@@ -173,25 +173,12 @@ class CustomExtension {
                 ],
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
-                    items: 'getChapterMenu'
+                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 }
             }
         };
     }
 
-
-    getChapterMenu() {
-        const variables = Object.values(this.runtime.getTargetForStage().variables);
-        const variableItems = variables.map(variable => ({
-            text: variable.name,
-            value: variable.id
-        }));
-        const numberItems = Array.from({ length: 99 }, (_, i) => ({
-            text: (i + 1).toString(),
-            value: (i + 1).toString()
-        }));
-        return [...variableItems, ...numberItems];
-    }
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
