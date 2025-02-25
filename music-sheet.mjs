@@ -14,14 +14,11 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'MUSIC8',
+            name: 'MUSIC',
             color1: '#000000', // ブロックのメインカラー
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
-                {
-                    blockType: Scratch.BlockType.LABEL, 
-                    text: 'aaa'
-                },
+
                 {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
@@ -75,10 +72,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    blockType: Scratch.BlockType.LABEL, 
-                    text: 'aaa'
-                },
-                {
                     opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]を開始',
@@ -87,6 +80,8 @@ class CustomExtension {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '1', // 初期値
                             menu: 'chapterMenu'
+                            color1: '#FFBF00', // ブロックのメインカラー
+                            color2: '#000000', // ブロックの枠線や影の色
                         }  
                     }
                 },
