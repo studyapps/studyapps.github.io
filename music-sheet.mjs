@@ -8,7 +8,7 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-        this.runtime.on(); // 旗ボタンが押されたときに変数をリセット
+        this.runtime.on('PROJECT_START', ); // 旗ボタンが押されたときに変数をリセット
     }
 
     getInfo() {
