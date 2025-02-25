@@ -202,7 +202,7 @@ class CustomExtension {
         this.chapterChange = parseInt(args.CHAPTER,10);
         setTimeout(() => {
             this.chapterChange = '';
-        }, 100); // 0.1秒後に X を 0 に戻す
+        }, 100); 
     }
     whenXIsOne(args) {
         return this.chapterChange ===  parseInt(args.CHAPTER,10);
