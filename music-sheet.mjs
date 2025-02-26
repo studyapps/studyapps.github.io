@@ -19,6 +19,18 @@ class CustomExtension {
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
+                    opcode: 'chooseScale',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[SCALE]',
+                    arguments: {
+                        SCALE: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '60', // 初期値
+                            menu: 'scaleMenu'
+                        }
+                    }
+                },
+                {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'テンポを [NOTE] = [TEMPO]BPM に設定',
@@ -48,7 +60,7 @@ class CustomExtension {
                 },
                 {
                     opcode: 'chooseRest',
-                    blockType: Scratch.BlockType.REPORTER,
+                    blockType: Scratch.BlockType.COMMAND,
                     text: '[REST]',
                     arguments: {
                         REST: {
@@ -59,15 +71,15 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'chooseScale',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[SCALE]',
+                    opcode: 'startChapter',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'チャプター[CHAPTER]を開始',
                     arguments: {
-                        SCALE: {
+                        CHAPTER:{
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '60', // 初期値
-                            menu: 'scaleMenu'
-                        }
+                            defaultValue: '1', // 初期値
+                            menu: 'chapterMenu'
+                        }  
                     }
                 },
                 {
@@ -98,19 +110,19 @@ class CustomExtension {
                             menu: 'chapterMenu'
                         }  
                     }
-                },
-                {
-                    opcode: 'waitUntil',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'チャプター[CHAPTER]が開始されるまで待つ',
-                    arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
-                    }
                 }
+                //{
+                //    opcode: 'waitUntil',
+                //    blockType: Scratch.BlockType.COMMAND,
+                //    text: 'チャプター[CHAPTER]が開始されるまで待つ',
+                //    arguments: {
+                //        CHAPTER:{
+                //            type: Scratch.ArgumentType.STRING,
+                //            defaultValue: '1', // 初期値
+                //            menu: 'chapterMenu'
+                //        }  
+                //    }
+                //}
             ],
             menus: {
                 noteMenu: [
@@ -183,9 +195,9 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    chooseRest(args) {
+    async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
-        return this.restValue * this.periodValue;
+        await new Promise(resolve => setTimeout(resolve, this.restValue * this.periodValue * 1000));
     }
     chooseScale(args) {
         this.scaleValue = parseInt(args.SCALE,10);
