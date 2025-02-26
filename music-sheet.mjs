@@ -49,7 +49,7 @@ class CustomExtension {
                 {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '　[NOTE]',
+                    text: '　　[NOTE]',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
