@@ -77,11 +77,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'Rest',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: ' . . . . . . . . . . . . . . . . . . . . . . . '
-                },
-                {
                     opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'チャプター[CHAPTER]を開始',
