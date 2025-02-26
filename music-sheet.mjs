@@ -65,8 +65,7 @@ class CustomExtension {
                     arguments: {
                         SUBDOTTED: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '1', // 初期値
-                //            menu: 'subdottedMenu'
+                            defaultValue: '　　', // 初期値
                         }
                     }
                 },
