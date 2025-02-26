@@ -49,7 +49,7 @@ class CustomExtension {
                 {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '　　[NOTE]',
+                    text: '[NOTE]',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
@@ -58,17 +58,6 @@ class CustomExtension {
                         }
                     }
                 },
-                //{
-                //    opcode: 'subdottedNote',
-                //    blockType: Scratch.BlockType.REPORTER,
-                //    text: '[SUBDOTTED].',
-                //    arguments: {
-                //        SUBDOTTED: {
-                //            type: Scratch.ArgumentType.STRING,
-                //            menu: 'subdottedMenu'
-                //        }
-                //    }
-                //},
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
@@ -84,7 +73,7 @@ class CustomExtension {
                 {
                     opcode: 'Rest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '　. . . . . . . . . .　'
+                    text: ' . . . . . . . . . . . '
                 },
                 {
                     opcode: 'startChapter',
@@ -190,9 +179,6 @@ class CustomExtension {
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
-                },
-                subdottedMenu: {
-                    acceptReporters: true, // 変数ブロックをドロップ可能にする
                 }
             }
         };
@@ -202,9 +188,6 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    //subdottedNote(args){
-    //    return args.SUBDOTTED * 1.5;
-    //}
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
         await new Promise(resolve => setTimeout(resolve, this.restValue * this.periodValue * 1000));
