@@ -62,11 +62,11 @@ class CustomExtension {
                 {
                     opcode: 'dottedNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[SUBDOTTED].',
+                    text: '[DOTTED].',
                     arguments: {
-                        SUBDOTTED: {
+                        DOTTED: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '　a　', // 初期値
+                            defaultValue: '　　', // 初期値
                         }
                     }
                 },
@@ -205,7 +205,7 @@ class CustomExtension {
         return this.noteValue * this.periodValue;
     }
     dottedNote(args) {
-        this.dottedValue ++;
+        this.dottedValue = 1 / parseFloat(args.DOTTED) + 1 / parseFloat(args.DOTTED) / 2;
         return this.dottedValue;
     }
     async chooseRest(args) {
