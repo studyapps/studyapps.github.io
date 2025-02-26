@@ -59,23 +59,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'dottedNote',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[SUBNOTE][DOTTED]',
-                    arguments: {
-                        SUBNOTE: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '4', // 初期値
-                            menu: 'noteMenu'
-                        },
-                        DOTTED: {
-                            type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '.', // 初期値
-                            menu: 'dottedMenu'
-                        }
-                    }
-                },
-                {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
                     text: '休符 [REST]',
@@ -110,7 +93,7 @@ class CustomExtension {
                     text: 'チャプター'
                 },
                 {
-                    opcode: 'whenXIsOne',
+                    opcode: 'whenChapterStart',
                     blockType: Scratch.BlockType.HAT,
                     text: 'チャプター[CHAPTER]が開始されたとき',
                     arguments: {
@@ -144,12 +127,6 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅰', value: '32'},
                     { text: '𝅘𝅥𝅱', value: '64'},
                     { text: '𝅘𝅥𝅲', value: '128'}
-                ],
-                dottedMenu: [
-                    { text: '', value: '0'},
-                    { text: '.', value: '1'},
-                    { text: '..', value: '2'},
-                    { text: '...', value: '3'},
                 ],
                 restMenu: [
                     { text: '𝄻', value: '1'},
@@ -202,10 +179,6 @@ class CustomExtension {
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
-                },
-                subMenu: {
-                    acceptReporters: true, // 変数ブロックをドロップ可能にする   
-                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString()) 
                 }
             }
         };
@@ -214,9 +187,6 @@ class CustomExtension {
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
-    }
-    dottedNote(args) {
-        return parseFloat(args.DOTTED) * 1.5;
     }
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
@@ -239,7 +209,7 @@ class CustomExtension {
             this.chapterChange = '';
         }, 100); 
     }
-    whenXIsOne(args) {
+    whenChapterStart(args) {
         return this.chapterChange ===  parseInt(args.CHAPTER,10);
     }
     async waitUntil(args) {
