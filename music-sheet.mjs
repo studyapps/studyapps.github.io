@@ -192,7 +192,8 @@ class CustomExtension {
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 },
                 subdottedMenu: {
-                    acceptReporters: true, // 変数ブロックをドロップ可能にする    
+                    acceptReporters: true, // 変数ブロックをドロップ可能にする   
+                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString()) 
                 }
             }
         };
@@ -202,6 +203,9 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
+    //async subdottedNote(args) {
+    //
+    //}
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
         await new Promise(resolve => setTimeout(resolve, this.restValue * this.periodValue * 1000));
