@@ -73,7 +73,7 @@ class CustomExtension {
                 {
                     opcode: 'Rest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '                        ',
+                    text: '                        '
                 },
                 {
                     opcode: 'startChapter',
