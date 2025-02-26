@@ -58,6 +58,17 @@ class CustomExtension {
                         }
                     }
                 },
+                //{
+                //    opcode: 'subdottedNote',
+                //    blockType: Scratch.BlockType.REPORTER,
+                //    text: '[SUBDOTTED].',
+                //    arguments: {
+                //        SUBDOTTED: {
+                //            type: Scratch.ArgumentType.STRING,
+                //            menu: 'subdottedMenu'
+                //        }
+                //    }
+                //},
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
