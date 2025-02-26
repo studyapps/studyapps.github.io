@@ -49,17 +49,23 @@ class CustomExtension {
                 {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[NOTE][DOTTED]',
+                    text: '[NOTE]',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '4', // 初期値
                             menu: 'noteMenu'
-                        },
-                        DOTTED: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '0', // 初期値
-                            menu: 'dottedMenu'
+                        }
+                    }
+                },
+                {
+                    opcode: 'subdottedNote',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[SUBDOTTED].',
+                    arguments: {
+                        SUBDOTTED: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: '　　', // 初期値
                         }
                     }
                 },
@@ -133,11 +139,6 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅱', value: '64'},
                     { text: '𝅘𝅥𝅲', value: '128'}
                 ],
-                dottedMenu: [
-                    { text: '', value: '0'},
-                    { text: '.', value: '1'},
-                    { text: '..', value: '2'},
-                ],
                 restMenu: [
                     { text: '𝄻', value: '1'},
                     { text: '𝄼', value: '2'},
@@ -190,6 +191,10 @@ class CustomExtension {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 },
+                subdottedMenu: {
+                    acceptReporters: true, // 変数ブロックをドロップ可能にする   
+                    items: Array.from({ length: 99 }, (_, i) => (i + 1).toString()) 
+                }
             }
         };
     }
@@ -197,6 +202,9 @@ class CustomExtension {
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
+    }
+    subdottedNote(args) {
+    
     }
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
