@@ -58,17 +58,17 @@ class CustomExtension {
                         }
                     }
                 },
-                {
-                    opcode: 'subdottedNote',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[SUBDOTTED].',
-                    arguments: {
-                        SUBDOTTED: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'subdottedMenu'
-                        }
-                    }
-                },
+                //{
+                //    opcode: 'subdottedNote',
+                //    blockType: Scratch.BlockType.REPORTER,
+                //    text: '[SUBDOTTED].',
+                //    arguments: {
+                //        SUBDOTTED: {
+                //            type: Scratch.ArgumentType.STRING,
+                //            menu: 'subdottedMenu'
+                //        }
+                //    }
+                //},
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
@@ -202,9 +202,9 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    subdottedNote(args){
-        return args.SUBDOTTED * 1.5;
-    }
+    //subdottedNote(args){
+    //    return args.SUBDOTTED * 1.5;
+    //}
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
         await new Promise(resolve => setTimeout(resolve, this.restValue * this.periodValue * 1000));
