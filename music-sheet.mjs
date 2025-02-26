@@ -61,7 +61,7 @@ class CustomExtension {
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '[REST]',
+                    text: '[REST] やすむ',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
@@ -83,16 +83,9 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'startChapter',
+                    opcode: 'Rest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'チャプター[CHAPTER]を開始',
-                    arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
-                    }
+                    text: '                        ',
                 },
                 {
                     opcode: 'setChapter',
