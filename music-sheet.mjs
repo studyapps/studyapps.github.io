@@ -61,11 +61,16 @@ class CustomExtension {
                 {
                     opcode: 'dottedNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '[DOTTED].',
+                    text: '[SUBNOTE][DOTTED]',
                     arguments: {
+                        SUBNOTE: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '4', // 初期値
+                            menu: 'noteMenu'
+                        },
                         DOTTED: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '　　', // 初期値
+                            defaultValue: '.', // 初期値
                             menu: 'dottedMenu'
                         }
                     }
@@ -141,7 +146,7 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅲', value: '128'}
                 ],
                 dottedMenu: [
-                    { text: '　', value: '0'},
+                    { text: '', value: '0'},
                     { text: '.', value: '1'},
                     { text: '..', value: '2'},
                     { text: '...', value: '3'},
@@ -198,7 +203,7 @@ class CustomExtension {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
                 },
-                subdottedMenu: {
+                subMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする   
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString()) 
                 }
