@@ -19,18 +19,6 @@ class CustomExtension {
             color2: '#000000', // ブロックの枠線や影の色
             blocks: [
                 {
-                    opcode: 'chooseScale',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '[SCALE]',
-                    arguments: {
-                        SCALE: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '60', // 初期値
-                            menu: 'scaleMenu'
-                        }
-                    }
-                },
-                {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'テンポを [NOTE] = [TEMPO]BPM に設定',
@@ -44,6 +32,18 @@ class CustomExtension {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '120', // 初期値
                         }  
+                    }
+                },
+                {
+                    opcode: 'chooseScale',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[SCALE]',
+                    arguments: {
+                        SCALE: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '60', // 初期値
+                            menu: 'scaleMenu'
+                        }
                     }
                 },
                 {
@@ -73,7 +73,7 @@ class CustomExtension {
                 {
                     opcode: 'Rest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '. . . . . . . . . . '
+                    text: ' . . . . . . . . . . '
                 },
                 {
                     opcode: 'startChapter',
