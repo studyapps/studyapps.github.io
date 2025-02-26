@@ -58,17 +58,18 @@ class CustomExtension {
                         }
                     }
                 },
-                //{
-                //    opcode: 'subdottedNote',
-                //    blockType: Scratch.BlockType.REPORTER,
-                //    text: '[SUBDOTTED].',
-                //    arguments: {
-                //        SUBDOTTED: {
-                //            type: Scratch.ArgumentType.STRING,
+                {
+                    opcode: 'subdottedNote',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '[SUBDOTTED].',
+                    arguments: {
+                        SUBDOTTED: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '', // 初期値
                 //            menu: 'subdottedMenu'
-                //        }
-                //    }
-                //},
+                        }
+                    }
+                },
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
@@ -203,9 +204,9 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    //async subdottedNote(args) {
-    //
-    //}
+    async subdottedNote(args) {
+    
+    }
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
         await new Promise(resolve => setTimeout(resolve, this.restValue * this.periodValue * 1000));
