@@ -186,7 +186,7 @@ class CustomExtension {
                 ],
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
-                    items: ['全実行', ...Array.from({ length: 99 }, (_, i) => (i + 1).toString())]
+                    items: ['タイムライン', ...Array.from({ length: 99 }, (_, i) => (i + 1).toString())]
                 }
             }
         };
@@ -215,17 +215,19 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        this.chapterValue = parseInt(args.CHAPTER,10);
-        this.chapterChange = parseInt(args.CHAPTER,10);
-        setTimeout(() => {
-            this.chapterChange = '';
-        }, 100); 
+        if( args.CHAPTER !== 'タイムライン' ){
+            this.chapterValue = args.CHAPTER;
+            this.chapterChange = args.CHAPTER;
+            setTimeout(() => {
+                this.chapterChange = '';
+            }, 100); 
+        }
     }
     whenChapterStart(args) {
-        return this.chapterChange ===  parseInt(args.CHAPTER,10);
+        return this.chapterChange === args.CHAPTER;
     }
     async waitUntil(args) {
-        while (this.chapterChenge !==  parseInt(args.CHAPTER,10)) {
+        while (this.chapterChenge !==  args.CHAPTER) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
