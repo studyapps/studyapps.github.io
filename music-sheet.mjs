@@ -4,7 +4,6 @@ class CustomExtension {
         this.tempoValue = '120'; // テンポの数値
         this.temponoteValue = '1'; // テンポの基準となる音符
         this.noteValue = '4'; // 音符
-        this.dottedValue = '0'; // ドットの数
         this.restValue = '4'; // 休符
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
@@ -205,8 +204,7 @@ class CustomExtension {
         return this.noteValue * this.periodValue;
     }
     dottedNote(args) {
-        this.dottedValue = 1 / parseFloat(args.DOTTED) + 1 / parseFloat(args.DOTTED) / 2;
-        return this.dottedValue;
+        return parseFloat(args.DOTTED) * 1.5;
     }
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
