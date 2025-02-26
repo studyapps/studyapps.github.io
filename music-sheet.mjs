@@ -4,6 +4,7 @@ class CustomExtension {
         this.tempoValue = '120'; // テンポの数値
         this.temponoteValue = '1'; // テンポの基準となる音符
         this.noteValue = '4'; // 音符
+        this.dottedValue = '0'; // ドットの数
         this.restValue = '4'; // 休符
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
