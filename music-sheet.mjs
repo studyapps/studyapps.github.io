@@ -64,8 +64,8 @@ class CustomExtension {
                     text: '[SUBDOTTED].',
                     arguments: {
                         SUBDOTTED: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '', // 初期値
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: '1', // 初期値
                 //            menu: 'subdottedMenu'
                         }
                     }
@@ -204,7 +204,7 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    async subdottedNote(args) {
+    subdottedNote(args) {
     
     }
     async chooseRest(args) {
