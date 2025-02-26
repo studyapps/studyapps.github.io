@@ -60,7 +60,7 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'subdottedNote',
+                    opcode: 'dottedNote',
                     blockType: Scratch.BlockType.REPORTER,
                     text: '[SUBDOTTED].',
                     arguments: {
@@ -204,8 +204,9 @@ class CustomExtension {
         this.noteValue = 1 / parseFloat(args.NOTE);
         return this.noteValue * this.periodValue;
     }
-    subdottedNote(args) {
-    
+    dottedNote(args) {
+        this.dottedValue ++;
+        return this.dottedValue;
     }
     async chooseRest(args) {
         this.restValue = 1 / parseFloat(args.REST);
