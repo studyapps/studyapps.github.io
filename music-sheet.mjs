@@ -49,7 +49,7 @@ class CustomExtension {
                 {
                     opcode: 'chooseNote',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: '　[NOTE]　',
+                    text: '　[NOTE]',
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
@@ -61,7 +61,7 @@ class CustomExtension {
                 {
                     opcode: 'chooseRest',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '休符 [REST]　',
+                    text: '休符 [REST]',
                     arguments: {
                         REST: {
                             type: Scratch.ArgumentType.STRING,
