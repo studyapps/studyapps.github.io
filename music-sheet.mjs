@@ -1,6 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
+        this.Unit = 'BPM' // テンポの単位
         this.tempoValue = '120'; // テンポの数値
         this.temponoteValue = '1'; // テンポの基準となる音符
         this.noteValue = '4'; // 音符
@@ -21,17 +22,22 @@ class CustomExtension {
                 {
                     opcode: 'setPeriod',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'テンポを [NOTE] = [TEMPO]BPM に設定',
+                    text: 'テンポ　[NOTE] = [TEMPO] [UNIT]',
                     arguments: {
-                        NOTE:{
+                        NOTE: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: '4', // 初期値
                             menu: 'noteMenu'
                         },
-                        TEMPO:{
+                        TEMPO: {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '120', // 初期値
-                        }  
+                        },
+                        UNIT: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: 'BPM', // 初期値
+                            menu: 'unitMenu'
+                        }
                     }
                 },
                 {
@@ -138,6 +144,10 @@ class CustomExtension {
                     { text: '𝅁', value: '64'},
                     { text: '𝅂', value: '128'} 
                 ],
+                unitMenu: [
+                    { text: 'BPM', value: '1'},
+                    { text: '秒', value: '2'},
+                ],
                 scaleMenu: [
                     {text: 'ド(低)', value: '48'},
                     {text: '#ド(低)', value: '49'},
@@ -197,7 +207,11 @@ class CustomExtension {
         return this.scaleValue;
     }
     setPeriod(args) {
-        this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
+        if( args.UNIT === '1' ){
+            this.periodValue = 60 / parseFloat(args.TEMPO) * parseFloat(args.NOTE);
+        }else if( args.UNIT === '2' ){
+            this.periodValue = parseFloat(args.TEMPO) * parseFloat(args.NOTE);
+        }
     }
     setChapter() {
         return this.chapterValue;
