@@ -1,3 +1,5 @@
+import { multiplyByFactor } from './bidirectional-comm.mjs';
+
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
