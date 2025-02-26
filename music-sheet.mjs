@@ -190,6 +190,9 @@ class CustomExtension {
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
                     items: Array.from({ length: 99 }, (_, i) => (i + 1).toString())
+                },
+                subdottedMenu: {
+                    acceptReporters: true, // 変数ブロックをドロップ可能にする    
                 }
             }
         };
