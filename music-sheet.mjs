@@ -66,6 +66,7 @@ class CustomExtension {
                         DOTTED: {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '　　', // 初期値
+                            menu: 'dottedMenu'
                         }
                     }
                 },
@@ -138,6 +139,12 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅰', value: '32'},
                     { text: '𝅘𝅥𝅱', value: '64'},
                     { text: '𝅘𝅥𝅲', value: '128'}
+                ],
+                dottedMenu: [
+                    { text: '　', value: '0'},
+                    { text: '.', value: '1'},
+                    { text: '..', value: '2'},
+                    { text: '...', value: '3'},
                 ],
                 restMenu: [
                     { text: '𝄻', value: '1'},
