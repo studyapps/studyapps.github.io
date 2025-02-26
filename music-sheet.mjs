@@ -66,7 +66,7 @@ class CustomExtension {
                     arguments: {
                         SUBDOTTED: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '　　', // 初期値
+                            defaultValue: '　a　', // 初期値
                         }
                     }
                 },
