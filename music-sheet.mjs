@@ -139,9 +139,9 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅱', value: '64'},
                     { text: '𝅘𝅥𝅲', value: '128'}
                 ],
-                subdottedMenu: [
+                subdottedMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
-                ],
+                },
                 restMenu: [
                     { text: '𝄻', value: '1'},
                     { text: '𝄼', value: '2'},
