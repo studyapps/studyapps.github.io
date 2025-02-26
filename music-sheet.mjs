@@ -134,7 +134,7 @@ class CustomExtension {
                     { text: '𝅘𝅥𝅲', value: '128'}
                 ],
                 dottedMenu: [
-                    { text: ' ', value: '0'},
+                    { text: '', value: '0'},
                     { text: '.', value: '1'},
                     { text: '..', value: '2'},
                 ],
