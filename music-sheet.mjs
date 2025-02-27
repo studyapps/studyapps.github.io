@@ -220,9 +220,9 @@ class CustomExtension {
         setTimeout(() => { this.chapterChange = ''; }, 200); 
     }
     whenChapterStart(args) {
-        if( this.chapterValue == 'All Play' )
+        if( this.chapterValue == 'ALL PLAY' )
         { 
-            //setTimeout(() => { return this.chapterChange == args.CHAPTER; }, 1000);
+            setTimeout(() => { return this.chapterChange == args.CHAPTER; }, 100);
         } else {
             return this.chapterChange == args.CHAPTER;
         }
