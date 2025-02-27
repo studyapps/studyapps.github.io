@@ -215,17 +215,16 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        this.chapterChange = args.CHAPTER;
         if( args.CHAPTER == 'ALL PLAY' )
         { 
             this.chapterValue = ''; 
-            this.chapterChange = '';
         } else {
             this.chapterValue = args.CHAPTER;
-            setTimeout(() => {
-                this.chapterChange = '';
-            }, 100); 
         }
+        this.chapterChange = this.chapterValue;
+        setTimeout(() => {
+            this.chapterChange = '';
+        }, 100); 
     }
     whenChapterStart(args) {
         return this.chapterChange == args.CHAPTER;
