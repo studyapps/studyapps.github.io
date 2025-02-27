@@ -13,16 +13,20 @@ class ToggleButtonExtension {
         this.buttonElement = document.createElement("img");
         this.buttonElement.src = this.imageUrls.ON;
         this.buttonElement.style.position = "absolute";
-        this.buttonElement.style.left = "50%";
-        this.buttonElement.style.top = "50%";
         this.buttonElement.style.width = "92px";
         this.buttonElement.style.height = "92px";
         this.buttonElement.style.cursor = "pointer";
         this.buttonElement.style.zIndex = "1000";
-        this.buttonElement.style.transform = "translate(-50%, -50%)";
+        
+        const stage = document.querySelector(".scratch-stage");
+        if (stage) {
+            stage.appendChild(this.buttonElement);
+            this.buttonElement.style.left = "50%";
+            this.buttonElement.style.top = "50%";
+            this.buttonElement.style.transform = "translate(-50%, -50%)";
+        }
 
         this.buttonElement.addEventListener("click", () => this.toggleState());
-        document.body.appendChild(this.buttonElement);
     }
 
     toggleState() {
