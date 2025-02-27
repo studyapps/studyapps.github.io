@@ -12,6 +12,8 @@ class CustomExtension {
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
         this.chapterChange = '';
+        this.AllPlay = false; // 初期状態はOFF
+        this.ChapterPlay = false; // 初期状態はOFF
     }
 
     getInfo() {
