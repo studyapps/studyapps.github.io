@@ -207,18 +207,18 @@ class CustomExtension {
         // ボタン要素を作成
         const button = document.createElement('img');
         button.id = 'scratch-toggle-button';
-        button.src = this.AllPlay ? 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg' : 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg';
+        button.src = this.AllPlay ? 'https://studyapps.github.io/svg/Chapter_ON.svg' : 'https://studyapps.github.io/svg/Chapter_OFF.svg';
         button.style.position = 'absolute';
-        button.style.bottom = '10px';
+        button.style.top = '10px';
         button.style.right = '10px';
-        button.style.width = '50px';
-        button.style.height = '50px';
+        button.style.width = '92px';
+        button.style.height = '92px';
         button.style.cursor = 'pointer';
         button.style.zIndex = '100';
     
         button.addEventListener('click', () => {
           this.AllPlay = !this.AllPlay;
-          button.src = this.AllPlay ? 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg' : 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg';
+          button.src = this.AllPlay ? 'https://studyapps.github.io/svg/Chapter_ON.svg' : 'https://studyapps.github.io/svg/Chapter_OFF.svg';
         });
     
         stage.appendChild(button);
