@@ -219,8 +219,7 @@ class CustomExtension {
         this.chapterChange = args.CHAPTER;
         setTimeout(() => { this.chapterChange = ''; }, 100); 
     }
-    async whenChapterStart(args) {
-        if ( this.chapterValue == 'ALL PLAY' ){ await new Promise(resolve => setTimeout(resolve, 100)); }
+    whenChapterStart(args) {
         return this.chapterChange == args.CHAPTER;
     }
     async waitUntil(args) {
