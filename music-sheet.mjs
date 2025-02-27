@@ -214,13 +214,12 @@ class CustomExtension {
     setChapter() {
         return this.chapterValue;
     } 
-    startChapter(args) {
-        wait(1000);
+    async startChapter(args) {
         this.chapterValue = args.CHAPTER;
         this.chapterChange = args.CHAPTER;
         setTimeout(() => {
             this.chapterChange = '';
-        }, 100); 
+        }, 10); 
     }
     whenChapterStart(args) {
         return this.chapterChange == args.CHAPTER;
@@ -229,9 +228,6 @@ class CustomExtension {
         while (this.chapterChenge !=  args.CHAPTER) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
-    }
-    async wait(args) {
-        await new Promise(resolve => setTimeout(resolve, args));
     }
 }
 
