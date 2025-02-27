@@ -11,7 +11,7 @@ class CustomExtension {
         this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
-        this.chapterChange = '';
+        this.chapterChange = ''; // チャプターの実行
         this.AllPlay = false; // 初期状態はOFF
         this.ChapterPlay = false; // 初期状態はOFF
     }
@@ -193,6 +193,36 @@ class CustomExtension {
             }
         };
     }
+
+    createButton() {
+        const stage = document.getElementsByClassName('stage_stage_1fD7k')[0];
+        if (!stage) return;
+    
+        // 既にボタンが存在する場合は削除
+        const existingButton = document.getElementById('scratch-toggle-button');
+        if (existingButton) {
+          existingButton.remove();
+        }
+    
+        // ボタン要素を作成
+        const button = document.createElement('img');
+        button.id = 'scratch-toggle-button';
+        button.src = this.AllPlay ? 'https://example.com/on-icon.png' : 'https://example.com/off-icon.png';
+        button.style.position = 'absolute';
+        button.style.bottom = '10px';
+        button.style.right = '10px';
+        button.style.width = '50px';
+        button.style.height = '50px';
+        button.style.cursor = 'pointer';
+        button.style.zIndex = '100';
+    
+        button.addEventListener('click', () => {
+          this.AllPlay = !this.AllPlay;
+          button.src = this.AllPlay ? 'https://example.com/on-icon.png' : 'https://example.com/off-icon.png';
+        });
+    
+        stage.appendChild(button);
+      }
 
     chooseNote(args) {
         this.noteValue = 1 / parseFloat(args.NOTE);
