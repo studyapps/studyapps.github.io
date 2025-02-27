@@ -215,7 +215,7 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        if( args.CHAPTER != 'ALL PLAY' ){ this.chapterValue = args.CHAPTER; }
+        this.chapterValue = args.CHAPTER;
         this.chapterChange = args.CHAPTER;
         setTimeout(() => {
             this.chapterChange = '';
