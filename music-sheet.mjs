@@ -219,7 +219,7 @@ class CustomExtension {
         this.chapterChange = args.CHAPTER;
         setTimeout(() => {
             this.chapterChange = '';
-        }, 10); 
+        }, 100); 
     }
     whenChapterStart(args) {
         return this.chapterChange == args.CHAPTER;
