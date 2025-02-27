@@ -217,10 +217,15 @@ class CustomExtension {
     startChapter(args) {
         this.chapterValue = args.CHAPTER;
         this.chapterChange = args.CHAPTER;
-        setTimeout(() => { this.chapterChange = ''; }, 100); 
+        setTimeout(() => { this.chapterChange = ''; }, 200); 
     }
     whenChapterStart(args) {
-        return this.chapterChange == args.CHAPTER;
+        if( this.chapterValue == 'All Play' )
+        { 
+            setTimeout(() => { return this.chapterChange == args.CHAPTER; }, 100);
+        } else {
+            return this.chapterChange == args.CHAPTER;
+        }
     }
     async waitUntil(args) {
         while (this.chapterChenge !=  args.CHAPTER) {
