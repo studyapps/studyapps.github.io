@@ -79,6 +79,18 @@ class CustomExtension {
                         }
                     }
                 },
+                 {
+                    opcode: 'whenChapterStart',
+                    blockType: Scratch.BlockType.HAT,
+                    text: 'チャプター[CHAPTER]が開始されたとき',
+                    arguments: {
+                        CHAPTER:{
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '1', // 初期値
+                            menu: 'chapterMenu'
+                        }  
+                    }
+                },
                 {
                     opcode: 'startChapter',
                     blockType: Scratch.BlockType.COMMAND,
@@ -95,18 +107,6 @@ class CustomExtension {
                     opcode: 'setChapter',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'チャプター'
-                },
-                {
-                    opcode: 'whenChapterStart',
-                    blockType: Scratch.BlockType.HAT,
-                    text: 'チャプター[CHAPTER]が開始されたとき',
-                    arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
-                    }
                 }
                 //{
                 //    opcode: 'waitUntil',
