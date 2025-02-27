@@ -186,7 +186,7 @@ class CustomExtension {
                 ],
                 chapterMenu: {
                     acceptReporters: true, // 変数ブロックをドロップ可能にする
-                    items: ['タイムライン', ...Array.from({ length: 99 }, (_, i) => (i + 1).toString())]
+                    items: ['ALL PLAY', ...Array.from({ length: 99 }, (_, i) => (i + 1).toString())]
                 }
             }
         };
@@ -215,12 +215,11 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        if( args.CHAPTER !== 'タイムライン' ){
-            this.chapterValue = args.CHAPTER;
-            this.chapterChange = args.CHAPTER;
-            setTimeout(() => {
-                this.chapterChange = '';
-            }, 100); 
+        if( args.CHAPTER !== 'ALL PLAY' ){ this.chapterValue = args.CHAPTER; }
+        this.chapterChange = args.CHAPTER;
+        setTimeout(() => {
+            this.chapterChange = '';
+        }, 100); 
         }
     }
     whenChapterStart(args) {
