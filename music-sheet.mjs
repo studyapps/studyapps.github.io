@@ -38,7 +38,7 @@ class CustomExtension {
                         },
                         UNIT: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: 'BPM', // 初期値
+                            defaultValue: '1', // 初期値
                             menu: 'unitMenu'
                         }
                     }
