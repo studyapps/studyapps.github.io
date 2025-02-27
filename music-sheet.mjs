@@ -222,7 +222,7 @@ class CustomExtension {
     whenChapterStart(args) {
         if( this.chapterValue == 'All Play' )
         { 
-            setTimeout(() => { return this.chapterChange == args.CHAPTER; }, 100);
+            setTimeout(() => { return this.chapterChange == args.CHAPTER; }, 1000);
         } else {
             return this.chapterChange == args.CHAPTER;
         }
