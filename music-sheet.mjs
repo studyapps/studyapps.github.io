@@ -217,7 +217,7 @@ class CustomExtension {
     startChapter(args) {
         if( args.CHAPTER == 'ALL PLAY' )
         { 
-            this.chapterValue = ''; 
+            this.chapterValue = '0'; 
         } else {
             this.chapterValue = args.CHAPTER;
         }
