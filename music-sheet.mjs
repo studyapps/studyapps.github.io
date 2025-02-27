@@ -214,12 +214,10 @@ class CustomExtension {
     setChapter() {
         return this.chapterValue;
     } 
-    async startChapter(args) {
+    startChapter(args) {
         this.chapterValue = args.CHAPTER;
         this.chapterChange = args.CHAPTER;
-        setTimeout(() => {
-            this.chapterChange = '';
-        }, 100); 
+        setTimeout(() => { this.chapterChange = ''; }, 100); 
     }
     whenChapterStart(args) {
         return this.chapterChange == args.CHAPTER;
