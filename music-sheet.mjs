@@ -207,7 +207,7 @@ class CustomExtension {
         // ボタン要素を作成
         const button = document.createElement('img');
         button.id = 'scratch-toggle-button';
-        button.src = this.AllPlay ? 'https://example.com/on-icon.png' : 'https://example.com/off-icon.png';
+        button.src = this.AllPlay ? 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg' : 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg';
         button.style.position = 'absolute';
         button.style.bottom = '10px';
         button.style.right = '10px';
@@ -218,7 +218,7 @@ class CustomExtension {
     
         button.addEventListener('click', () => {
           this.AllPlay = !this.AllPlay;
-          button.src = this.AllPlay ? 'https://example.com/on-icon.png' : 'https://example.com/off-icon.png';
+          button.src = this.AllPlay ? 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg' : 'https://raw.githubusercontent.com/studyapps/studyapps.github.io/refs/heads/main/svg/note_1.svg';
         });
     
         stage.appendChild(button);
