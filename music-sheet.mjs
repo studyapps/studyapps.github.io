@@ -108,18 +108,6 @@ class CustomExtension {
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'チャプター'
                 }
-                //{
-                //    opcode: 'waitUntil',
-                //    blockType: Scratch.BlockType.COMMAND,
-                //    text: 'チャプター[CHAPTER]が開始されるまで待つ',
-                //    arguments: {
-                //        CHAPTER:{
-                //            type: Scratch.ArgumentType.STRING,
-                //            defaultValue: '1', // 初期値
-                //            menu: 'chapterMenu'
-                //        }  
-                //    }
-                //}
             ],
             menus: {
                 noteMenu: [
@@ -214,21 +202,12 @@ class CustomExtension {
     setChapter() {
         return this.chapterValue;
     } 
-    startChapter(args) {
+    async startChapter(args) {
         this.chapterValue = args.CHAPTER;
-        this.runtime.startHats('customExtension.whenChapterStart', args.CHAPTER);
-
-        //this.chapterChange = args.CHAPTER;
-        //setTimeout(() => { this.chapterChange = ''; }, 100); 
+        whenChapterStart(args.CHAPTER);
     }
     whenChapterStart(args) {
-        //return this.chapterChange == args.CHAPTER;
         return true;
-    }
-    async waitUntil(args) {
-        while (this.chapterChenge !=  args.CHAPTER) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
     }
 }
 
