@@ -104,18 +104,6 @@ class CustomExtension {
                     }
                 },
                 {
-                    opcode: 'waiteChapter',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'チャプター[CHAPTER]を開始して待つ',
-                    arguments: {
-                        CHAPTER:{
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
-                            menu: 'chapterMenu'
-                        }  
-                    }
-                },
-                {
                     opcode: 'setChapter',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'チャプター'
@@ -227,11 +215,6 @@ class CustomExtension {
         return this.chapterValue;
     } 
     startChapter(args) {
-        this.chapterValue = args.CHAPTER;
-        this.chapterChange = args.CHAPTER;
-        setTimeout(() => { this.chapterChange = ''; }, 100); 
-    }
-    async waitChapter(args) {
         this.chapterValue = args.CHAPTER;
         this.chapterChange = args.CHAPTER;
         setTimeout(() => { this.chapterChange = ''; }, 100); 
