@@ -7,7 +7,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'カスタム拡張２',
+            name: 'カスタム拡張',
             blocks: [
                 {
                     opcode: 'initializeAndWait',
@@ -18,6 +18,11 @@ class CustomExtension {
                     opcode: 'whenInitialized',
                     blockType: Scratch.BlockType.HAT,
                     text: '初期化を受け取ったとき',
+                },
+                {
+                    opcode: 'getWaitingStatus',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: '初期化待機状態'
                 }
             ]
         };
@@ -39,6 +44,11 @@ class CustomExtension {
         }
         return false;
     }
+
+    getWaitingStatus() {
+        return this._waiting;
+    }
 }
 
 Scratch.extensions.register(new CustomExtension());
+
