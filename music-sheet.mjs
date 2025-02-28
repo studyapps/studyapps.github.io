@@ -204,6 +204,7 @@ class CustomExtension {
     } 
     async startChapter(args) {
         this.chapterValue = args.CHAPTER;
+        //this.runtime.startHats('customExtension.whenChapterStart', args.CHAPTER);
         whenChapterStart(args.CHAPTER);
     }
     whenChapterStart(args) {
