@@ -1,7 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this._waiting = false;
+        this.wait = false;
     }
 
     getInfo() {
@@ -10,42 +10,27 @@ class CustomExtension {
             name: 'カスタム拡張',
             blocks: [
                 {
-                    opcode: 'initializeAndWait',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: '初期化を送って待つ',
-                },
-                {
-                    opcode: 'whenInitialized',
+                    opcode: 'initialize',
                     blockType: Scratch.BlockType.HAT,
-                    text: '初期化を受け取ったとき',
+                    text: '初期化',
                 },
                 {
-                    opcode: 'getWaitingStatus',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '初期化待機状態'
+                    opcode: 'sendInitialize',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '初期化を送る',
                 }
             ]
         };
     }
 
-    async initializeAndWait(args, util) {
-        this._waiting = true;
-        whenInitialized();
-        while (this._waiting) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
+    async initialize(args, util) {
+        await util.yield(); // 次のブロックの実行を待つ
+        this.wait = true;
+        return true; // ハットブロックを実行
     }
 
-    whenInitialized() {
-        if (this._waiting) {
-            this._waiting = false;
-            return true;
-        }
-        return false;
-    }
-
-    getWaitingStatus() {
-        return this._waiting;
+    sendInitialize() {
+        this.runtime.startHats('customExtension.initialize');
     }
 }
 
