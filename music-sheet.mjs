@@ -216,11 +216,14 @@ class CustomExtension {
     } 
     startChapter(args) {
         this.chapterValue = args.CHAPTER;
-        this.chapterChange = args.CHAPTER;
-        setTimeout(() => { this.chapterChange = ''; }, 100); 
+        this.runtime.startHats('customExtension.whenChapterStart', args.CHAPTER);
+
+        //this.chapterChange = args.CHAPTER;
+        //setTimeout(() => { this.chapterChange = ''; }, 100); 
     }
     whenChapterStart(args) {
-        return this.chapterChange == args.CHAPTER;
+        //return this.chapterChange == args.CHAPTER;
+        return true;
     }
     async waitUntil(args) {
         while (this.chapterChenge !=  args.CHAPTER) {
