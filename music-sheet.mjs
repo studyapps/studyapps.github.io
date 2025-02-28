@@ -220,7 +220,7 @@ class CustomExtension {
         setTimeout(() => { this.chapterChange = ''; }, 100); 
     }
     whenChapterStart(args) {
-        return this.chapterChange == args.CHAPTER';
+        return this.chapterChange == args.CHAPTER;
     }
     async waitUntil(args) {
         while (this.chapterChenge !=  args.CHAPTER) {
