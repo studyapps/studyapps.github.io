@@ -8,7 +8,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'カスタム拡張',
+            name: 'カスタム拡張２２',
             blocks: [
                 {
                     opcode: 'initializeAndWait',
