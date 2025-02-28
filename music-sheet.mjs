@@ -2,6 +2,7 @@ class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this._waiting = false;
+        this._resolveWaiting = null;
     }
 
     getInfo() {
@@ -28,18 +29,22 @@ class CustomExtension {
         };
     }
 
-    async initializeAndWait(args, util) {
+    initializeAndWait(args, util) {
         this._waiting = true;
         this.runtime.startHats('customExtension_whenInitialized');
         
-        while (this._waiting) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
+        return new Promise(resolve => {
+            this._resolveWaiting = resolve;
+        });
     }
 
     whenInitialized() {
         if (this._waiting) {
             this._waiting = false;
+            if (this._resolveWaiting) {
+                this._resolveWaiting();
+                this._resolveWaiting = null;
+            }
             return true;
         }
         return false;
