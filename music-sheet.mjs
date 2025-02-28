@@ -7,7 +7,7 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'カスタム拡張',
+            name: 'カスタム拡張２',
             blocks: [
                 {
                     opcode: 'initializeAndWait',
@@ -23,17 +23,13 @@ class CustomExtension {
         };
     }
 
-    initializeAndWait(args, util) {
+    async initializeAndWait(args, util) {
         this._waiting = true;
         this.runtime.startHats('customExtension_whenInitialized');
-        return new Promise(resolve => {
-            const checkInterval = setInterval(() => {
-                if (!this._waiting) {
-                    clearInterval(checkInterval);
-                    resolve();
-                }
-            }, 50);
-        });
+        
+        while (this._waiting) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
     }
 
     whenInitialized() {
