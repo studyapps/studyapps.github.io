@@ -2,13 +2,12 @@ class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this._waiting = false;
-        this._resolveWaiting = null;
     }
 
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'カスタム拡張２２',
+            name: 'カスタム拡張',
             blocks: [
                 {
                     opcode: 'initializeAndWait',
@@ -29,22 +28,17 @@ class CustomExtension {
         };
     }
 
-    initializeAndWait(args, util) {
+    async initializeAndWait(args, util) {
         this._waiting = true;
-        this.runtime.startHats('customExtension_whenInitialized');
-        
-        return new Promise(resolve => {
-            this._resolveWaiting = resolve;
-        });
+        whenInitialized();
+        while (this._waiting) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
     }
 
     whenInitialized() {
         if (this._waiting) {
             this._waiting = false;
-            if (this._resolveWaiting) {
-                this._resolveWaiting();
-                this._resolveWaiting = null;
-            }
             return true;
         }
         return false;
