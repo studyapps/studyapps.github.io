@@ -1,55 +1,47 @@
-class CustomExtension {
+class MyExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.start = false; // 初期値を false に設定
+        this.start = false; // 初期値を false にする
+    }
+
+    // ハットブロックの処理
+    whenExecuted(args, util) {
+        console.log("Hello");
+        this.start = true; // 実行開始時に true にする
+
+        // 接続されたブロックの処理がすべて完了するまで待つ
+        return new Promise(resolve => {
+            setTimeout(async () => {
+                await util.yield(); // 他の処理のために一時停止
+                this.start = false; // すべての処理が完了したら false にする
+                resolve();
+            });
+        });
+    }
+
+    // 変数ブロックの処理
+    getStartValue() {
+        return this.start;
     }
 
     getInfo() {
         return {
-            id: 'customExtension',
-            name: 'Custom Extension',
+            id: "myextension",
+            name: "My Extension",
             blocks: [
                 {
-                    opcode: 'helloHat',
-                    blockType: Scratch.BlockType.HAT,
-                    text: 'Hello',
+                    opcode: "whenExecuted",
+                    blockType: "hat",
+                    text: "ハットブロックが実行されたとき"
                 },
                 {
-                    opcode: 'triggerHello',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'Trigger Hello',
-                },
-                {
-                    opcode: 'getStart',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'Start',
+                    opcode: "getStartValue",
+                    blockType: "reporter",
+                    text: "start の値を取得"
                 }
             ]
         };
     }
-
-    helloHat() {
-        if (!this.start) {
-            this.start = true;
-            setTimeout(() => {
-                this.start = false;
-            }, 100); // 仮の時間待機（実際のブロック実行の完了待ち）
-            return true;
-        }
-        return false;
-    }
-
-    triggerHello() {
-        this.start = true;
-        this.runtime.startHats('customExtension.helloHat');
-        setTimeout(() => {
-            this.start = false;
-        }, 100);
-    }
-
-    getStart() {
-        return this.start;
-    }
 }
 
-Scratch.extensions.register(new CustomExtension());
+Scratch.extensions.register(new MyExtension());
