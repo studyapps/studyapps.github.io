@@ -8,7 +8,7 @@ class CustomExtension {
         this.temponoteValue = '1'; // テンポの基準となる音符
         this.noteValue = '4'; // 音符
         this.restValue = '4'; // 休符
-        this.periodValue = 60 / this.tempoValue / this.temponoteValue; //１小節の時間
+        this.periodValue = 60 / this.tempoValue; //１小節の時間
         this.scaleValue = '60'; //ドレミ
         this.chapterValue = ''; //現在実行中のチャプター
         this.chapterChange = '';
@@ -201,6 +201,7 @@ class CustomExtension {
     }
     setChapter() {
         return this.chapterValue;
+        // this.runtime.startHats('startChapter', this.chapterValue);
     } 
     startChapter(args) {
         this.chapterValue = args.CHAPTER;
