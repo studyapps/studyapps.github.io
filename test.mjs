@@ -1,7 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.start = false;
+        this.start = false; // 初期値を false に設定
     }
 
     getInfo() {
