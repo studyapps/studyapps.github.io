@@ -1,47 +1,58 @@
 class MyExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.start = false; // 初期値を false にする
+        this.runningStatus = 0;
+        this.hatBlockID = null;
+
+        // 定期的に実行状態をチェック
+        setInterval(() => {
+            this.updateRunningStatus();
+        }, 50); // 50ms ごとに更新
     }
 
-    // ハットブロックの処理
-    whenExecuted(args, util) {
-        console.log("Hello");
-        this.start = true; // 実行開始時に true にする
-
-        // 接続されたブロックの処理がすべて完了するまで待つ
-        return new Promise(resolve => {
-            setTimeout(async () => {
-                //await util.yield(); // 他の処理のために一時停止
-                this.start = false; // すべての処理が完了したら false にする
-                resolve();
-            });
-        });
+    // ハットブロック（スクリプトの開始）
+    whenMyHat(args, util) {
+        this.hatBlockID = util.thread.topBlock; // ハットブロックのIDを保存
+        console.log("hello"); // 実行時に "hello" を表示
     }
 
-    // 変数ブロックの処理
-    getStartValue() {
-        return this.start;
+    // スクリプトの実行状態をチェック
+    updateRunningStatus() {
+        if (!this.hatBlockID) return;
+
+        // すべてのスレッドを取得し、現在のハットブロックが実行中か確認
+        const isRunning = this.runtime.threads.some(thread => 
+            thread.topBlock === this.hatBlockID && thread.status === 1
+        );
+
+        this.runningStatus = isRunning ? 1 : 0;
     }
 
+    // 実行状態を取得する変数ブロック
+    getExecutionStatus() {
+        return this.runningStatus;
+    }
+
+    // Scratchに追加するブロック定義
     getInfo() {
         return {
-            id: "myextension",
+            id: "myExtension",
             name: "My Extension",
             blocks: [
                 {
-                    opcode: "whenExecuted",
-                    blockType: "hat",
+                    opcode: "whenMyHat",
+                    blockType: Scratch.BlockType.HAT,
                     text: "ハットブロックが実行されたとき"
                 },
                 {
-                    opcode: "getStartValue",
-                    blockType: "reporter",
-                    text: "start の値を取得"
+                    opcode: "getExecutionStatus",
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: "ブロック実行中？"
                 }
             ]
         };
     }
 }
 
+// 拡張機能を登録
 Scratch.extensions.register(new MyExtension());
