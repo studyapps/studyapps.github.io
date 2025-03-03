@@ -12,7 +12,7 @@ class MyExtension {
         // 接続されたブロックの処理がすべて完了するまで待つ
         return new Promise(resolve => {
             setTimeout(async () => {
-                await util.yield(); // 他の処理のために一時停止
+                //await util.yield(); // 他の処理のために一時停止
                 this.start = false; // すべての処理が完了したら false にする
                 resolve();
             });
