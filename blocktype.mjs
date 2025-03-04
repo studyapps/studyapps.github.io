@@ -3,6 +3,7 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'trial'; // 初期値を'trial'に設定
         this.X = "初期値"; // デフォルトの値
+        this.id = "初期値"; // デフォルトの値
      }
     
     getInfo() {
@@ -33,7 +34,7 @@ class CustomExtension {
             {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'ID'
+                text: 'ID = '
             },
             {
                 opcode: 'getBlockType',
