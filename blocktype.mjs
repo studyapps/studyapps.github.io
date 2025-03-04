@@ -28,6 +28,16 @@ class CustomExtension {
                         menu: 'blockTypeMenu'
                     }
                 }
+            },
+            {
+                opcode: 'getBlockType',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'BrockType'
+            },
+            {
+                opcode: 'getTrialBlock',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'trialのブロック'
             }
         ), c;
     }
