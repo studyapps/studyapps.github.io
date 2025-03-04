@@ -35,16 +35,16 @@ class CustomExtension {
                     }
                 }
             },
-            {
-                opcode: 'getID',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'ID',
-            },
-            {
-                opcode: 'getBlockType',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'BlockType',
-            },
+            //{
+            //    opcode: 'getID',
+            //    blockType: Scratch.BlockType.REPORTER,
+            //    text: 'ID',
+            //},
+            //{
+            //    opcode: 'getBlockType',
+            //    blockType: Scratch.BlockType.REPORTER,
+            //    text: 'BlockType',
+            //},
             {
                 opcode: 'getTrialBlock',
                 blockType: Scratch.BlockType.COMMAND,
