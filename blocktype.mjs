@@ -5,6 +5,7 @@ class CustomExtension {
     }
 
     getInfo() {
+        Ws();
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
@@ -39,10 +40,16 @@ class CustomExtension {
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'trialのブロック'
             }
+        ), this.shouldShowBasicBlocks() && c.blocks.push(
+            {
+                opcode: 'getBasicBlock',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'Basicのブロック'
+            }
         ), c;
     }
 
-    setBlockType(args) {
+    getBlockType(args) {
         this.block = args.TYPE;
     }
     getBrockType() {
