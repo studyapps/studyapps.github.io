@@ -23,7 +23,7 @@ class CustomExtension {
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockType =  [TYPE] ID = [ID]に設定',
+                text: 'BlockType =  [TYPE] ID = [ID]',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
