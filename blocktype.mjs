@@ -7,14 +7,6 @@ class CustomExtension {
     
     updateX() {
         const variable = this.runtime.getTargetForStage()?.variables;
-        if (variable) {
-            for (let key in variable) {
-                if (variable[key].name === "変数") {
-                    this.X = variable[key].value;
-                    break;
-                }
-            }
-        }
     }
 
     getInfo() {
@@ -34,7 +26,7 @@ class CustomExtension {
             {
                 opcode: 'setBlockType',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockTypeを [TYPE] に設定',
+                text: 'BlockTypeを [TYPE] に設定1',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
