@@ -5,7 +5,6 @@ class CustomExtension {
     }
 
     getInfo() {
-        Ws();
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
@@ -49,10 +48,10 @@ class CustomExtension {
         ), c;
     }
 
-    getBlockType(args) {
+    setBlockType(args) {
         this.block = args.TYPE;
     }
-    getBrockType() {
+    getBlockType() {
         return this.block;
     }
     getBasicBlock() {
