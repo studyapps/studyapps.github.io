@@ -1,9 +1,8 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.block = 'trial'; // 初期値を'trial'に設定
-        this.X = "初期値"; // デフォルトの値
-        this.id = "初期値"; // デフォルトの値
+        this.block = 'trial'; 
+        this.id = "お客様ID"; 
     }
 
     getInfo() {
