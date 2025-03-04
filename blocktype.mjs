@@ -2,12 +2,25 @@ class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this.block = 'trial'; // 初期値を'trial'に設定
+        this.updateX();
+    }
+
+    updateX() {
+        const variable = this.runtime.getTargetForStage()?.variables;
+        if (variable) {
+            for (let key in variable) {
+                if (variable[key].name === "変数") {
+                    this.X = variable[key].value;
+                    break;
+                }
+            }
+        }
     }
 
     getInfo() {
         var c = {
             id: 'BlockType',
-            name: 'URL Extension',
+            name: 'BlockType',
             color1: "#A6A6A6",
             blocks: [],
             menus: {
