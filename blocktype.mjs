@@ -6,7 +6,7 @@ class CustomExtension {
     }
     
     updateX() {
-        const variable = this.runtime.getTargetForStage()?.variables;
+        //const variable = this.runtime.getTargetForStage()?.variables;
     }
 
     getInfo() {
