@@ -62,7 +62,7 @@ class CustomExtension {
         return this.block;
     }
     setID(args) {
-        this.id = args.TYPE;
+        this.id = args.ID;
         return this.id;
     }
     getBasicBlock() {
