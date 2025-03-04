@@ -22,29 +22,12 @@ class CustomExtension {
                 opcode: 'setBlockType',
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'BlockTypeを [TYPE] に設定',
-                default: 'trial',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
                         menu: 'blockTypeMenu'
                     }
                 }
-            },
-            {
-                opcode: 'getBlockType',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'BrockType'
-            },
-            {
-                opcode: 'getTrialBlock',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'trialのブロック'
-            }
-        ), this.shouldShowBasicBlocks() && c.blocks.push(
-            {
-                opcode: 'getBasicBlock',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'Basicのブロック'
             }
         ), c;
     }
