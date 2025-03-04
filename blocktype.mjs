@@ -35,15 +35,12 @@ class CustomExtension {
                 opcode: 'setID',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'ID = [ID]',
-                ID: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: 'お客様ID'
+                arguments: {
+                    ID: {
+                        type: Scratch.ArgumentType.STRING,
+                        defaultValue: 'お客様ID'
+                    }
                 }
-            },
-            {
-                opcode: 'getBlockType',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'BrockType'
             },
             {
                 opcode: 'getTrialBlock',
@@ -68,18 +65,13 @@ class CustomExtension {
         this.id = args.TYPE;
         return this.id;
     }
-    getBlockType() {
-        return this.block;
-    }
     getBasicBlock() {
     }
-
     getTrialBlock() {
     }
-
     shouldShowBasicBlocks() {
         return this.block == "basic";
-      }
+    }
 }
 
 Scratch.extensions.register(new CustomExtension());
