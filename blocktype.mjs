@@ -2,8 +2,20 @@ class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this.block = 'trial'; // 初期値を'trial'に設定
+        this.updateX();
     }
     
+    updateX() {
+        const variable = this.runtime.getTargetForStage()?.variables;
+        if (variable) {
+            for (let key in variable) {
+                if (variable[key].name === "変数") {
+                    this.X = variable[key].value;
+                    break;
+                }
+            }
+        }
+    }
 
     getInfo() {
         var c = {
