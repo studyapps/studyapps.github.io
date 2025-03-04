@@ -8,7 +8,7 @@ class CustomExtension {
 
     getInfo() {
         var c = {
-            id: 'BlockType2',
+            id: 'BlockType',
             name: 'URL Extension',
             color1: "#A6A6A6",
             blocks: [],
@@ -23,7 +23,7 @@ class CustomExtension {
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockType =  [TYPE] ID = [ID]',
+                text: 'BlockType =  [TYPE] ID = [ID]に設定',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
