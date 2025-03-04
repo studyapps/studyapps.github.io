@@ -34,12 +34,10 @@ class CustomExtension {
             {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'ID = [TYPE]',
-                arguments: {
-                    TYPE: {
-                        type: Scratch.ArgumentType.STRING,
-                        menu: 'blockTypeMenu'
-                    }
+                text: 'ID = [ID]',
+                ID: {
+                    type: Scratch.ArgumentType.NUMBER,
+                    defaultValue: 'お客様ID'
                 }
             },
             {
