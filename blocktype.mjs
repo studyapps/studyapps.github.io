@@ -5,33 +5,11 @@ class CustomExtension {
     }
 
     getInfo() {
-        return {
-            id: 'customExtension',
+        var c = {
+            id: 'BlockType',
             name: 'URL Extension',
             color1: "#A6A6A6",
-            blocks: [
-                {
-                    opcode: 'setBlockType',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'ブロックタイプを [TYPE] に設定',
-                    arguments: {
-                        TYPE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'blockTypeMenu'
-                        }
-                    }
-                },
-                {
-                    opcode: 'getBasicBlock',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'Basicのブロック'
-                },
-                {
-                    opcode: 'getTrialBlock',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'trialのブロック'
-                }
-            ],
+            blocks: [],
             menus: {
                 blockTypeMenu: {
                     acceptReporters: true,
@@ -39,6 +17,28 @@ class CustomExtension {
                 }
             }
         };
+        return c.blocks.push(
+            {
+                opcode: 'setBlockType',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'ブロックタイプを [TYPE] に設定',
+                arguments: {
+                    TYPE: {
+                        type: Scratch.ArgumentType.STRING,
+                        menu: 'blockTypeMenu'
+                    }
+                }
+            },{
+                opcode: 'getBasicBlock',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'Basicのブロック'
+            },
+            {
+                opcode: 'getTrialBlock',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'trialのブロック'
+            }
+        ), c;
     }
 
     setBlockType(args) {
