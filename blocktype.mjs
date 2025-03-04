@@ -4,9 +4,10 @@ class CustomExtension {
         this.block = 'trial'; // 初期値を'trial'に設定
         this.X = "初期値"; // デフォルトの値
         this.id = "初期値"; // デフォルトの値
-     }
-    
+    }
+
     getInfo() {
+        this.block = 'basic';
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
