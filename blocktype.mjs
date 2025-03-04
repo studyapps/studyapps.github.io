@@ -1,7 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.block = 'Basic'; // 初期値を'Basic'に設定
+        this.block = 'trial'; // 初期値を'trial'に設定
     }
 
     getInfo() {
@@ -22,21 +22,24 @@ class CustomExtension {
                 opcode: 'setBlockType',
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'BlockTypeを [TYPE] に設定',
+                default: 'trial',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
                         menu: 'blockTypeMenu'
                     }
                 }
-            },{
-                opcode: 'getBasicBlock',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'Basicのブロック'
             },
             {
                 opcode: 'getTrialBlock',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'trialのブロック'
+            }
+        ), this.shouldShowBasicBlocks() && c.blocks.push(
+            {
+                opcode: 'getBasicBlock',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'Basicのブロック'
             }
         ), c;
     }
