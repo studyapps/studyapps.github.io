@@ -42,9 +42,9 @@ class CustomExtension {
                 text: 'ID',
             },
             {
-                opcode: 'getBlocktype',
+                opcode: 'getBlockType',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'Blocktype',
+                text: 'BlockType',
             },
             {
                 opcode: 'getTrialBlock',
