@@ -74,7 +74,7 @@ class CustomExtension {
     getTrialBlock() {
     }
     shouldShowBasicBlocks() {
-        return this.block == "basic";
+        return this.block == "Basic";
     }
 }
 
