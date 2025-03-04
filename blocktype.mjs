@@ -5,17 +5,6 @@ class CustomExtension {
         this.updateX();
     }
 
-    updateX() {
-        const variable = this.runtime.getTargetForStage()?.variables;
-        if (variable) {
-            for (let key in variable) {
-                if (variable[key].name === "変数") {
-                    this.X = variable[key].value;
-                    break;
-                }
-            }
-        }
-    }
 
     getInfo() {
         var c = {
