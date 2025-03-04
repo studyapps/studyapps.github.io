@@ -22,26 +22,29 @@ class CustomExtension {
         };
         return c.blocks.push(
             {
-                opcode: 'setBlockType',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'BlockType =  [TYPE]',
+                opcode: 'setParameters',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'BlockType =  [TYPE] ID = [ID]',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
                         menu: 'blockTypeMenu'
-                    }
-                }
-            },
-            {
-                opcode: 'setID',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'ID = [ID]',
-                arguments: {
+                    },
                     ID: {
                         type: Scratch.ArgumentType.STRING,
                         defaultValue: 'お客様ID'
                     }
                 }
+            },
+            {
+                opcode: 'getID',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'ID',
+            },
+            {
+                opcode: 'getBlocktype',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'Blocktype',
             },
             {
                 opcode: 'getTrialBlock',
@@ -57,13 +60,14 @@ class CustomExtension {
         ), c;
     }
 
-
-    setBlockType(args) {
+    setParameters(args){
         this.block = args.TYPE;
+        this.id = args.ID;
+    }
+    getBlockType() {
         return this.block;
     }
-    setID(args) {
-        this.id = args.ID;
+    getID() {
         return this.id;
     }
     getBasicBlock() {
