@@ -38,7 +38,7 @@ class CustomExtension {
             {
                 opcode: 'setBlockType',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockTypeを [TYPE] に設定1',
+                text: 'BlockTypeを [TYPE] に設定2',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
