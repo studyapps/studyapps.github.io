@@ -1,58 +1,41 @@
-class MyExtension {
+class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.runningStatus = 0;
-        this.hatBlockID = null;
-
-        // 定期的に実行状態をチェック
-        setInterval(() => {
-            this.updateRunningStatus();
-        }, 50); // 50ms ごとに更新
+        this.X = "初期値"; // デフォルトの値
+        this.updateX();
     }
 
-    // ハットブロック（スクリプトの開始）
-    whenMyHat(args, util) {
-        this.hatBlockID = util.thread.topBlock; // ハットブロックのIDを保存
-        console.log("hello"); // 実行時に "hello" を表示
+    updateX() {
+        const variable = this.runtime.getTargetForStage()?.variables;
+        if (variable) {
+            for (let key in variable) {
+                if (variable[key].name === "変数") {
+                    this.X = variable[key].value;
+                    break;
+                }
+            }
+        }
     }
 
-    // スクリプトの実行状態をチェック
-    updateRunningStatus() {
-        if (!this.hatBlockID) return;
-
-        // すべてのスレッドを取得し、現在のハットブロックが実行中か確認
-        const isRunning = this.runtime.threads.some(thread => 
-            thread.topBlock === this.hatBlockID && thread.status === 1
-        );
-
-        this.runningStatus = isRunning ? 1 : 0;
-    }
-
-    // 実行状態を取得する変数ブロック
-    getExecutionStatus() {
-        return this.runningStatus;
-    }
-
-    // Scratchに追加するブロック定義
     getInfo() {
+        this.updateX(); // ブロック情報取得時にXを更新
         return {
-            id: "myExtension",
-            name: "My Extension",
+            id: "customExtension",
+            name: "カスタム拡張",
             blocks: [
                 {
-                    opcode: "whenMyHat",
-                    blockType: Scratch.BlockType.HAT,
-                    text: "ハットブロックが実行されたとき"
-                },
-                {
-                    opcode: "getExecutionStatus",
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: "ブロック実行中？"
+                    opcode: "showX",
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: this.X,
+                    func: "showX"
                 }
             ]
         };
     }
+
+    showX() {
+        console.log(this.X);
+    }
 }
 
-// 拡張機能を登録
-Scratch.extensions.register(new MyExtension());
+Scratch.extensions.register(new CustomExtension());
