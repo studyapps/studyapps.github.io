@@ -71,7 +71,7 @@ class CustomExtension {
         ), c;
     }
 
-    setBlockType(args) {
+    getID(args) {
         return this.X;
     }
     setBlockType(args) {
