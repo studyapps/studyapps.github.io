@@ -7,9 +7,8 @@ class CustomExtension {
     }
 
     getInfo() {
-        this.block = 'basic';
         var c = {
-            id: 'BlockType',
+            id: 'BlockType2',
             name: 'URL Extension',
             color1: "#A6A6A6",
             blocks: [],
