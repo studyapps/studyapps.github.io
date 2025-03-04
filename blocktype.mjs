@@ -34,11 +34,11 @@ class CustomExtension {
             {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'ID = [ID]',
+                text: 'BlockType =  [TYPE]',
                 arguments: {
-                    ID: {
+                    TYPE: {
                         type: Scratch.ArgumentType.STRING,
-                        defaultValue: 'test', // 初期値
+                        menu: 'blockTypeMenu'
                     }
                 }
             },
@@ -62,8 +62,8 @@ class CustomExtension {
     }
 
     getID(args) {
-        this.id = args.ID;
-        return args.ID;
+        this.block = args.TYPE;
+        return args.TYPE;
     }
     setBlockType(args) {
         this.block = args.TYPE;
