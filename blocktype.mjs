@@ -31,6 +31,11 @@ class CustomExtension {
                 }
             },
             {
+                opcode: 'getBlockType',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'BrockType'
+            },
+            {
                 opcode: 'getTrialBlock',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'trialのブロック'
@@ -47,7 +52,9 @@ class CustomExtension {
     setBlockType(args) {
         this.block = args.TYPE;
     }
-
+    getBrockType() {
+        return this.block;
+    }
     getBasicBlock() {
     }
 
