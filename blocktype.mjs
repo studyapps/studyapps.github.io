@@ -3,25 +3,8 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'trial'; // 初期値を'trial'に設定
         this.X = "初期値"; // デフォルトの値
-        this.updateX();
-    }
+     }
     
-    updateX() {
-        let variable = undefined;
-        const stage = this.runtime ? this.runtime.getTargetForStage() : null;
-        if (stage && stage.variables) {
-            variable = stage.variables;
-            for (let key in variable) {
-                if (variable[key].name === "変数") {
-                    this.X = variable[key].value;
-                    break;
-                }
-            }
-        } else {
-            console.warn("Stage or variables not found.");
-        }
-    }
-
     getInfo() {
         var c = {
             id: 'BlockType',
@@ -38,8 +21,8 @@ class CustomExtension {
         return c.blocks.push(
             {
                 opcode: 'setBlockType',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockTypeを [TYPE] に設定3',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'BlockType =  [TYPE]',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
@@ -76,6 +59,7 @@ class CustomExtension {
     }
     setBlockType(args) {
         this.block = args.TYPE;
+        return args.TYPE;
     }
     getBlockType() {
         return this.block;
