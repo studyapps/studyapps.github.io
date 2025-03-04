@@ -29,16 +29,16 @@ class CustomExtension {
                     arguments: {
                         NOTE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '4', // 初期値
+                            defaultValue: '4',
                             menu: 'noteMenu'
                         },
                         TEMPO: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: '120', // 初期値
+                            defaultValue: '120'
                         },
                         UNIT: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '1', // 初期値
+                            defaultValue: '1',
                             menu: 'unitMenu'
                         }
                     }
