@@ -47,13 +47,13 @@ class CustomExtension {
             },
             {
                 opcode: 'getTrialBlock',
-                blockType: Scratch.BlockType.REPORTER,
+                blockType: Scratch.BlockType.COMMAND,
                 text: 'trialのブロック'
             }
         ), this.shouldShowBasicBlocks() && c.blocks.push(
             {
                 opcode: 'getBasicBlock',
-                blockType: Scratch.BlockType.REPORTER,
+                blockType: Scratch.BlockType.COMMAND,
                 text: 'Basicのブロック'
             }
         ), c;
