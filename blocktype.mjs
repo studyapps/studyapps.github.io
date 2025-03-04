@@ -36,7 +36,7 @@ class CustomExtension {
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'ID = [ID]',
                 ID: {
-                    type: Scratch.ArgumentType.NUMBER,
+                    type: Scratch.ArgumentType.STRING,
                     defaultValue: 'お客様ID'
                 }
             },
