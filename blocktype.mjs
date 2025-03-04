@@ -34,11 +34,11 @@ class CustomExtension {
             {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'ID',
+                text: 'ID = [ID]',
                 arguments: {
                     ID: {
-                        type: Scratch.ArgumentType.NUMBER,
-                        defaultValue: '100', // 初期値
+                        type: Scratch.ArgumentType.STRING,
+                        defaultValue: 'test', // 初期値
                     }
                 }
             },
