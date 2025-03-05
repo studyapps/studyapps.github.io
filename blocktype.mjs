@@ -1,14 +1,14 @@
 class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.storedID = ""; // 初期値
-        this.loadStoredID(); // SB3ファイル起動時にIDを復元
+        this.id = ""; // 初期値
+        this.loadID(); // SB3ファイル起動時にIDを復元
     }
 
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'ID 変数',
+            name: 'SB3対応',
             blocks: [
                 {
                     opcode: 'setID',
@@ -31,34 +31,34 @@ class IDVariableExtension {
     }
 
     setID(args) {
-        this.storedID = args.ID;
-        this.saveStoredID(); // IDを保存
-        return this.storedID;
+        this.id = args.ID;
+        this.saveID(); // IDを保存
+        return this.id;
     }
 
     getID() {
-        return this.storedID;
+        return this.id;
     }
 
     saveState() {
-        return { storedID: this.storedID };
+        return { id: this.id };
     }
 
     loadState(state) {
-        if (state && state.storedID !== undefined) {
-            this.storedID = state.storedID;
-            this.saveStoredID(); // 読み込んだIDを保存
+        if (state && state.id !== undefined) {
+            this.id = state.id;
+            this.saveID(); // 読み込んだIDを保存
         }
     }
 
-    saveStoredID() {
-        localStorage.setItem('idVariable', this.storedID);
+    saveID() {
+        localStorage.setItem('idVariable', this.id);
     }
 
-    loadStoredID() {
+    loadID() {
         const stored = localStorage.getItem('idVariable');
         if (stored !== null) {
-            this.storedID = stored;
+            this.id = stored;
         }
     }
 }
