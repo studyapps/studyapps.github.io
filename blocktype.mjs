@@ -19,7 +19,7 @@ class CustomExtension {
                     items: ['Trial','Basic']
                 },
                 costumeMenu: {
-                    acceptReporters: true,
+                    acceptReporters: false,
                     items: 'getCostumeNames'
                 }
             }
@@ -28,7 +28,7 @@ class CustomExtension {
             {
                 opcode: 'getSelectedCostume',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'selected costume',
+                text: 'selected costume [COSTUME]',
                 arguments: {
                     COSTUME: {
                         type: Scratch.ArgumentType.STRING,
@@ -82,6 +82,7 @@ class CustomExtension {
         if (!target || !target.getCostumes) return [];
         return target.getCostumes().map(costume => ({ text: costume.name, value: costume.name }));
     }
+
     getSelectedCostume(args) {
         return args.COSTUME;
     }
