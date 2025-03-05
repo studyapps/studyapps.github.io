@@ -8,6 +8,7 @@ class CustomExtension {
 
 
     getInfo() {
+        const stage = this.runtime.getTargetForStage();
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
