@@ -17,10 +17,6 @@ class CustomExtension {
                 blockTypeMenu: {
                     acceptReporters: true,
                     items: ['Trial','Basic']
-                },
-                costumeMenu: {
-                    acceptReporters: false,
-                    items: this.getCostumeNames.bind(this)
                 }
             }
         };
@@ -36,22 +32,6 @@ class CustomExtension {
                             menu: 'costumeMenu'
                         }
                     }
-            },
-            {
-                opcode: 'setParameters',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Block =  [TYPE] ID = [ID]',
-                arguments: {
-                    TYPE: {
-                        type: Scratch.ArgumentType.STRING,
-                        menu: 'blockTypeMenu',
-                        defaultValue: this.block ?? 'Trial'
-                    },
-                    ID: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue: this.id ?? "お客様ID"
-                    }
-                }
             },
             {
                 opcode: 'getID',
@@ -77,17 +57,6 @@ class CustomExtension {
             }
         ), c;
     }
-
-    getCostumeNames() {
-        let target = this.runtime.getEditingTarget();
-        if (!target || !target.getCostumes) return [];
-        return target.getCostumes().map(costume => ({ text: costume.name, value: costume.name }));
-    }
-
-    getSelectedCostume(args) {
-        return args.COSTUME || '';
-    }
-
     setParameters(args){
         this.block = args.TYPE;
         this.id = args.ID;
