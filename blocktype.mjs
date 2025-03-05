@@ -3,23 +3,26 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'Trial'; 
         this.id = "お客様ID"; 
-        this.runtime.on('PROJECT_START', () => {
-            this.initializeVariable();
-        });
+        // 変数の初期化を実行
+        this.checkAndInitializeVariable();
     }
 
-    initializeVariable() {
-        const targets = this.runtime.targets;
-        for (const target of targets) {
-            if (target.isStage) continue;
-            
-            const variable = Object.values(target.variables).find(v => v.name === '変数');
-            if (variable) {
-                this.id = variable.value;
-                console.log("IDあったよ");
-                break;
+
+    checkAndInitializeVariable() {
+        setTimeout(() => {
+            const targets = this.runtime.targets;
+            console.log("検索します");
+            for (const target of targets) {
+                if (target.isStage) continue;
+                
+                const variable = Object.values(target.variables).find(v => v.name === '変数');
+                if (variable) {
+                    this.id = variable.value;
+                    console.log("IDあったよ");
+                    break;
+                }
             }
-        }
+        }, 1000); // 1秒後に実行
     }
 
     getInfo() {
