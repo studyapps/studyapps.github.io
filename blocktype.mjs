@@ -58,11 +58,13 @@ class CustomExtension {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'ID',
+                defaultValue: this.id ?? " "
             },
             {
                 opcode: 'getBlockType',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'BlockType',
+                text: 'Block',
+                defaultValue: this.block ?? 'Trial'
             },
             {
                 opcode: 'getTrialBlock',
