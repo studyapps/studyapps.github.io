@@ -3,28 +3,24 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'Trial'; 
         this.id = "お客様ID"; 
-        this.update();
+        this.runtime.once('PROJECT_LOADED', () => {
+            this.initializeVariable();
+        });
     }
 
-    update() {
-        let variable = undefined;
-        const stage = this.runtime ? this.runtime.getTargetForStage() : null;
-        if (stage && stage.variables) {
-            variable = stage.variables;
-            for (let key in variable) {
-                if (variable[key].name === "ID") {
-                    this.id = variable[key].value;
-                    console.log("IDの変数あったよ");
-                    break;
-                }
-            }
-        } else {
-            console.warn("Stage or variables not found.");
+    initializeVariable() {
+        const target = this.runtime.getEditingTarget();
+        if (!target) return;
+        
+        const variable = Object.values(target.variables).find(v => v.name === 'ID');
+        if (variable) {
+            this.id = variable.value;
+            console.log("IDあったよ");
         }
     }
 
+
     getInfo() {
-        this.update(); // ブロック情報取得時にXを更新
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
