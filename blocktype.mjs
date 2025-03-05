@@ -32,23 +32,20 @@ class CustomExtension {
                         defaultValue: this.block ?? 'Trial'
                     },
                     ID: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: this.id ?? "お客様ID"
-                    
+                        type: Scratch.ArgumentType.STRING,
+                        defaultValue: this.id ?? "お客様ID"
                     }
                 }
             },
             {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'ID',
-                defaultValue: this.id ?? "お客様ID"
+                text: 'ID'
             },
             {
                 opcode: 'getBlockType',
                 blockType: Scratch.BlockType.REPORTER,
-                text: 'Block',
-                defaultValue: this.block ?? 'Trial'
+                text: 'Block'
             },
             {
                 opcode: 'getTrialBlock',
