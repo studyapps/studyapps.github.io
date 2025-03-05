@@ -3,27 +3,9 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'Trial'; 
         this.id = "お客様ID"; 
-        // 変数の初期化を実行
-        this.checkAndInitializeVariable();
     }
 
 
-    checkAndInitializeVariable() {
-        setTimeout(() => {
-            const targets = this.runtime.targets;
-            console.log("検索します");
-            for (const target of targets) {
-                if (target.isStage) continue;
-                
-                const variable = Object.values(target.variables).find(v => v.name === '変数');
-                if (variable) {
-                    this.id = variable.value;
-                    console.log("IDあったよ");
-                    break;
-                }
-            }
-        }, 1000); // 1秒後に実行
-    }
 
     getInfo() {
         var c = {
@@ -87,6 +69,10 @@ class CustomExtension {
         this.block = args.TYPE;
         this.id = args.ID;
         console.log("IDの更新をしました");
+        const targets = this.runtime.targets;
+        targets.forEach(target => {
+            console.log("ターゲット名:", target.getName());
+        });
     }
     getBlockType() {
         return this.block;
