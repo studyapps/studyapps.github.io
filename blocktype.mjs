@@ -22,16 +22,20 @@ class CustomExtension {
         };
         return c.blocks.push(
             {
-                opcode: 'getSelectedCostume',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'selected costume [COSTUME]',
-                    arguments: {
-                        COSTUME: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '',
-                            menu: 'costumeMenu'
-                        }
+                opcode: 'setParameters',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'Block =  [TYPE] ID = [ID]',
+                arguments: {
+                    TYPE: {
+                        type: Scratch.ArgumentType.STRING,
+                        menu: 'blockTypeMenu',
+                        defaultValue: this.block ?? 'Trial'
+                    },
+                    ID: {
+                        type: Scratch.ArgumentType.STRING,
+                        defaultValue: this.id ?? "お客様ID"
                     }
+                }
             },
             {
                 opcode: 'getID',
@@ -57,6 +61,7 @@ class CustomExtension {
             }
         ), c;
     }
+
     setParameters(args){
         this.block = args.TYPE;
         this.id = args.ID;
