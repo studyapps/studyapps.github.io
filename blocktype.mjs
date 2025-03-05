@@ -68,11 +68,11 @@ class CustomExtension {
     setParameters(args){
         this.block = args.TYPE;
         this.id = args.ID;
-        console.log("IDの更新をしました");
+        console.log("IDの更新をしましたよ");
         const targets = this.runtime.targets;
-        targets.forEach(target => {
-            console.log("ターゲット名:", target.getName());
-        });
+        //targets.forEach(target => {
+        //    console.log("ターゲット名:", target.getName());
+        //});
     }
     getBlockType() {
         return this.block;
