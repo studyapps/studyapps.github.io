@@ -15,7 +15,7 @@ class CustomExtension {
             
             const variable = Object.values(target.variables).find(v => v.name === '変数');
             if (variable) {
-                this.X = variable.value;
+                this.id = variable.value;
                 console.log("IDあったよ");
                 break;
             }
