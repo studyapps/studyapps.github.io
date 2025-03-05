@@ -1,15 +1,15 @@
 class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.id = ""; // 初期値
-        this.block = ""; // 初期値
-        this.loadID(); // SB3ファイル起動時にIDを復元
+        this.storedID = ""; // 初期値
+        this.storedTYPE = ""; // 初期値
+        this.loadStoredValues(); // SB3ファイル起動時に値を復元
     }
 
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'SB3対応',
+            name: 'ID / TYPE 変数',
             blocks: [
                 {
                     opcode: 'setID',
@@ -28,82 +28,74 @@ class IDVariableExtension {
                     text: 'ID を取得'
                 },
                 {
-                    opcode: 'setBLOCK',
+                    opcode: 'setTYPE',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Block を [TYPE] に設定',
+                    text: 'TYPE を [TYPE] に設定',
                     arguments: {
                         TYPE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'blockTypeMenu',
-                            defaultValue: this.storedID || ""
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: this.storedTYPE || ""
                         }
                     }
                 },
                 {
-                    opcode: 'getBLOCK',
+                    opcode: 'getTYPE',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'Block を取得'
+                    text: 'TYPE を取得'
                 }
-            ],
-            menus: {
-                blockTypeMenu: {
-                    acceptReporters: true,
-                    items: ['Trial','Basic']
-                }
-            }
+            ]
         };
     }
 
     setID(args) {
-        this.id = args.ID;
-        this.saveID(); // IDを保存
-        return this.id;
+        this.storedID = args.ID;
+        this.saveStoredValues(); // IDを保存
+        return this.storedID;
     }
 
     getID() {
-        return this.id;
+        return this.storedID;
     }
 
-    setBLOCK(args) {
-        this.block = args.block;
-        this.saveBLOCK(); // Blockを保存
-        return this.brock;
+    setTYPE(args) {
+        this.storedTYPE = args.TYPE;
+        this.saveStoredValues(); // TYPEを保存
+        return this.storedTYPE;
     }
 
-    getBLOCK() {
-        return this.block;
+    getTYPE() {
+        return this.storedTYPE;
     }
 
     saveState() {
-        return { id: this.id };
+        return { storedID: this.storedID, storedTYPE: this.storedTYPE };
     }
 
     loadState(state) {
-        if (state && state.id !== undefined) {
-            this.id = state.id;
-            this.saveID(); // 読み込んだIDを保存
+        if (state) {
+            if (state.storedID !== undefined) {
+                this.storedID = state.storedID;
+            }
+            if (state.storedTYPE !== undefined) {
+                this.storedTYPE = state.storedTYPE;
+            }
+            this.saveStoredValues(); // 読み込んだ値を保存
         }
     }
 
-    saveID() {
-        localStorage.setItem('idVariable', this.id);
+    saveStoredValues() {
+        localStorage.setItem('idVariable', this.storedID);
+        localStorage.setItem('typeVariable', this.storedTYPE);
     }
 
-    loadID() {
-        const stored = localStorage.getItem('idVariable');
-        if (stored !== null) {
-            this.id = stored;
+    loadStoredValues() {
+        const storedID = localStorage.getItem('idVariable');
+        if (storedID !== null) {
+            this.storedID = storedID;
         }
-    }
-    
-    saveBLOCK() {
-        localStorage.setItem('idVariable', this.block);
-    }
-
-    loadBLOCK() {
-        const stored = localStorage.getItem('idVariable');
-        if (stored !== null) {
-            this.block = stored;
+        const storedTYPE = localStorage.getItem('typeVariable');
+        if (storedTYPE !== null) {
+            this.storedTYPE = storedTYPE;
         }
     }
 }
