@@ -36,27 +36,27 @@ class CustomExtension {
                     }
                 }
             },
-            //{
-            //    opcode: 'getID',
-            //    blockType: Scratch.BlockType.REPORTER,
-            //    text: 'ID',
-            //},
-            //{
-            //    opcode: 'getBlockType',
-            //    blockType: Scratch.BlockType.REPORTER,
-            //    text: 'BlockType',
-            //},
+            {
+                opcode: 'getID',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'ID',
+            },
+            {
+                opcode: 'getBlockType',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'BlockType',
+            },
             {
                 opcode: 'getTrialBlock',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'Trialのライセンスで表示されるブロック'
+                text: 'Trialライセンスで表示されるブロック'
             }
         ), 
         this.shouldShowBasicBlocks() && c.blocks.push(
             {
                 opcode: 'getBasicBlock',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'Basicのライセンスで表示されるブロック'
+                text: 'Basicライセンスで表示されるブロック'
             }
         ), c;
     }
