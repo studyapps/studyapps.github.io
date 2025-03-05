@@ -3,9 +3,27 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'Trial'; 
         this.id = "お客様ID"; 
+        this.update();
+    }
+
+    update() {
+        let variable = undefined;
+        const stage = this.runtime ? this.runtime.getTargetForStage() : null;
+        if (stage && stage.variables) {
+            variable = stage.variables;
+            for (let key in variable) {
+                if (variable[key].name === "ID") {
+                    this.id = variable[key].value;
+                    break;
+                }
+            }
+        } else {
+            console.warn("Stage or variables not found.");
+        }
     }
 
     getInfo() {
+        this.update(); // ブロック情報取得時にXを更新
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
