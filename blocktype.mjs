@@ -17,10 +17,25 @@ class CustomExtension {
                 blockTypeMenu: {
                     acceptReporters: true,
                     items: ['Trial','Basic']
+                },
+                costumeMenu: {
+                    acceptReporters: true,
+                    items: 'getCostumeNames'
                 }
             }
         };
         return c.blocks.push(
+            {
+                opcode: 'getSelectedCostume',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'selected costume',
+                arguments: {
+                    COSTUME: {
+                        type: Scratch.ArgumentType.STRING,
+                        menu: 'costumeMenu'
+                    }
+                }
+            },
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
