@@ -1,13 +1,13 @@
 class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.storedID = ""; // 初期値
+        this.id = ""; // 初期値
     }
 
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'ID 変数',
+            name: 'SB3ファイル対応',
             blocks: [
                 {
                     opcode: 'setID',
@@ -16,7 +16,7 @@ class IDVariableExtension {
                     arguments: {
                         ID: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.storedID || ""
+                            defaultValue: this.id || ""
                         }
                     }
                 },
@@ -30,21 +30,21 @@ class IDVariableExtension {
     }
 
     setID(args) {
-        this.storedID = args.ID;
+        this.id = args.ID;
         return this.storedID;
     }
 
     getID() {
-        return this.storedID;
+        return this.id;
     }
 
     saveState() {
-        return { storedID: this.storedID };
+        return { id: this.id };
     }
 
     loadState(state) {
-        if (state && state.storedID !== undefined) {
-            this.storedID = state.storedID;
+        if (state && state.id !== undefined) {
+            this.id = state.id;
         }
     }
 }
