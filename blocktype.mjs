@@ -14,6 +14,7 @@ class CustomExtension {
             for (let key in variable) {
                 if (variable[key].name === "ID") {
                     this.id = variable[key].value;
+                    console.log("IDの変数あったよ");
                     break;
                 }
             }
