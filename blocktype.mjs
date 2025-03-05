@@ -26,17 +26,6 @@ class CustomExtension {
         };
         return c.blocks.push(
             {
-                opcode: 'getSelectedCostume',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'selected costume [COSTUME]',
-                arguments: {
-                    COSTUME: {
-                        type: Scratch.ArgumentType.STRING,
-                        menu: 'costumeMenu'
-                    }
-                }
-            },
-            {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'Block =  [TYPE] ID = [ID]',
