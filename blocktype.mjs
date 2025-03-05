@@ -33,8 +33,8 @@ class IDVariableExtension {
                     text: 'TYPE を [TYPE] に設定',
                     arguments: {
                         TYPE: {
-                            type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.storedTYPE || ""
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'typeMenu'
                         }
                     }
                 },
@@ -43,7 +43,13 @@ class IDVariableExtension {
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'TYPE を取得'
                 }
-            ]
+            ],
+            menus: {
+                typeMenu: {
+                    acceptReporters: false,
+                    items: ['Trial', 'Basic']
+                }
+            }
         };
     }
 
