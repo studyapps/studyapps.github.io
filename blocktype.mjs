@@ -40,7 +40,7 @@ class CustomExtension {
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'BlockType =  [TYPE] ID = [ID]',
+                text: 'Block =  [TYPE] ID = [ID]',
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
