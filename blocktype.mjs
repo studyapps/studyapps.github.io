@@ -3,22 +3,24 @@ class CustomExtension {
         this.runtime = runtime;
         this.block = 'Trial'; 
         this.id = "お客様ID"; 
-        this.runtime.once('PROJECT_LOADED', () => {
+        this.runtime.on('PROJECT_START', () => {
             this.initializeVariable();
         });
     }
 
     initializeVariable() {
-        const target = this.runtime.getEditingTarget();
-        if (!target) return;
-        
-        const variable = Object.values(target.variables).find(v => v.name === 'ID');
-        if (variable) {
-            this.id = variable.value;
-            console.log("IDあったよ");
+        const targets = this.runtime.targets;
+        for (const target of targets) {
+            if (target.isStage) continue;
+            
+            const variable = Object.values(target.variables).find(v => v.name === '変数');
+            if (variable) {
+                this.X = variable.value;
+                console.log("IDあったよ");
+                break;
+            }
         }
     }
-
 
     getInfo() {
         var c = {
