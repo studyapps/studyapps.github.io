@@ -14,7 +14,7 @@ class CustomExtension {
             menus: {
                 blockTypeMenu: {
                     acceptReporters: true,
-                    items: ['Basic', 'trial']
+                    items: ['trial','Basic']
                 }
             }
         };
@@ -26,11 +26,13 @@ class CustomExtension {
                 arguments: {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
-                        menu: 'blockTypeMenu'
+                        menu: 'blockTypeMenu',
+                        defaultValue: this.block ?? " "
                     },
                     ID: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue: 'お客様ID'
+                    type: Scratch.ArgumentType.STRING,
+                    defaultValue: this.id ?? " "
+                    
                     }
                 }
             },
@@ -47,13 +49,14 @@ class CustomExtension {
             {
                 opcode: 'getTrialBlock',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'Trialのブロック'
+                text: 'Trialのライセンスで表示されるブロック'
             }
-        ), this.shouldShowBasicBlocks() && c.blocks.push(
+        ), 
+        this.shouldShowBasicBlocks() && c.blocks.push(
             {
                 opcode: 'getBasicBlock',
                 blockType: Scratch.BlockType.COMMAND,
-                text: 'Basicのブロック'
+                text: 'Basicのライセンスで表示されるブロック'
             }
         ), c;
     }
