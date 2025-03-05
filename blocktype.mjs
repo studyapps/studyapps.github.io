@@ -2,6 +2,7 @@ class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
         this.id = ""; // 初期値
+        this.block = ""; // 初期値
         this.loadID(); // SB3ファイル起動時にIDを復元
     }
 
@@ -25,8 +26,31 @@ class IDVariableExtension {
                     opcode: 'getID',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'ID を取得'
+                },
+                {
+                    opcode: 'setBLOCK',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Block を [TYPE] に設定',
+                    arguments: {
+                        TYPE: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'blockTypeMenu',
+                            defaultValue: this.storedID || ""
+                        }
+                    }
+                },
+                {
+                    opcode: 'getBLOCK',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Block を取得'
                 }
-            ]
+            ],
+            menus: {
+                blockTypeMenu: {
+                    acceptReporters: true,
+                    items: ['Trial','Basic']
+                }
+            }
         };
     }
 
@@ -38,6 +62,16 @@ class IDVariableExtension {
 
     getID() {
         return this.id;
+    }
+
+    setBLOCK(args) {
+        this.block = args.block;
+        this.saveBLOCK(); // Blockを保存
+        return this.brock;
+    }
+
+    getBLOCK() {
+        return this.block;
     }
 
     saveState() {
@@ -59,6 +93,17 @@ class IDVariableExtension {
         const stored = localStorage.getItem('idVariable');
         if (stored !== null) {
             this.id = stored;
+        }
+    }
+    
+    saveBLOCK() {
+        localStorage.setItem('idVariable', this.block);
+    }
+
+    loadBLOCK() {
+        const stored = localStorage.getItem('idVariable');
+        if (stored !== null) {
+            this.block = stored;
         }
     }
 }
