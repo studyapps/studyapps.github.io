@@ -1,7 +1,7 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.block = 'trial'; 
+        this.block = 'Trial'; 
         this.id = "お客様ID"; 
     }
 
@@ -14,7 +14,7 @@ class CustomExtension {
             menus: {
                 blockTypeMenu: {
                     acceptReporters: true,
-                    items: ['trial','Basic']
+                    items: ['Trial','Basic']
                 }
             }
         };
@@ -27,7 +27,7 @@ class CustomExtension {
                     TYPE: {
                         type: Scratch.ArgumentType.STRING,
                         menu: 'blockTypeMenu',
-                        defaultValue: this.block ?? " "
+                        defaultValue: this.block ?? 'Trial'
                     },
                     ID: {
                     type: Scratch.ArgumentType.STRING,
