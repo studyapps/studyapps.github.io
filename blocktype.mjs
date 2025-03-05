@@ -1,84 +1,52 @@
-class CustomExtension {
+class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.block = ''; 
-        this.id = ''; 
+        this.storedID = ""; // 初期値
     }
-
-
 
     getInfo() {
-        var c = {
-            id: 'BlockType',
-            name: 'URL Extension',
-            color1: "#A6A6A6",
-            blocks: [],
-            menus: {
-                blockTypeMenu: {
-                    acceptReporters: true,
-                    items: ['Trial','Basic']
-                }
-            }
-        };
-        return c.blocks.push(
-            {
-                opcode: 'setParameters',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Block =  [TYPE] ID = [ID]',
-                arguments: {
-                    TYPE: {
-                        type: Scratch.ArgumentType.STRING,
-                        menu: 'blockTypeMenu',
-                        defaultValue: this.block ?? 'Trial'
-                    },
-                    ID: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue: this.id ?? "お客様ID"
+        return {
+            id: 'idVariableExt',
+            name: 'ID 変数',
+            blocks: [
+                {
+                    opcode: 'setID',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'ID を [ID] に設定',
+                    arguments: {
+                        ID: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: this.storedID || ""
+                        }
                     }
+                },
+                {
+                    opcode: 'getID',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'ID を取得'
                 }
-            },
-            {
-                opcode: 'getID',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'ID'
-            },
-            {
-                opcode: 'getBlockType',
-                blockType: Scratch.BlockType.REPORTER,
-                text: 'Block'
-            },
-            {
-                opcode: 'getTrialBlock',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Trialライセンスで表示されるブロック'
-            }
-        ), 
-        this.shouldShowBasicBlocks() && c.blocks.push(
-            {
-                opcode: 'getBasicBlock',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Basicライセンスで表示されるブロック'
-            }
-        ), c;
+            ]
+        };
     }
 
-    setParameters(args){
-        this.block = args.TYPE;
-        this.id = args.ID;
+    setID(args) {
+        this.storedID = args.ID;
+        return this.storedID;
     }
-    getBlockType() {
-        return this.block;
-    }
+
     getID() {
-        return this.id;
+        return this.storedID;
     }
-    getBasicBlock() {
+
+    saveState() {
+        return { storedID: this.storedID };
     }
-    getTrialBlock() {
-    }
-    shouldShowBasicBlocks() {
-        return this.block == "Basic";
+
+    loadState(state) {
+        if (state && state.storedID !== undefined) {
+            this.storedID = state.storedID;
+        }
     }
 }
 
-Scratch.extensions.register(new CustomExtension());
+Scratch.extensions.register(new IDVariableExtension());
