@@ -84,6 +84,7 @@ class CustomExtension {
     setParameters(args){
         this.block = args.TYPE;
         this.id = args.ID;
+        console.log("IDの更新をしました");
     }
     getBlockType() {
         return this.block;
