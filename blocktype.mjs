@@ -1,13 +1,14 @@
 class IDVariableExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.id = ""; // 初期値
+        this.storedID = ""; // 初期値
+        this.loadStoredID(); // SB3ファイル起動時にIDを復元
     }
 
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'SB3ファイル対応',
+            name: 'ID 変数',
             blocks: [
                 {
                     opcode: 'setID',
@@ -16,7 +17,7 @@ class IDVariableExtension {
                     arguments: {
                         ID: {
                             type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.id || ""
+                            defaultValue: this.storedID || ""
                         }
                     }
                 },
@@ -30,21 +31,34 @@ class IDVariableExtension {
     }
 
     setID(args) {
-        this.id = args.ID;
+        this.storedID = args.ID;
+        this.saveStoredID(); // IDを保存
         return this.storedID;
     }
 
     getID() {
-        return this.id;
+        return this.storedID;
     }
 
     saveState() {
-        return { id: this.id };
+        return { storedID: this.storedID };
     }
 
     loadState(state) {
-        if (state && state.id !== undefined) {
-            this.id = state.id;
+        if (state && state.storedID !== undefined) {
+            this.storedID = state.storedID;
+            this.saveStoredID(); // 読み込んだIDを保存
+        }
+    }
+
+    saveStoredID() {
+        localStorage.setItem('idVariable', this.storedID);
+    }
+
+    loadStoredID() {
+        const stored = localStorage.getItem('idVariable');
+        if (stored !== null) {
+            this.storedID = stored;
         }
     }
 }
