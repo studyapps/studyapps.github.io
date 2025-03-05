@@ -1,8 +1,8 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.block = 'Trial'; 
-        this.id = "お客様ID"; 
+        this.block = ''; 
+        this.id = ''; 
     }
 
 
@@ -33,7 +33,7 @@ class CustomExtension {
                     },
                     ID: {
                     type: Scratch.ArgumentType.STRING,
-                    defaultValue: this.id ?? " "
+                    defaultValue: this.id ?? "お客様ID"
                     
                     }
                 }
@@ -42,7 +42,7 @@ class CustomExtension {
                 opcode: 'getID',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'ID',
-                defaultValue: this.id ?? " "
+                defaultValue: this.id ?? "お客様ID"
             },
             {
                 opcode: 'getBlockType',
@@ -68,7 +68,6 @@ class CustomExtension {
     setParameters(args){
         this.block = args.TYPE;
         this.id = args.ID;
-        console.log("IDの更新をしました");
     }
     getBlockType() {
         return this.block;
@@ -79,10 +78,6 @@ class CustomExtension {
     getBasicBlock() {
     }
     getTrialBlock() {
-        const targets = this.runtime.targets;
-        //targets.forEach(target => {
-        //    console.log("ターゲット名:", target.getName());
-        //});
     }
     shouldShowBasicBlocks() {
         return this.block == "Basic";
