@@ -82,6 +82,9 @@ class CustomExtension {
         if (!target || !target.getCostumes) return [];
         return target.getCostumes().map(costume => ({ text: costume.name, value: costume.name }));
     }
+    getSelectedCostume(args) {
+        return args.COSTUME;
+    }
 
     setParameters(args){
         this.block = args.TYPE;
