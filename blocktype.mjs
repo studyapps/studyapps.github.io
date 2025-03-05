@@ -20,11 +20,23 @@ class CustomExtension {
                 },
                 costumeMenu: {
                     acceptReporters: false,
-                    items: 'getCostumeNames'
+                    items: this.getCostumeNames.bind(this)
                 }
             }
         };
         return c.blocks.push(
+            {
+                opcode: 'getSelectedCostume',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'selected costume [COSTUME]',
+                    arguments: {
+                        COSTUME: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '',
+                            menu: 'costumeMenu'
+                        }
+                    }
+            },
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
@@ -73,7 +85,7 @@ class CustomExtension {
     }
 
     getSelectedCostume(args) {
-        return args.COSTUME;
+        return args.COSTUME || '';
     }
 
     setParameters(args){
