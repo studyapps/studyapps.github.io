@@ -8,7 +8,6 @@ class CustomExtension {
 
 
     getInfo() {
-        const stage = this.runtime.getTargetForStage();
         var c = {
             id: 'BlockType',
             name: 'URL Extension',
@@ -61,6 +60,12 @@ class CustomExtension {
                 text: 'Basicライセンスで表示されるブロック'
             }
         ), c;
+    }
+
+    getCostumeNames() {
+        let target = this.runtime.getEditingTarget();
+        if (!target || !target.getCostumes) return [];
+        return target.getCostumes().map(costume => ({ text: costume.name, value: costume.name }));
     }
 
     setParameters(args){
