@@ -1,13 +1,13 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.projectData = { id: '12345', type: 'Trial' };
-        this.loadProjectData();
+        this.projectData = { id: '', type: '' };
+        this.runtime.on('PROJECT_LOADED', () => this.loadProjectData());
     }
 
     getInfo() {
         return {
-            id: 'customExtension2',
+            id: 'customExtension',
             name: 'Custom Variables',
             blocks: [
                 {
@@ -71,17 +71,27 @@ class CustomExtension {
     }
 
     saveToProject() {
-        const data = JSON.stringify(this.projectData);
-        localStorage.setItem('__customProjectData__', data);
+        if (this.runtime && this.runtime.targets) {
+            const stage = this.runtime.getEditingTarget();
+            if (stage) {
+                stage.variables['__customProjectData__'] = {
+                    id: '__customProjectData__',
+                    type: 'string',
+                    value: JSON.stringify(this.projectData)
+                };
+            }
+        }
     }
 
     loadProjectData() {
-        const savedData = localStorage.getItem('__customProjectData__');
-        if (savedData) {
-            try {
-                this.projectData = JSON.parse(savedData);
-            } catch (e) {
-                console.error('Failed to parse saved project data:', e);
+        if (this.runtime && this.runtime.targets) {
+            const stage = this.runtime.getEditingTarget();
+            if (stage && stage.variables['__customProjectData__']) {
+                try {
+                    this.projectData = JSON.parse(stage.variables['__customProjectData__'].value);
+                } catch (e) {
+                    console.error('Failed to parse stored project data:', e);
+                }
             }
         }
     }
