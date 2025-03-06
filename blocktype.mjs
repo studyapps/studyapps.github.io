@@ -9,7 +9,7 @@ class CustomURLExtension {
     getInfo() {
         return {
             id: "customUrlExtension",
-            name: "URL拡張機能",
+            name: "SB3対応",
             blocks: [
                 {
                     opcode: "setID",
