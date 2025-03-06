@@ -1,91 +1,79 @@
-class IDVariableExtension {
+class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.storedID = ""; // 初期値
-        this.storedTYPE = ""; // 初期値
+        this.projectData = {};
     }
 
     getInfo() {
         return {
-            id: 'idVariableExt',
-            name: 'SB3対応',
+            id: 'customExtension',
+            name: 'Custom Blocks',
             blocks: [
                 {
                     opcode: 'setID',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'ID を [ID] に設定',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'Set ID [ID]',
                     arguments: {
                         ID: {
-                            type: Scratch.ArgumentType.NUMBER,
-                            defaultValue: this.storedID || ""
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: '12345'
                         }
                     }
                 },
                 {
-                    opcode: 'getID',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'ID を取得'
-                },
-                {
-                    opcode: 'setTYPE',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'TYPE を [TYPE] に設定',
+                    opcode: 'setType',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'Set Type [TYPE]',
                     arguments: {
                         TYPE: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'typeMenu'
                         }
                     }
-                },
-                {
-                    opcode: 'getTYPE',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'TYPE を取得'
                 }
             ],
             menus: {
                 typeMenu: {
-                    acceptReporters: false,
+                    acceptReporters: true,
                     items: ['Trial', 'Basic']
                 }
             }
         };
     }
 
-    setID(args) {
-        this.storedID = args.ID;
-        this.runtime.ioDevices.project.saveProject(); // SB3に保存
-        return this.storedID;
+    setID(args, util) {
+        this.projectData.id = args.ID;
+        this.saveToProject(util);
     }
 
-    getID() {
-        return this.storedID;
+    setType(args, util) {
+        this.projectData.type = args.TYPE;
+        this.saveToProject(util);
     }
 
-    setTYPE(args) {
-        this.storedTYPE = args.TYPE;
-        this.runtime.ioDevices.project.saveProject(); // SB3に保存
-        return this.storedTYPE;
+    saveToProject(util) {
+        if (util.target && util.target.blocks) {
+            util.target.blocks._blocks['__customProjectData__'] = {
+                id: '__customProjectData__',
+                opcode: 'data_variable',
+                fields: {
+                    VARIABLE: { name: '__customProjectData__' }
+                },
+                shadow: true,
+                topLevel: true,
+                value: JSON.stringify(this.projectData)
+            };
+        }
     }
 
-    getTYPE() {
-        return this.storedTYPE;
-    }
-
-    saveState() {
-        return { storedID: this.storedID, storedTYPE: this.storedTYPE };
-    }
-
-    loadState(state) {
-        if (state) {
-            if (state.storedID !== undefined) {
-                this.storedID = state.storedID;
-            }
-            if (state.storedTYPE !== undefined) {
-                this.storedTYPE = state.storedTYPE;
+    loadProjectData(util) {
+        if (util.target && util.target.blocks) {
+            const block = util.target.blocks._blocks['__customProjectData__'];
+            if (block && block.value) {
+                this.projectData = JSON.parse(block.value);
             }
         }
     }
-} 
+}
 
-Scratch.extensions.register(new IDVariableExtension());
+Scratch.extensions.register(new CustomExtension());
