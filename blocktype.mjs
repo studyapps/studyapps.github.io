@@ -7,7 +7,7 @@ class CustomExtension {
 
     getInfo() {
         return {
-            id: 'customExtension',
+            id: 'customExtension2',
             name: 'Custom Variables',
             blocks: [
                 {
