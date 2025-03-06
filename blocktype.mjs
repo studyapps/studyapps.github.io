@@ -1,7 +1,8 @@
 class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.projectData = {};
+        this.projectData = { id: '12345', type: 'Trial' };
+        this.loadProjectData();
     }
 
     getInfo() {
@@ -52,43 +53,35 @@ class CustomExtension {
     }
 
     getID() {
-        return this.projectData.id || '12345';
+        return this.projectData.id;
     }
 
     getType() {
-        return this.projectData.type || 'Trial';
+        return this.projectData.type;
     }
 
-    setID(args, util) {
+    setID(args) {
         this.projectData.id = args.ID;
-        this.saveToProject(util);
+        this.saveToProject();
     }
 
-    setType(args, util) {
+    setType(args) {
         this.projectData.type = args.TYPE;
-        this.saveToProject(util);
+        this.saveToProject();
     }
 
-    saveToProject(util) {
-        if (util.target && util.target.blocks) {
-            util.target.blocks._blocks['__customProjectData__'] = {
-                id: '__customProjectData__',
-                opcode: 'data_variable',
-                fields: {
-                    VARIABLE: { name: '__customProjectData__' }
-                },
-                shadow: true,
-                topLevel: true,
-                value: JSON.stringify(this.projectData)
-            };
-        }
+    saveToProject() {
+        const data = JSON.stringify(this.projectData);
+        localStorage.setItem('__customProjectData__', data);
     }
 
-    loadProjectData(util) {
-        if (util.target && util.target.blocks) {
-            const block = util.target.blocks._blocks['__customProjectData__'];
-            if (block && block.value) {
-                this.projectData = JSON.parse(block.value);
+    loadProjectData() {
+        const savedData = localStorage.getItem('__customProjectData__');
+        if (savedData) {
+            try {
+                this.projectData = JSON.parse(savedData);
+            } catch (e) {
+                console.error('Failed to parse saved project data:', e);
             }
         }
     }
