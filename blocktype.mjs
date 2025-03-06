@@ -9,7 +9,7 @@ class CustomURLExtension {
     getInfo() {
         return {
             id: "customUrlExtension",
-            name: "SB3対応",
+            name: "SB3",
             blocks: [
                 {
                     opcode: "setID",
@@ -55,12 +55,12 @@ class CustomURLExtension {
 
     setID(args) {
         this.id = args.ID;
-        this.runtime.ioDevices.cloud.setVariable("id", this.id);
+        this.runtime.storage._storeSession("customID", this.id);
     }
 
     setType(args) {
         this.type = args.TYPE;
-        this.runtime.ioDevices.cloud.setVariable("type", this.type);
+        this.runtime.storage._storeSession("customType", this.type);
     }
 
     getID() {
@@ -72,8 +72,8 @@ class CustomURLExtension {
     }
 
     loadStoredValues() {
-        const storedID = this.runtime.ioDevices.cloud.getVariable("id");
-        const storedType = this.runtime.ioDevices.cloud.getVariable("type");
+        const storedID = this.runtime.storage._getSession("customID");
+        const storedType = this.runtime.storage._getSession("customType");
         if (storedID !== undefined && storedID !== null) {
             this.id = storedID;
         }
