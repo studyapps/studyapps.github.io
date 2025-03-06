@@ -45,22 +45,24 @@ class CustomExtension {
                 opcode: 'getBlockType',
                 blockType: Scratch.BlockType.REPORTER,
                 text: 'Block'
-            },
-            {
-                opcode: 'getTrialBlock',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Trialライセンスで表示されるブロック'
             }
         );
 
         // 5秒待ってから Basic ブロックを追加
         setTimeout(() => {
             if (this.shouldShowBasicBlocks()) {
-                c.blocks.push({
-                    opcode: 'getBasicBlock',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'Basicライセンスで表示されるブロック'
-                });
+                c.blocks.push(
+                    {
+                        opcode: 'getTrialBlock',
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'Trialライセンスで表示されるブロック'
+                    },
+                    {
+                        opcode: 'getBasicBlock',
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'Basicライセンスで表示されるブロック'
+                    }
+                );
             }
         }, 5000);
 
