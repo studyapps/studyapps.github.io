@@ -1,90 +1,84 @@
-class CustomURLExtension {
+class CustomExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.id = "";
-        this.type = "Trial";
-        this.loadStoredValues();
+        this.block = ''; 
+        this.id = ''; 
     }
 
+
+
     getInfo() {
-        return {
-            id: "customUrlExtension",
-            name: "URL拡張機能",
-            blocks: [
-                {
-                    opcode: "setID",
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: "IDを設定 [ID]",
-                    arguments: {
-                        ID: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: "12345"
-                        }
-                    }
-                },
-                {
-                    opcode: "setType",
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: "TYPEを設定 [TYPE]",
-                    arguments: {
-                        TYPE: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: "typeMenu"
-                        }
-                    }
-                },
-                {
-                    opcode: "getID",
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: "ID"
-                },
-                {
-                    opcode: "getType",
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: "TYPE"
-                }
-            ],
+        var c = {
+            id: 'BlockType',
+            name: 'URL Extension',
+            color1: "#A6A6A6",
+            blocks: [],
             menus: {
-                typeMenu: {
-                    acceptReporters: false,
-                    items: ["Trial", "Basic"]
+                blockTypeMenu: {
+                    acceptReporters: true,
+                    items: ['Trial','Basic']
                 }
             }
         };
+        return c.blocks.push(
+            {
+                opcode: 'setParameters',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'Block =  [TYPE] ID = [ID]',
+                arguments: {
+                    TYPE: {
+                        type: Scratch.ArgumentType.STRING,
+                        menu: 'blockTypeMenu',
+                        defaultValue: this.block ?? 'Trial'
+                    },
+                    ID: {
+                        type: Scratch.ArgumentType.STRING,
+                        defaultValue: this.id ?? "お客様ID"
+                    }
+                }
+            },
+            {
+                opcode: 'getID',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'ID'
+            },
+            {
+                opcode: 'getBlockType',
+                blockType: Scratch.BlockType.REPORTER,
+                text: 'Block'
+            },
+            {
+                opcode: 'getTrialBlock',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'Trialライセンスで表示されるブロック'
+            }
+        ), 
+        this.shouldShowBasicBlocks() && c.blocks.push(
+            {
+                opcode: 'getBasicBlock',
+                blockType: Scratch.BlockType.COMMAND,
+                text: 'Basicライセンスで表示されるブロック'
+            }
+        ), c;
     }
 
-    setID(args) {
+    setParameters(args){
+        this.block = args.TYPE;
         this.id = args.ID;
     }
-
-    setType(args) {
-        this.type = args.TYPE;
+    getBlockType() {
+        return this.block;
     }
-
     getID() {
         return this.id;
     }
-
-    getType() {
-        return this.type;
+    getBasicBlock() {
     }
-
-    loadStoredValues() {
-        const targets = this.runtime.targets;
-        for (const target of targets) {
-            if (!target.blocks) continue;
-            
-            for (const blockId in target.blocks._blocks) {
-                const block = target.blocks._blocks[blockId];
-                if (block.opcode === "customUrlExtension_setID") {
-                    this.id = block.fields.ID.value;
-                }
-                if (block.opcode === "customUrlExtension_setType") {
-                    this.type = block.fields.TYPE.value;
-                }
-            }
-        }
+    getTrialBlock() {
+    }
+    shouldShowBasicBlocks() {
+        return this.block == "Basic";
     }
 }
 
-Scratch.extensions.register(new CustomURLExtension());
+Scratch.extensions.register(new CustomExtension());
