@@ -86,6 +86,6 @@ class IDVariableExtension {
             }
         }
     }
-}
+} 
 
 Scratch.extensions.register(new IDVariableExtension());
