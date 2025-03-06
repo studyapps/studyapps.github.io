@@ -3,6 +3,7 @@ class CustomURLExtension {
         this.runtime = runtime;
         this.id = "";
         this.type = "Trial";
+        this.loadStoredValues();
     }
 
     getInfo() {
@@ -17,7 +18,7 @@ class CustomURLExtension {
                     arguments: {
                         ID: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: this.id || "12345"  // 保存された値をデフォルト値に適用
+                            defaultValue: "12345"
                         }
                     }
                 },
@@ -28,8 +29,7 @@ class CustomURLExtension {
                     arguments: {
                         TYPE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: "typeMenu",
-                            defaultValue: this.type || "Trial"  // 保存された値をデフォルト値に適用
+                            menu: "typeMenu"
                         }
                     }
                 },
@@ -67,6 +67,23 @@ class CustomURLExtension {
 
     getType() {
         return this.type;
+    }
+
+    loadStoredValues() {
+        const targets = this.runtime.targets;
+        for (const target of targets) {
+            if (!target.blocks) continue;
+            
+            for (const blockId in target.blocks._blocks) {
+                const block = target.blocks._blocks[blockId];
+                if (block.opcode === "customUrlExtension_setID") {
+                    this.id = block.fields.ID.value;
+                }
+                if (block.opcode === "customUrlExtension_setType") {
+                    this.type = block.fields.TYPE.value;
+                }
+            }
+        }
     }
 }
 
