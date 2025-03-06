@@ -8,7 +8,7 @@ class IDVariableExtension {
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'ID / TYPE 変数',
+            name: 'SB3対応',
             blocks: [
                 {
                     opcode: 'setID',
