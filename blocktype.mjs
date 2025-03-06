@@ -3,6 +3,7 @@ class CustomURLExtension {
         this.runtime = runtime;
         this.id = "";
         this.type = "Trial";
+        this.loadStoredValues();
     }
 
     getInfo() {
@@ -54,12 +55,12 @@ class CustomURLExtension {
 
     setID(args) {
         this.id = args.ID;
-        this.runtime.ioDevices.cloud.saveVariable("id", this.id);
+        this.runtime.ioDevices.cloud.setVariable("id", this.id);
     }
 
     setType(args) {
         this.type = args.TYPE;
-        this.runtime.ioDevices.cloud.saveVariable("type", this.type);
+        this.runtime.ioDevices.cloud.setVariable("type", this.type);
     }
 
     getID() {
@@ -71,8 +72,14 @@ class CustomURLExtension {
     }
 
     loadStoredValues() {
-        this.id = this.runtime.ioDevices.cloud.getVariable("id") || "";
-        this.type = this.runtime.ioDevices.cloud.getVariable("type") || "Trial";
+        const storedID = this.runtime.ioDevices.cloud.getVariable("id");
+        const storedType = this.runtime.ioDevices.cloud.getVariable("type");
+        if (storedID !== undefined && storedID !== null) {
+            this.id = storedID;
+        }
+        if (storedType !== undefined && storedType !== null) {
+            this.type = storedType;
+        }
     }
 }
 
