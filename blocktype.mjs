@@ -3,7 +3,6 @@ class CustomURLExtension {
         this.runtime = runtime;
         this.id = "";
         this.type = "Trial";
-        this.loadStoredValues();
     }
 
     getInfo() {
@@ -18,7 +17,7 @@ class CustomURLExtension {
                     arguments: {
                         ID: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: "12345"
+                            defaultValue: this.id || "12345"  // 保存された値をデフォルト値に適用
                         }
                     }
                 },
@@ -29,7 +28,8 @@ class CustomURLExtension {
                     arguments: {
                         TYPE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: "typeMenu"
+                            menu: "typeMenu",
+                            defaultValue: this.type || "Trial"  // 保存された値をデフォルト値に適用
                         }
                     }
                 },
@@ -55,12 +55,10 @@ class CustomURLExtension {
 
     setID(args) {
         this.id = args.ID;
-        this.runtime.projectData["customID"] = this.id;
     }
 
     setType(args) {
         this.type = args.TYPE;
-        this.runtime.projectData["customType"] = this.type;
     }
 
     getID() {
@@ -69,17 +67,6 @@ class CustomURLExtension {
 
     getType() {
         return this.type;
-    }
-
-    loadStoredValues() {
-        if (this.runtime.projectData) {
-            if (this.runtime.projectData["customID"] !== undefined) {
-                this.id = this.runtime.projectData["customID"];
-            }
-            if (this.runtime.projectData["customType"] !== undefined) {
-                this.type = this.runtime.projectData["customType"];
-            }
-        }
     }
 }
 
