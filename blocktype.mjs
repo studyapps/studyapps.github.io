@@ -9,7 +9,7 @@ class CustomURLExtension {
     getInfo() {
         return {
             id: "customUrlExtension",
-            name: "SB3",
+            name: "URL拡張機能",
             blocks: [
                 {
                     opcode: "setID",
@@ -55,12 +55,12 @@ class CustomURLExtension {
 
     setID(args) {
         this.id = args.ID;
-        this.runtime.storage._storeSession("customID", this.id);
+        this.runtime.projectData["customID"] = this.id;
     }
 
     setType(args) {
         this.type = args.TYPE;
-        this.runtime.storage._storeSession("customType", this.type);
+        this.runtime.projectData["customType"] = this.type;
     }
 
     getID() {
@@ -72,13 +72,13 @@ class CustomURLExtension {
     }
 
     loadStoredValues() {
-        const storedID = this.runtime.storage._getSession("customID");
-        const storedType = this.runtime.storage._getSession("customType");
-        if (storedID !== undefined && storedID !== null) {
-            this.id = storedID;
-        }
-        if (storedType !== undefined && storedType !== null) {
-            this.type = storedType;
+        if (this.runtime.projectData) {
+            if (this.runtime.projectData["customID"] !== undefined) {
+                this.id = this.runtime.projectData["customID"];
+            }
+            if (this.runtime.projectData["customType"] !== undefined) {
+                this.type = this.runtime.projectData["customType"];
+            }
         }
     }
 }
