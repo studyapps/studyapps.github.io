@@ -1,100 +1,79 @@
-class CustomExtension {
+class CustomURLExtension {
     constructor(runtime) {
         this.runtime = runtime;
-        this.projectData = { id: '', type: '' };
-        this.runtime.on('PROJECT_LOADED', () => this.loadProjectData());
+        this.id = "";
+        this.type = "Trial";
     }
 
     getInfo() {
         return {
-            id: 'customExtension',
-            name: 'Custom Variables',
+            id: "customUrlExtension",
+            name: "URL拡張機能",
             blocks: [
                 {
-                    opcode: 'getID',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'ID',
-                },
-                {
-                    opcode: 'getType',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: 'Type',
-                },
-                {
-                    opcode: 'setID',
+                    opcode: "setID",
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'Set ID [ID]',
+                    text: "IDを設定 [ID]",
                     arguments: {
                         ID: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '12345'
+                            defaultValue: "12345"
                         }
                     }
                 },
                 {
-                    opcode: 'setType',
+                    opcode: "setType",
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'Set Type [TYPE]',
+                    text: "TYPEを設定 [TYPE]",
                     arguments: {
                         TYPE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'typeMenu'
+                            menu: "typeMenu"
                         }
                     }
+                },
+                {
+                    opcode: "getID",
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: "ID"
+                },
+                {
+                    opcode: "getType",
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: "TYPE"
                 }
             ],
             menus: {
                 typeMenu: {
-                    acceptReporters: true,
-                    items: ['Trial', 'Basic']
+                    acceptReporters: false,
+                    items: ["Trial", "Basic"]
                 }
             }
         };
     }
 
-    getID() {
-        return this.projectData.id;
-    }
-
-    getType() {
-        return this.projectData.type;
-    }
-
     setID(args) {
-        this.projectData.id = args.ID;
-        this.saveToProject();
+        this.id = args.ID;
+        this.runtime.ioDevices.cloud.saveVariable("id", this.id);
     }
 
     setType(args) {
-        this.projectData.type = args.TYPE;
-        this.saveToProject();
+        this.type = args.TYPE;
+        this.runtime.ioDevices.cloud.saveVariable("type", this.type);
     }
 
-    saveToProject() {
-        if (this.runtime && this.runtime.targets) {
-            const stage = this.runtime.getEditingTarget();
-            if (stage) {
-                stage.variables['__customProjectData__'] = {
-                    id: '__customProjectData__',
-                    type: 'string',
-                    value: JSON.stringify(this.projectData)
-                };
-            }
-        }
+    getID() {
+        return this.id;
     }
 
-    loadProjectData() {
-        if (this.runtime && this.runtime.targets) {
-            const stage = this.runtime.getEditingTarget();
-            if (stage && stage.variables['__customProjectData__']) {
-                try {
-                    this.projectData = JSON.parse(stage.variables['__customProjectData__'].value);
-                } catch (e) {
-                    console.error('Failed to parse stored project data:', e);
-                }
-            }
-        }
+    getType() {
+        return this.type;
+    }
+
+    loadStoredValues() {
+        this.id = this.runtime.ioDevices.cloud.getVariable("id") || "";
+        this.type = this.runtime.ioDevices.cloud.getVariable("type") || "Trial";
     }
 }
 
-Scratch.extensions.register(new CustomExtension());
+Scratch.extensions.register(new CustomURLExtension());
