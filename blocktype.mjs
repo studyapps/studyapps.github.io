@@ -8,7 +8,7 @@ class IDVariableExtension {
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'SB3対応',
+            name: 'ID / TYPE 変数',
             blocks: [
                 {
                     opcode: 'setID',
@@ -28,7 +28,7 @@ class IDVariableExtension {
                 },
                 {
                     opcode: 'setTYPE',
-                    blockType: Scratch.BlockType.COMMAND,
+                    blockType: Scratch.BlockType.REPORTER,
                     text: 'TYPE を [TYPE] に設定',
                     arguments: {
                         TYPE: {
@@ -65,6 +65,7 @@ class IDVariableExtension {
     setTYPE(args) {
         this.storedTYPE = args.TYPE;
         this.runtime.ioDevices.project.saveProject(); // SB3に保存
+        return this.storedTYPE;
     }
 
     getTYPE() {
