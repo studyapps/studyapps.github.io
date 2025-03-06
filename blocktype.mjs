@@ -5,8 +5,6 @@ class CustomExtension {
         this.id = ''; 
     }
 
-
-
     getInfo() {
         var c = {
             id: 'BlockType',
@@ -20,7 +18,8 @@ class CustomExtension {
                 }
             }
         };
-        return c.blocks.push(
+
+        c.blocks.push(
             {
                 opcode: 'setParameters',
                 blockType: Scratch.BlockType.COMMAND,
@@ -52,14 +51,20 @@ class CustomExtension {
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'Trialライセンスで表示されるブロック'
             }
-        ), 
-        this.shouldShowBasicBlocks() && c.blocks.push(
-            {
-                opcode: 'getBasicBlock',
-                blockType: Scratch.BlockType.COMMAND,
-                text: 'Basicライセンスで表示されるブロック'
+        );
+
+        // 5秒待ってから Basic ブロックを追加
+        setTimeout(() => {
+            if (this.shouldShowBasicBlocks()) {
+                c.blocks.push({
+                    opcode: 'getBasicBlock',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'Basicライセンスで表示されるブロック'
+                });
             }
-        ), c;
+        }, 5000);
+
+        return c;
     }
 
     setParameters(args){
