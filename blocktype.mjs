@@ -3,12 +3,13 @@ class IDVariableExtension {
         this.runtime = runtime;
         this.storedID = ""; // 初期値
         this.storedTYPE = ""; // 初期値
+        this.runtime.on('PROJECT_LOADED', this.loadStoredValues.bind(this)); // SB3ファイル読み込み時に初期値を設定
     }
 
     getInfo() {
         return {
             id: 'idVariableExt',
-            name: 'SB3対応',
+            name: 'ID / TYPE 変数',
             blocks: [
                 {
                     opcode: 'setID',
@@ -86,6 +87,22 @@ class IDVariableExtension {
             }
         }
     }
-} 
+
+    loadStoredValues() {
+        const state = this.runtime.ioDevices.project.getProjectData();
+        if (state && state.targets) {
+            for (const target of state.targets) {
+                if (target.isStage) {
+                    if (target.variables && target.variables.storedID) {
+                        this.storedID = target.variables.storedID.value;
+                    }
+                    if (target.variables && target.variables.storedTYPE) {
+                        this.storedTYPE = target.variables.storedTYPE.value;
+                    }
+                }
+            }
+        }
+    }
+}
 
 Scratch.extensions.register(new IDVariableExtension());
