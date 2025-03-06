@@ -89,17 +89,13 @@ class IDVariableExtension {
     }
 
     loadStoredValues() {
-        const state = this.runtime.ioDevices.project.getProjectData();
-        if (state && state.targets) {
-            for (const target of state.targets) {
-                if (target.isStage) {
-                    if (target.variables && target.variables.storedID) {
-                        this.storedID = target.variables.storedID.value;
-                    }
-                    if (target.variables && target.variables.storedTYPE) {
-                        this.storedTYPE = target.variables.storedTYPE.value;
-                    }
-                }
+        const state = this.runtime.getEditingTarget();
+        if (state) {
+            if (state.variables && state.variables.storedID) {
+                this.storedID = state.variables.storedID.value;
+            }
+            if (state.variables && state.variables.storedTYPE) {
+                this.storedTYPE = state.variables.storedTYPE.value;
             }
         }
     }
