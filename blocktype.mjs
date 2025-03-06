@@ -3,7 +3,6 @@ class IDVariableExtension {
         this.runtime = runtime;
         this.storedID = ""; // 初期値
         this.storedTYPE = ""; // 初期値
-        this.loadStoredValues(); // SB3ファイル起動時に値を復元
     }
 
     getInfo() {
@@ -29,7 +28,7 @@ class IDVariableExtension {
                 },
                 {
                     opcode: 'setTYPE',
-                    blockType: Scratch.BlockType.REPORTER,
+                    blockType: Scratch.BlockType.COMMAND,
                     text: 'TYPE を [TYPE] に設定',
                     arguments: {
                         TYPE: {
@@ -55,7 +54,7 @@ class IDVariableExtension {
 
     setID(args) {
         this.storedID = args.ID;
-        this.saveStoredValues(); // IDを保存
+        this.runtime.ioDevices.project.saveProject(); // SB3に保存
         return this.storedID;
     }
 
@@ -65,8 +64,7 @@ class IDVariableExtension {
 
     setTYPE(args) {
         this.storedTYPE = args.TYPE;
-        this.saveStoredValues(); // TYPEを保存
-        return this.storedTYPE;
+        this.runtime.ioDevices.project.saveProject(); // SB3に保存
     }
 
     getTYPE() {
@@ -85,23 +83,6 @@ class IDVariableExtension {
             if (state.storedTYPE !== undefined) {
                 this.storedTYPE = state.storedTYPE;
             }
-            this.saveStoredValues(); // 読み込んだ値を保存
-        }
-    }
-
-    saveStoredValues() {
-        localStorage.setItem('idVariable', this.storedID);
-        localStorage.setItem('typeVariable', this.storedTYPE);
-    }
-
-    loadStoredValues() {
-        const storedID = localStorage.getItem('idVariable');
-        if (storedID !== null) {
-            this.storedID = storedID;
-        }
-        const storedTYPE = localStorage.getItem('typeVariable');
-        if (storedTYPE !== null) {
-            this.storedTYPE = storedTYPE;
         }
     }
 }
