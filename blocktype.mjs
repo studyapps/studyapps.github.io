@@ -7,8 +7,18 @@ class CustomExtension {
     getInfo() {
         return {
             id: 'customExtension',
-            name: 'Custom Blocks',
+            name: 'Custom Variables',
             blocks: [
+                {
+                    opcode: 'getID',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'ID',
+                },
+                {
+                    opcode: 'getType',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'Type',
+                },
                 {
                     opcode: 'setID',
                     blockType: Scratch.BlockType.COMMAND,
@@ -39,6 +49,14 @@ class CustomExtension {
                 }
             }
         };
+    }
+
+    getID() {
+        return this.projectData.id || '12345';
+    }
+
+    getType() {
+        return this.projectData.type || 'Trial';
     }
 
     setID(args, util) {
