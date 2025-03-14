@@ -1,27 +1,11 @@
 class CustomExtension {
-    constructor(c) {
-        this.runtime = c, this.server = new pa();
+    constructor(runtime) {
+        this.runtime = runtime;
         this.block = ''; 
         this.id = ''; 
-
-    //    const h = new URLSearchParams(window.location.search),
-    //    b = h.get("block") ?? "trial"
-    //    console.log("Block Type:", b),
-    //    this.block = b,
-    //    this.isEnabledPacketCapture = !1,
-    //   this.lastSentMessage = null,
-    //    this.numOfSentMessages = 0,
-    //    this.server.on("sent", (O) => {
-    //      this.lastSentMessage = O, this.numOfSentMessages += 1, this.runtime.startHats(ot + "_whenSentMessage");
-    //    }), this.lastReceivedMessage = null, this.server.on("received", (O) => {
-    //      this.checkNumOfSentMessages() && (this.isEnabledPacketCapture || (this.lastReceivedMessage = O, this.runtime.startHats(ot + "_whenReceivedMessage")));
-    //    }), this.server.on("packet", (O) => {
-    //      this.checkNumOfSentMessages() && this.isEnabledPacketCapture && (this.lastReceivedMessage = O, this.runtime.startHats(ot + "_whenReceivedMessage"));
-    //    }), this.lastSystemMessage = {
-    //      id: "bidirectionalComm.system.notConnected",
-    //      default: "接続してください"
-    //    }, c.formatMessage && (_ = c.formatMessage);
     }
+
+
 
     getInfo() {
         var c = {
