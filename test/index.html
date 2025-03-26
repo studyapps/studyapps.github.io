@@ -14,13 +14,33 @@
 
       const output = document.getElementById("output");
 
-      if (GetID && GetSB3 && GetNAME && GetFULLSCREEN !== null) {
-        const baseUrl = "https://toio.github.io/toio-visual-programming/beta/";
-        const url = `${baseUrl}?category=do&id=${GetID}&sb3=${GetSB3}&name=${encodeURIComponent(GetNAME)}&fullscreen=${GetFULLSCREEN}`;
+      // ベースURL（最初に固定で追加）
+      let url = "https://do.toio.io/r?link=https://toio.github.io/toio-visual-programming/beta/?project%3D?";
 
+      // sb3 が指定されていればプロジェクトURL追加
+      if (GetSB3) {
+        url += "project%3Dhttps%3A%2F%2Fuchidascience.github.io%2Fmessege_app%2F";
+        url += encodeURIComponent(GetSB3);
+      }
+
+      // fullscreen が指定されていれば追加
+      if (GetFULLSCREEN !== null) {
+        url += "%26fullscreen%3Dtrue";
+      }
+
+      // id が指定されていれば追加
+      if (GetID) {
+        url += "%26id%3D" + encodeURIComponent(GetID);
+      }
+
+      // 最後に固定の追加文字列
+      url += "%26ibi%3Dio.toio.toiodo";
+
+      // URLを表示（sb3, id, name, fullscreen のいずれかが指定されていればOKとする）
+      if (GetSB3 || GetID || GetNAME || GetFULLSCREEN !== null) {
         output.innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
       } else {
-        output.textContent = "URLが間違っています。";  // ← メッセージ変更
+        output.textContent = "URLが間違っています。";
       }
     };
   </script>
