@@ -1,1 +1,32 @@
-test
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>toio用リンク生成</title>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+
+      const GetID = params.get("id");
+      const GetSB3 = params.get("sb3");
+      const GetNAME = params.get("name");
+      const GetFULLSCREEN = params.get("fullscreen");
+
+      const output = document.getElementById("output");
+
+      if (GetID && GetSB3 && GetNAME && GetFULLSCREEN !== null) {
+        const baseUrl = "https://toio.github.io/toio-visual-programming/beta/";
+        const url = `${baseUrl}?category=do&id=${GetID}&sb3=${GetSB3}&name=${encodeURIComponent(GetNAME)}&fullscreen=${GetFULLSCREEN}`;
+
+        output.innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
+      } else {
+        output.textContent = "URLが間違っています。";  // ← メッセージ変更
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>toio用リンク生成</h1>
+  <p id="output">読み込み中...</p>
+</body>
+</html>
