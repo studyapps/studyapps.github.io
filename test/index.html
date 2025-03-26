@@ -11,10 +11,9 @@
       const GetSB3 = params.get("sb3");
       const GetNAME = params.get("name");
       const GetFULLSCREEN = params.get("fullscreen");
-
       const output = document.getElementById("output");
 
-      // ベースURL（最初に固定で追加）
+      // ベースURL
       let url = "https://do.toio.io/r?link=https://toio.github.io/toio-visual-programming/beta/?project%3D?";
 
       // sb3 が指定されていればプロジェクトURL追加
@@ -36,12 +35,8 @@
       // 最後に固定の追加文字列
       url += "%26ibi%3Dio.toio.toiodo";
 
-      // URLを表示（sb3, id, name, fullscreen のいずれかが指定されていればOKとする）
-      if (GetSB3 || GetID || GetNAME || GetFULLSCREEN !== null) {
-        output.innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
-      } else {
-        output.textContent = "URLが間違っています。";
-      }
+      // 条件なく常にURLを出力
+      output.innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
     };
   </script>
 </head>
