@@ -7602,9 +7602,17 @@ class ut {
     this.isEnabledPacketCapture = !1, this.lastSentMessage = null, this.numOfSentMessages = 0, this.server.on("sent", (h) => {
       this.lastSentMessage = h, this.numOfSentMessages += 1, this.runtime.startHats(ct + "_whenSentMessage");
     }), this.lastReceivedMessage = null, this.server.on("received", (h) => {
-      this.isReachedSendingLimit() || this.isEnabledPacketCapture || (this.lastReceivedMessage = h, this.runtime.startHats(ct + "_whenReceivedMessage"));
+      if (this.isReachedSendingLimit()) {
+        this.setReachedSendingLimitMessage();
+        return;
+      }
+      this.isEnabledPacketCapture || (this.lastReceivedMessage = h, this.runtime.startHats(ct + "_whenReceivedMessage"));
     }), this.server.on("packet", (h) => {
-      this.isReachedSendingLimit() || this.isEnabledPacketCapture && (this.lastReceivedMessage = h, this.runtime.startHats(ct + "_whenReceivedMessage"));
+      if (this.isReachedSendingLimit()) {
+        this.setReachedSendingLimitMessage();
+        return;
+      }
+      this.isEnabledPacketCapture && (this.lastReceivedMessage = h, this.runtime.startHats(ct + "_whenReceivedMessage"));
     }), this.lastSystemMessage = {
       id: "bidirectionalComm.system.notConnected",
       default: "接続してください"
@@ -7642,16 +7650,22 @@ class ut {
     };
   }
   /**
+   * システムメッセージに「通信量が上限に達しました」を設定
+   */
+  setReachedSendingLimitMessage() {
+    this.lastSystemMessage = {
+      id: "bidirectionalComm.system.reachedSendingLimit",
+      default: "通信量が上限に達しました"
+    };
+  }
+  /**
    * メッセージ送信上限に達しているか
    * @returns {boolean}
    */
   isReachedSendingLimit() {
-    var f;
-    const c = (f = this.customer) != null && f.hasBasicLicense() ? Ea : Pa, h = this.numOfSentMessages < c;
-    return h || (this.lastSystemMessage = {
-      id: "bidirectionalComm.system.reachedSendingLimit",
-      default: "通信量が上限に達しました"
-    }), h;
+    var h;
+    const c = (h = this.customer) != null && h.hasBasicLicense() ? Ea : Pa;
+    return this.numOfSentMessages >= c;
   }
   /**
    * メッセージ送信後の待機
@@ -7713,7 +7727,11 @@ class ut {
       this.setNoLicenseMessage();
       return;
     }
-    if (this.isReachedSendingLimit() || !this.server.isConnected)
+    if (this.isReachedSendingLimit()) {
+      this.setReachedSendingLimitMessage();
+      return;
+    }
+    if (!this.server.isConnected)
       return;
     const h = ye.toString(c.MESSAGE);
     if (!h)
@@ -7760,7 +7778,11 @@ class ut {
       this.setNoLicenseMessage();
       return;
     }
-    if (this.isReachedSendingLimit() || !this.server.isConnected)
+    if (this.isReachedSendingLimit()) {
+      this.setReachedSendingLimitMessage();
+      return;
+    }
+    if (!this.server.isConnected)
       return;
     const h = ye.toString(c.MESSAGE);
     if (!h)
