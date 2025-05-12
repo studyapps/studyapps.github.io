@@ -7,13 +7,13 @@ class CustomExtension {
   }
 
   _createDefaultMatrix() {
-      const rows = 11; // -5～5 → 11行
-      const cols = 15; // -7～7 → 15列
+      const rows = 11;
+      const cols = 15;
       const matrix = [];
       for (let r = 0; r < rows; r++) {
           matrix[r] = [];
           for (let c = 0; c < cols; c++) {
-              matrix[r][c] = "空白"; // デフォルト値
+              matrix[r][c] = "空白";
           }
       }
       return matrix;
@@ -22,7 +22,9 @@ class CustomExtension {
   getInfo() {
       return {
           id: 'customExtension',
-          name: 'シミュレーション',
+          name: 'ロボットを動かそう',
+          color1: '#FF6680', // 背景色（R255,G102,B128）
+          color2: '#FF3355', // 輪郭色（R255,G51,B85）
           blocks: [
               {
                   opcode: 'setSimulationMode',
@@ -106,7 +108,6 @@ class CustomExtension {
   }
 
   checkDirection(args) {
-      // 現在位置（仮に[0][0]とする）
       const currentRow = 5;
       const currentCol = 7;
       let dRow = 0, dCol = 0;
