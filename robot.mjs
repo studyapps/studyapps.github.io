@@ -29,7 +29,7 @@ class CustomExtension {
               {
                   opcode: 'setSimulationMode',
                   blockType: Scratch.BlockType.COMMAND,
-                  text: 'シミュレーションモード【[MODE]】',
+                  text: 'シミュレーションモード [MODE]',
                   arguments: {
                       MODE: {
                           type: Scratch.ArgumentType.STRING,
@@ -40,7 +40,7 @@ class CustomExtension {
               {
                   opcode: 'getMatrixValue',
                   blockType: Scratch.BlockType.REPORTER,
-                  text: '行【[ROW]】列【[COL]】の値',
+                  text: '行[ROW] 列[COL] の値',
                   arguments: {
                       ROW: {
                           type: Scratch.ArgumentType.STRING,
@@ -83,7 +83,7 @@ class CustomExtension {
               },
               dirMenu: {
                   acceptReporters: false,
-                  items: ['前', '後', '左', '右']
+                  items: ['現在地','前', '後', '左', '右']
               },
               typeMenu: {
                   acceptReporters: false,
