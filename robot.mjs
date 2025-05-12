@@ -40,7 +40,7 @@ class CustomExtension {
               {
                   opcode: 'getMatrixValue',
                   blockType: Scratch.BlockType.REPORTER,
-                  text: '行[ROW] 列[COL] の値',
+                  text: '行[ROW] 列[COL] のタイル',
                   arguments: {
                       ROW: {
                           type: Scratch.ArgumentType.STRING,
