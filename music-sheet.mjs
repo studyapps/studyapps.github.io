@@ -113,7 +113,7 @@ class CustomExtension {
                 noteMenu: [
                     { text: '𝅝', value: '1'},
                     { text: '𝅗𝅥', value: '2'},
-                    { text: '𝅘𝅥', value: '4'},
+                    { text: '♩', value: '4'},
                     { text: '♪', value: '8'},
                     { text: '𝅘𝅥𝅯', value: '16'},
                     { text: '𝅘𝅥𝅰', value: '32'},
