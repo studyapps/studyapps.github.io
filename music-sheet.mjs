@@ -1,14 +1,8 @@
 
-/**
- * MUSIC — Scratch 3 compatible unsandboxed custom extension.
- * Load through an editor that supports URL-based JavaScript extensions.
- */
 const Scratch = globalThis.Scratch;
 
 if (!Scratch?.extensions || !Scratch?.BlockType || !Scratch?.ArgumentType) {
-  throw new Error(
-    'Scratch extension API is unavailable. Load MUSIC.mjs in a compatible Scratch editor.'
-  );
+  throw new Error('Scratch extension API is unavailable.');
 }
 
 class MusicExtension {
@@ -31,28 +25,46 @@ class MusicExtension {
 
     // 音階とMIDIノート番号
     this.pitches = {
+      // 低音域
       lowC: 48,
+      lowCs: 49,
       lowD: 50,
+      lowDs: 51,
       lowE: 52,
       lowF: 53,
+      lowFs: 54,
       lowG: 55,
+      lowGs: 56,
       lowA: 57,
+      lowAs: 58,
       lowB: 59,
 
+      // 中音域
       C: 60,
+      Cs: 61,
       D: 62,
+      Ds: 63,
       E: 64,
       F: 65,
+      Fs: 66,
       G: 67,
+      Gs: 68,
       A: 69,
+      As: 70,
       B: 71,
 
+      // 高音域
       highC: 72,
+      highCs: 73,
       highD: 74,
+      highDs: 75,
       highE: 76,
       highF: 77,
+      highFs: 78,
       highG: 79,
+      highGs: 80,
       highA: 81,
+      highAs: 82,
       highB: 83
     };
   }
@@ -64,7 +76,7 @@ class MusicExtension {
       id: 'musicAshikaga',
       name: 'MUSIC',
 
-      // ブロックの色：黒
+      // 黒色のブロック
       color1: '#000000',
       color2: '#000000',
       color3: '#000000',
@@ -144,34 +156,52 @@ class MusicExtension {
       ],
 
       menus: {
-        // 音階のプルダウン
+        // ① 音階プルダウン（36種類）
         notes: {
           acceptReporters: false,
           items: [
-            ['低ド', 'lowC'],
-            ['低レ', 'lowD'],
-            ['低ミ', 'lowE'],
-            ['低ファ', 'lowF'],
-            ['低ソ', 'lowG'],
-            ['低ラ', 'lowA'],
-            ['低シ', 'lowB'],
+            // 低音域
+            { text: 'ド(低)', value: 'lowC' },
+            { text: '#ド(低)', value: 'lowCs' },
+            { text: 'レ(低)', value: 'lowD' },
+            { text: '#レ(低)', value: 'lowDs' },
+            { text: 'ミ(低)', value: 'lowE' },
+            { text: 'ファ(低)', value: 'lowF' },
+            { text: '#ファ(低)', value: 'lowFs' },
+            { text: 'ソ(低)', value: 'lowG' },
+            { text: '#ソ(低)', value: 'lowGs' },
+            { text: 'ラ(低)', value: 'lowA' },
+            { text: '#ラ(低)', value: 'lowAs' },
+            { text: 'シ(低)', value: 'lowB' },
 
-            ['ド', 'C'],
-            ['レ', 'D'],
-            ['ミ', 'E'],
-            ['ファ', 'F'],
-            ['ソ', 'G'],
-            ['ラ', 'A'],
-            ['シ', 'B'],
+            // 中音域
+            { text: 'ド', value: 'C' },
+            { text: '#ド', value: 'Cs' },
+            { text: 'レ', value: 'D' },
+            { text: '#レ', value: 'Ds' },
+            { text: 'ミ', value: 'E' },
+            { text: 'ファ', value: 'F' },
+            { text: '#ファ', value: 'Fs' },
+            { text: 'ソ', value: 'G' },
+            { text: '#ソ', value: 'Gs' },
+            { text: 'ラ', value: 'A' },
+            { text: '#ラ', value: 'As' },
+            { text: 'シ', value: 'B' },
 
-            ['高ド', 'highC'],
-            ['高レ', 'highD'],
-            ['高ミ', 'highE'],
-            ['高ファ', 'highF'],
-            ['高ソ', 'highG'],
-            ['高ラ', 'highA'],
-            ['高シ', 'highB']
-          ].map(([text, value]) => ({ text, value }))
+            // 高音域
+            { text: 'ド(高)', value: 'highC' },
+            { text: '#ド(高)', value: 'highCs' },
+            { text: 'レ(高)', value: 'highD' },
+            { text: '#レ(高)', value: 'highDs' },
+            { text: 'ミ(高)', value: 'highE' },
+            { text: 'ファ(高)', value: 'highF' },
+            { text: '#ファ(高)', value: 'highFs' },
+            { text: 'ソ(高)', value: 'highG' },
+            { text: '#ソ(高)', value: 'highGs' },
+            { text: 'ラ(高)', value: 'highA' },
+            { text: '#ラ(高)', value: 'highAs' },
+            { text: 'シ(高)', value: 'highB' }
+          ]
         },
 
         // 音符の種類
@@ -216,7 +246,7 @@ class MusicExtension {
     return this.durations.eighth;
   }
 
-  // ③ 入力値を1.5倍する
+  // ③ 付点音符（1.5倍）
   dotted(args) {
     if (
       args.VALUE === '' ||
@@ -231,11 +261,10 @@ class MusicExtension {
     return Number.isFinite(n) ? n * 1.5 : '';
   }
 
-  // ④ テンポを設定する
+  // ④ テンポ設定
   setTempo(args) {
     const n = Number(args.VALUE);
 
-    // 空欄、0以下、不正な値は無視する
     if (
       args.VALUE === '' ||
       args.VALUE === null ||
@@ -255,14 +284,14 @@ class MusicExtension {
       return;
     }
 
-    // 指定された音符の時間を計算
+    // 指定された音符の時間
     const selectedSeconds =
       args.UNIT === 'BPM' ? 60 / n : n;
 
     // 四分音符の時間に換算
     const quarterSeconds = selectedSeconds / ratio;
 
-    // すべての音符の時間を更新
+    // 4種類の音符の時間を更新
     for (
       const [key, noteRatio] of
       Object.entries(this.noteRatios)
@@ -272,5 +301,5 @@ class MusicExtension {
   }
 }
 
-// Scratchに拡張機能を登録
+// 拡張機能を登録
 Scratch.extensions.register(new MusicExtension());
