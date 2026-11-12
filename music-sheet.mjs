@@ -6,7 +6,7 @@ if (!Scratch?.extensions || !Scratch?.BlockType || !Scratch?.ArgumentType) {
   throw new Error('Scratch extension API is unavailable.');
 }
 
-// SVGをData URIに変換
+// SVG画像をData URIに変換
 const svgToDataURI = svg =>
   'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 
@@ -39,45 +39,19 @@ class MusicSheet {
       eighth: 0.125
     };
 
-    // 四分音符を1とした比率
+    // 四分音符を1とした音符の比率
     this.noteRatios = {
       whole: 4,
       half: 2,
       quarter: 1,
       eighth: 0.5
     };
-
-    // 音階のMIDI番号
-    this.pitches = {};
-    const keys = [
-      'C', 'Cs', 'D', 'Ds', 'E', 'F',
-      'Fs', 'G', 'Gs', 'A', 'As', 'B'
-    ];
-
-    keys.forEach((key, i) => {
-      this.pitches[key] = 60 + i;
-    });
   }
 
   getInfo() {
     const {BlockType, ArgumentType} = Scratch;
 
-    const names = [
-      'ド', '#ド', 'レ', '#レ', 'ミ', 'ファ',
-      '#ファ', 'ソ', '#ソ', 'ラ', '#ラ', 'シ'
-    ];
-
-    const keys = [
-      'C', 'Cs', 'D', 'Ds', 'E', 'F',
-      'Fs', 'G', 'Gs', 'A', 'As', 'B'
-    ];
-
-    const notes = names.map((name, i) => ({
-      text: name,
-      value: keys[i]
-    }));
-
-    // SVG音符を表示するレポーターブロック
+    // SVG音符ブロックを生成
     const iconBlock = (opcode, label) => ({
       opcode,
       blockType: BlockType.REPORTER,
@@ -96,12 +70,13 @@ class MusicSheet {
       id: 'musicAshikaga',
       name: 'Music Sheet',
 
+      // Music Pitchと同じ黒色
       color1: '#000000',
       color2: '#000000',
       color3: '#000000',
 
       blocks: [
-        // ① テンポ設定：四分音符に固定
+        // ① テンポ設定（四分音符に固定）
         {
           opcode: 'setTempo',
           blockType: BlockType.COMMAND,
@@ -119,13 +94,19 @@ class MusicSheet {
           }
         },
 
-        // ② 4種類の音符
+        // ② 全音符
         iconBlock('whole', '全音符'),
+
+        // ③ 二分音符
         iconBlock('half', '二分音符'),
+
+        // ④ 四分音符
         iconBlock('quarter', '四分音符'),
+
+        // ⑤ 八分音符
         iconBlock('eighth', '八分音符'),
 
-        // ③ 付点音符
+        // ⑥ 付点音符
         {
           opcode: 'dotted',
           blockType: BlockType.REPORTER,
@@ -136,55 +117,10 @@ class MusicSheet {
               defaultValue: ' '
             }
           }
-        },
-
-        // ④ 音階
-        {
-          opcode: 'pitch',
-          blockType: BlockType.REPORTER,
-          text: '[NOTE]',
-          arguments: {
-            NOTE: {
-              type: ArgumentType.STRING,
-              menu: 'notes',
-              defaultValue: 'C'
-            }
-          }
-        },
-
-        // ⑤ 低音変換
-        {
-          opcode: 'lowerOctave',
-          blockType: BlockType.REPORTER,
-          text: '低 [VALUE]',
-          arguments: {
-            VALUE: {
-              type: ArgumentType.STRING,
-              defaultValue: ' '
-            }
-          }
-        },
-
-        // ⑥ 高音変換
-        {
-          opcode: 'raiseOctave',
-          blockType: BlockType.REPORTER,
-          text: '高 [VALUE]',
-          arguments: {
-            VALUE: {
-              type: ArgumentType.STRING,
-              defaultValue: ' '
-            }
-          }
         }
       ],
 
       menus: {
-        notes: {
-          acceptReporters: false,
-          items: notes
-        },
-
         units: {
           acceptReporters: false,
           items: ['BPM', '秒']
@@ -193,52 +129,27 @@ class MusicSheet {
     };
   }
 
-  // 音階のMIDI番号
-  pitch(args) {
-    return this.pitches[args.NOTE] ?? 60;
-  }
-
-  // オクターブ変換の共通処理
-  transposeOctave(value, offset) {
-    const input = String(value ?? '').trim();
-
-    if (!input) return '';
-
-    const midi = Number(input);
-
-    return Number.isFinite(midi)
-      ? midi + offset
-      : '';
-  }
-
-  // 1オクターブ低くする
-  lowerOctave(args) {
-    return this.transposeOctave(args.VALUE, -12);
-  }
-
-  // 1オクターブ高くする
-  raiseOctave(args) {
-    return this.transposeOctave(args.VALUE, 12);
-  }
-
-  // 音符の長さ（秒）
+  // 全音符の長さ
   whole() {
     return this.durations.whole;
   }
 
+  // 二分音符の長さ
   half() {
     return this.durations.half;
   }
 
+  // 四分音符の長さ
   quarter() {
     return this.durations.quarter;
   }
 
+  // 八分音符の長さ
   eighth() {
     return this.durations.eighth;
   }
 
-  // 付点音符
+  // 付点音符（入力値の1.5倍）
   dotted(args) {
     const value = String(args.VALUE ?? '').trim();
 
@@ -266,6 +177,7 @@ class MusicSheet {
     const quarterSeconds =
       args.UNIT === 'BPM' ? 60 / n : n;
 
+    // 4種類の音符の長さを更新
     for (const [key, noteRatio] of Object.entries(this.noteRatios)) {
       this.durations[key] = quarterSeconds * noteRatio;
     }
