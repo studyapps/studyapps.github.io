@@ -7,6 +7,7 @@ if (!Scratch?.extensions || !Scratch?.BlockType || !Scratch?.ArgumentType) {
 
 class MusicExtension {
   constructor() {
+    // 音符の初期値（秒）
     this.durations = {
       whole: 1,
       half: 0.5,
@@ -14,6 +15,7 @@ class MusicExtension {
       eighth: 0.125
     };
 
+    // 四分音符を1とした比率
     this.noteRatios = {
       whole: 4,
       half: 2,
@@ -21,6 +23,7 @@ class MusicExtension {
       eighth: 0.5
     };
 
+    // 音階とMIDIノート番号
     this.pitches = {};
 
     const keys = [
@@ -71,26 +74,39 @@ class MusicExtension {
 
     return {
       id: 'musicAshikaga',
-      name: 'MUSIC',
+      name: 'Music Sheet',
 
+      // ブロックの色：黒
       color1: '#000000',
       color2: '#000000',
       color3: '#000000',
 
       blocks: [
+
+        // ④ テンポ設定
         {
-          opcode: 'pitch',
-          blockType: BlockType.REPORTER,
-          text: '[NOTE]',
+          opcode: 'setTempo',
+          blockType: BlockType.COMMAND,
+          text: 'テンポ [NOTE] ＝ [VALUE] [UNIT]',
           arguments: {
             NOTE: {
               type: ArgumentType.STRING,
-              menu: 'notes',
-              defaultValue: 'C'
+              menu: 'durations',
+              defaultValue: 'eighth'
+            },
+            VALUE: {
+              type: ArgumentType.STRING,
+              defaultValue: ' '
+            },
+            UNIT: {
+              type: ArgumentType.STRING,
+              menu: 'units',
+              defaultValue: 'BPM'
             }
           }
         },
 
+        // ② 音符の長さ
         {
           opcode: 'whole',
           blockType: BlockType.REPORTER,
@@ -112,6 +128,7 @@ class MusicExtension {
           text: '八分音符'
         },
 
+        // ③ 付点音符
         {
           opcode: 'dotted',
           blockType: BlockType.REPORTER,
@@ -124,35 +141,30 @@ class MusicExtension {
           }
         },
 
+        // ① 音階
         {
-          opcode: 'setTempo',
-          blockType: BlockType.COMMAND,
-          text: 'テンポ [NOTE] ＝ [VALUE] [UNIT]',
+          opcode: 'pitch',
+          blockType: BlockType.REPORTER,
+          text: '[NOTE]',
           arguments: {
             NOTE: {
               type: ArgumentType.STRING,
-              menu: 'durations',
-              defaultValue: 'eighth'
-            },
-            VALUE: {
-              type: ArgumentType.STRING,
-              defaultValue: ' '
-            },
-            UNIT: {
-              type: ArgumentType.STRING,
-              menu: 'units',
-              defaultValue: 'BPM'
+              menu: 'notes',
+              defaultValue: 'C'
             }
           }
         }
       ],
 
       menus: {
+
+        // 音階36種類
         notes: {
           acceptReporters: false,
           items: notes
         },
 
+        // 音符の種類
         durations: {
           acceptReporters: false,
           items: [
@@ -163,6 +175,7 @@ class MusicExtension {
           ]
         },
 
+        // テンポの単位
         units: {
           acceptReporters: false,
           items: ['BPM', '秒']
@@ -171,10 +184,12 @@ class MusicExtension {
     };
   }
 
+  // ① 音階番号を返す
   pitch(args) {
     return this.pitches[args.NOTE] ?? 60;
   }
 
+  // ② 音符の長さを返す
   whole() {
     return this.durations.whole;
   }
@@ -191,6 +206,7 @@ class MusicExtension {
     return this.durations.eighth;
   }
 
+  // ③ 付点音符（1.5倍）
   dotted(args) {
     const value = String(args.VALUE ?? '').trim();
 
@@ -203,15 +219,18 @@ class MusicExtension {
     return Number.isFinite(n) ? n * 1.5 : '';
   }
 
+  // ④ テンポ設定
   setTempo(args) {
     const value = String(args.VALUE ?? '').trim();
 
+    // 空欄の場合は処理しない
     if (value === '') {
       return;
     }
 
     const n = Number(value);
 
+    // 不正な数値は処理しない
     if (!Number.isFinite(n) || n <= 0) {
       return;
     }
@@ -225,16 +244,22 @@ class MusicExtension {
       return;
     }
 
+    // 指定された音符の時間
     const selectedSeconds =
       args.UNIT === 'BPM' ? 60 / n : n;
 
+    // 四分音符の時間に換算
     const quarterSeconds = selectedSeconds / ratio;
 
-    for (const [key, noteRatio] of
-      Object.entries(this.noteRatios)) {
+    // 4種類の音符の時間を更新
+    for (
+      const [key, noteRatio] of
+      Object.entries(this.noteRatios)
+    ) {
       this.durations[key] = quarterSeconds * noteRatio;
     }
   }
 }
 
+// Scratchに拡張機能を登録
 Scratch.extensions.register(new MusicExtension());
