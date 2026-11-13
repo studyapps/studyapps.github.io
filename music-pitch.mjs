@@ -40,14 +40,14 @@ class MusicPitch {
     }));
 
     return {
-      id: 'musicPitchAshikaga',
+      id: 'Music_Pitch',
       name: 'Music Pitch',
 
       // 添付SVGを拡張機能アイコンに設定
       menuIconURI,
       blockIconURI: menuIconURI,
 
-      // Music Tempoと同じ黒色
+      // 黒色
       color1: '#000000',
       color2: '#000000',
       color3: '#000000',
