@@ -38,7 +38,7 @@ class MusicTempo {
     });
 
     return {
-      id: 'Music_Tempo',
+      id: 'MusicTempo',
       name: 'Music Tempo',
       menuIconURI,
       blockIconURI: menuIconURI,

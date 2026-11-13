@@ -40,7 +40,7 @@ class MusicPitch {
     }));
 
     return {
-      id: 'Music_Pitch',
+      id: 'MusicPitch',
       name: 'Music Pitch',
 
       // 添付SVGを拡張機能アイコンに設定
