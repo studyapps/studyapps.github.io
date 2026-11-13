@@ -6,7 +6,22 @@ if (!Scratch?.extensions || !Scratch?.BlockType || !Scratch?.ArgumentType) {
 }
 
 const svgToDataURI = svg => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-const menuIconURI = svgToDataURI("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" id=\"レイヤー_1\" x=\"0px\" y=\"0px\" width=\"48px\" height=\"48px\" viewBox=\"0 0 48 48\" enable-background=\"new 0 0 48 48\" xml:space=\"preserve\">\n<path d=\"M1.5,6.917c0-2.762,2.239-5,5-5h35c2.763,0,5.001,2.238,5.001,5v35c0,2.763-2.238,5-5,5h-35c-2.762,0-5-2.237-5-5L1.5,6.917  L1.5,6.917z\" />\n<path fill=\"none\" stroke=\"#FFFFFF\" d=\"M19.616,11.683c0.277-0.722,0.833-1.083,1.667-1.083h5.499c0.833,0,1.39,0.362,1.667,1.083  l6.667,23.417c0.278,1-0.055,1.499-0.999,1.499H13.949c-0.945,0-1.278-0.499-1-1.499L19.616,11.683z\" />\n<path stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M25.2,31.1l9.084-16.801\" />\n<circle fill=\"#FFFFFF\" cx=\"34.285\" cy=\"14.299\" r=\"1.771\" />\n<path stroke=\"#FFFFFF\" stroke-linecap=\"round\" d=\"M33.976,31.1H14.088\" />\n<path fill=\"#FFFFFF\" stroke=\"#FFFFFF\" d=\"M33.944,31.102l1.139,3.999c0.278,1-0.055,1.499-0.999,1.499H13.916  c-0.945,0-1.278-0.499-1-1.499l1.139-4.001h19.888L33.944,31.102z\" />\n</svg>");
+
+const menuIconURI = svgToDataURI(
+  `<svg xmlns="http://www.w3.org/2000/svg"
+    width="48px" height="48px" viewBox="0 0 48 48">
+    <path d="M1.5,6.917c0-2.762,2.239-5,5-5h35c2.763,0,5.001,2.238,5.001,5v35c0,2.763-2.238,5-5,5h-35c-2.762,0-5-2.237-5-5L1.5,6.917 L1.5,6.917z"/>
+    <path stroke="#FFFFFF" stroke-width="1.5"
+      stroke-linecap="round" d="M25.571,36.6l12.818-20.385"/>
+    <circle fill="#FFFFFF" cx="38.39" cy="16.215" r="1.771"/>
+    <circle fill="#FFFFFF" cx="12.754" cy="16.215" r="1.771"/>
+    <path stroke="#FFFFFF" stroke-width="1.5"
+      stroke-linecap="round" d="M25.571,36.6L12.753,16.215"/>
+    <circle fill="#FFFFFF" cx="31.74" cy="13.302" r="1.771"/>
+    <circle fill="#FFFFFF" cx="19.163" cy="13.302" r="1.771"/>
+    <circle fill="#FFFFFF" cx="25.572" cy="12.523" r="1.771"/>
+  </svg>`
+);
 
 const noteIcons = {
   whole: svgToDataURI('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 32"><path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.45" stroke-linejoin="round" d="M7.875,25.849c-0.084-1.652,0.388-2.127,1.55-2.323c1.384-0.218,2.796,1.314,2.935,3.582  c0.083,1.65-0.388,2.183-1.578,2.35C9.398,29.674,7.986,28.114,7.875,25.849z M4.403,26.491C4.486,29.317,8.152,30,10.201,30  c1.937,0,5.716-0.738,5.632-3.509c-0.084-2.826-3.833-3.508-5.826-3.508C8.097,22.983,4.319,23.75,4.403,26.491z"/></svg>'),
@@ -23,6 +38,7 @@ class MusicTempo {
 
   getInfo() {
     const {BlockType, ArgumentType} = Scratch;
+
     const iconBlock = (opcode, label) => ({
       opcode,
       blockType: BlockType.REPORTER,
@@ -41,40 +57,65 @@ class MusicTempo {
       id: 'MusicTempo',
       name: 'テンポ',
       menuIconURI,
-      color1: '#000000', color2: '#000000', color3: '#000000',
+      color1: '#000000',
+      color2: '#000000',
+      color3: '#000000',
+
       blocks: [
         {
-          opcode: 'setTempo', blockType: BlockType.COMMAND,
+          opcode: 'setTempo',
+          blockType: BlockType.COMMAND,
           text: 'テンポ ♩ ＝ [VALUE] [UNIT]',
           arguments: {
             VALUE: {type: ArgumentType.STRING, defaultValue: ' '},
             UNIT: {type: ArgumentType.STRING, menu: 'units', defaultValue: 'BPM'}
           }
         },
+
         iconBlock('whole', '全音符'),
         iconBlock('half', '二分音符'),
         iconBlock('quarter', '四分音符'),
         iconBlock('eighth', '八分音符'),
+
         {
-          opcode: 'dotted', blockType: BlockType.REPORTER,
+          opcode: 'dotted',
+          blockType: BlockType.REPORTER,
           text: '[VALUE]．',
-          arguments: {VALUE: {type: ArgumentType.STRING, defaultValue: ' '}}
+          arguments: {
+            VALUE: {type: ArgumentType.STRING, defaultValue: ' '}
+          }
         }
       ],
+
       menus: {
-        units: {acceptReporters: false, items: ['BPM','秒']}
+        units: {
+          acceptReporters: false,
+          items: ['BPM', '秒']
+        }
       }
     };
   }
 
-  whole() {return this.durations.whole;}
-  half() {return this.durations.half;}
-  quarter() {return this.durations.quarter;}
-  eighth() {return this.durations.eighth;}
+  whole() {
+    return this.durations.whole;
+  }
+
+  half() {
+    return this.durations.half;
+  }
+
+  quarter() {
+    return this.durations.quarter;
+  }
+
+  eighth() {
+    return this.durations.eighth;
+  }
 
   dotted(args) {
     const value = String(args.VALUE ?? '').trim();
     if (!value) return '';
+
     const n = Number(value);
     return Number.isFinite(n) ? n * 1.5 : '';
   }
@@ -82,6 +123,7 @@ class MusicTempo {
   setTempo(args) {
     const value = String(args.VALUE ?? '').trim();
     if (!value) return;
+
     const n = Number(value);
     if (!Number.isFinite(n) || n <= 0) return;
     if (args.UNIT !== 'BPM' && args.UNIT !== '秒') return;
