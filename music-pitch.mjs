@@ -120,7 +120,10 @@ class MusicPitch {
 
     if (!Number.isFinite(midi)) return '';
 
-    return this.clampMidi(midi + offset);
+    const shifted = midi + offset;
+
+    // 0～127を超える場合は、変更せず元の値を返す
+    return shifted >= 0 && shifted <= 127 ? shifted : midi;
   }
 
   // 1オクターブ低くする
